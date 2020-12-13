@@ -111,7 +111,7 @@ MonoBehaviour:
   cohesionConstant: 100
   alignmentConstant: 20
   separationConstant: 3
-  goalConstant: 1000
+  goalConstant: 100
   chaseConstant: 100
   evadeConstant: 100
   targetAcqRadius: 20
@@ -125,6 +125,7 @@ MonoBehaviour:
   damage: 70
   fear: 0.5
   maxEvadeDistance: 25
+  boundaryRadius: 50
   isEnemy: 0
   state: 2
   target: {fileID: 0}

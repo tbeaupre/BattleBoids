@@ -13,7 +13,7 @@ public class Boid : MonoBehaviour
 	public float cohesionConstant = 100;
 	public float alignmentConstant = 20;
 	public float separationConstant = 3;
-	public float goalConstant = 1000;
+	public float goalConstant = 100;
 	public float chaseConstant = 100;
 	public float evadeConstant = 100;
 
@@ -35,7 +35,7 @@ public class Boid : MonoBehaviour
 	public float maxEvadeDistance = 25.0f;
 
 	// Boundaries
-	public float boundaryRadius = 100.0f;
+	public float boundaryRadius = 50.0f;
 
 	// Internal
 	public bool isEnemy = false;
@@ -256,7 +256,11 @@ public class Boid : MonoBehaviour
 
 	Vector3 Goal()
 	{
-		return (goal.gameObject.transform.position - transform.position) / goalConstant;
+		Vector3 displacement = goal.gameObject.transform.position - transform.position;
+		if (displacement.sqrMagnitude > boundaryRadius * boundaryRadius) {
+			return displacement / goalConstant;
+		}
+		return Vector3.zero;
 	}
 
 	private
