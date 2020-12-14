@@ -59,6 +59,7 @@ public class Boid : MonoBehaviour
 		UpdateState();
 		UpdateVelocity();
 		LimitVelocity();
+		transform.forward = velocity;
 		transform.position += velocity;
     }
 
