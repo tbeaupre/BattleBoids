@@ -107,6 +107,7 @@ MonoBehaviour:
   velocity: {x: 0.5, y: 0, z: 0}
   boids: []
   neighborhoodRadius: 10
+  accelerationMax: 0.1
   velocityMax: 1
   cohesionConstant: 100
   alignmentConstant: 20

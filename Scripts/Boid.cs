@@ -9,6 +9,7 @@ public class Boid : MonoBehaviour
 	private Goal goal;
 
 	public float neighborhoodRadius = 10.0f;
+	public float accelerationMax = 0.1f;
 	public float velocityMax = 1.0f;
 	public float cohesionConstant = 100;
 	public float alignmentConstant = 20;
@@ -136,27 +137,30 @@ public class Boid : MonoBehaviour
 
 	void UpdateVelocity()
 	{
-		velocity += Separation();
-		velocity += Goal();
+		Vector3 deltaVelocity = Vector3.zero;
+		deltaVelocity += Separation();
+		deltaVelocity += Goal();
 
 		switch(state) {
 			case BoidState.Flock:
 			{
-				velocity += Alignment();
-				velocity += Cohesion();
+				deltaVelocity += Alignment();
+				deltaVelocity += Cohesion();
 				break;
 			}
 			case BoidState.Chase:
 			{
-				velocity += Chase();
+				deltaVelocity += Chase();
 				break;
 			}
 			case BoidState.Evade:
 			{
-				velocity += Evade();
+				deltaVelocity += Evade();
 				break;
 			}
 		}
+
+		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
 	}
 
 	Vector3 Separation()
