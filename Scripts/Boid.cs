@@ -113,7 +113,10 @@ public class Boid : MonoBehaviour
 				if (displacement.sqrMagnitude > maxChaseDistance * maxChaseDistance) {
 					target = null;
 					state = BoidState.Flock;
-				} else if (Vector3.Angle(velocity, displacement) < maxFireAngle && cooldownTimer < 0) {
+					break;
+				}
+
+				if (Vector3.Angle(velocity, displacement) < maxFireAngle && cooldownTimer < 0) {
 					cooldownTimer = cooldown;
 					target.Fire(this, accuracy, damage);
 				}
@@ -141,24 +144,35 @@ public class Boid : MonoBehaviour
 		deltaVelocity += Separation();
 		deltaVelocity += Goal();
 
+		Color color = Color.white;
 		switch(state) {
 			case BoidState.Flock:
 			{
 				deltaVelocity += Alignment();
 				deltaVelocity += Cohesion();
+				color = Color.white;
 				break;
 			}
 			case BoidState.Chase:
 			{
 				deltaVelocity += Chase();
+				color = Color.red;
 				break;
 			}
 			case BoidState.Evade:
 			{
 				deltaVelocity += Evade();
+				color = Color.blue;
 				break;
 			}
 		}
+
+		Debug.DrawLine(
+			transform.position,
+			transform.position + (velocity * 5.0f),
+			color,
+			1f / 90f
+		);
 
 		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
 	}
@@ -167,7 +181,7 @@ public class Boid : MonoBehaviour
 	{
 		Vector3 separation = Vector3.zero;
 		foreach(Boid boid in boids) {
-			if (boid != null && boid != this && boid.isEnemy == isEnemy) {
+			if (boid != null && boid != this) {
 				Vector3 displacement = boid.gameObject.transform.position - transform.position;
 				if (displacement.magnitude < neighborhoodRadius) {
 					separation = separation - displacement;
@@ -218,7 +232,7 @@ public class Boid : MonoBehaviour
 	Vector3 Chase()
 	{
 		if (target != null) {
-			return (target.gameObject.transform.position - transform.position) / chaseConstant;
+			return Displacement(target) / chaseConstant;
 		}
 		return Vector3.zero;
 	}
