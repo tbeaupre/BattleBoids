@@ -45,4 +45,26 @@ public class Game : MonoBehaviour
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
+
+	public void SaveBoids()
+	{
+		List<Boid> filteredList  = new List<Boid>();
+		foreach(Boid boid in boids) {
+			if (boid.isEnemy) {
+				filteredList.Add(boid);
+			}
+		}
+		Boid[] allies = filteredList.ToArray();
+
+		SaveSystem.SaveTeam(allies);
+	}
+
+	public void LoadBoids()
+	{
+		TeamData data = SaveSystem.LoadTeam();
+		foreach (BoidData boid in data.team) {
+			string json = JsonUtility.ToJson(boid);
+			Debug.Log(json);
+		}
+	}
 }
