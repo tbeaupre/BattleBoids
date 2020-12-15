@@ -27,6 +27,7 @@ public class Boid : MonoBehaviour
 
 	// Chase
 	public float maxChaseDistance = 25.0f;
+	public float maxFireDistance = 20.0f;
 	public float maxFireAngle = 3.0f;
 	public float accuracy = 0.3f;
 	public int cooldown = 20; // In frames
@@ -250,10 +251,12 @@ public class Boid : MonoBehaviour
 	void Fire(Boid firedBy, float accuracy, float damage)
 	{
 		Vector3 rayDir;
-		float closeness = Random.value - accuracy;
-		Debug.Log("Closeness: " + closeness + ";  Accuracy: " + accuracy);
-		if (closeness < 0) {
-			rayDir = -Displacement(firedBy);
+		Vector3 displacement = Displacement(firedBy);
+		float distanceMod = 1 - (displacement.magnitude / maxFireDistance);
+		float precision = Random.value - (accuracy * distanceMod);
+		Debug.Log("Precision: " + precision + ";  Accuracy: " + accuracy + "; DistanceMod: " + distanceMod);
+		if (precision < 0) {
+			rayDir = -displacement;
 			currentHealth -= damage;
 			if (currentHealth < 0) {
 				Destroy(this);
@@ -261,7 +264,7 @@ public class Boid : MonoBehaviour
 		} else {
 			rayDir = firedBy.velocity * 1000;
 		}
-		if (state == BoidState.Flock || (currentHealth / maxHealth) + closeness < fear) {
+		if (state == BoidState.Flock || (currentHealth / maxHealth) + precision < fear) {
 			target = firedBy;
 			state = BoidState.Evade;
 		}
