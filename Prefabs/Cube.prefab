@@ -105,6 +105,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0.5, y: 0, z: 0}
+  laserPrefab: {fileID: 8627302759309090070, guid: d5b847d0d5c717545aa58a1cf0d3df01,
+    type: 3}
   boids: []
   neighborhoodRadius: 10
   accelerationMax: 0.1
@@ -119,11 +121,10 @@ MonoBehaviour:
   targetAcqAngleMod: 0.7
   targetAcqMinAngle: 75
   targetAcqMinFitness: 0.3
-  minChaseDistance: 7
   maxChaseDistance: 30
   maxFireAngle: 5
-  accuracy: 0.3
-  cooldown: 60
+  accuracy: 0.1
+  cooldown: 5
   damage: 70
   fear: 0.5
   maxEvadeDistance: 35

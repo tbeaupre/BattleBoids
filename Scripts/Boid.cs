@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boid : MonoBehaviour
 {
 	public Vector3 velocity = Vector3.zero;
+	public GameObject laserPrefab;
 	public Boid[] boids;
 	private Goal goal;
 
@@ -28,7 +29,7 @@ public class Boid : MonoBehaviour
 	public float maxChaseDistance = 25.0f;
 	public float maxFireAngle = 3.0f;
 	public float accuracy = 0.3f;
-	public int cooldown = 60; // In frames
+	public int cooldown = 20; // In frames
 	public float damage = 70;
 
 	// Evade
@@ -264,13 +265,12 @@ public class Boid : MonoBehaviour
 			target = firedBy;
 			state = BoidState.Evade;
 		}
-		Debug.DrawRay(
+
+		CreateLine(
 			firedBy.gameObject.transform.position,
 			rayDir,
-			firedBy.isEnemy ? Color.red : Color.white,
-			0.1f
+			firedBy.isEnemy ? Color.red : Color.white
 		);
-
 	}
 
 	Vector3 Goal()
@@ -287,5 +287,14 @@ public class Boid : MonoBehaviour
 	Vector3 Displacement(Boid boid)
 	{
 		return boid.gameObject.transform.position - transform.position;
+	}
+
+	void CreateLine(Vector3 start, Vector3 rayDir, Color color)
+	{
+		GameObject line = Instantiate(laserPrefab);
+		LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
+		lineRenderer.SetPositions(new Vector3[] { start, start + rayDir });
+		lineRenderer.startColor = color;
+		lineRenderer.endColor = color;
 	}
 }
