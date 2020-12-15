@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
 	public Boid[] boids;
 	public Text winText;
+	public GameObject winPanel; 
 
     // Start is called before the first frame update
     void Start()
@@ -31,12 +34,15 @@ public class Game : MonoBehaviour
 
 		if (enemyCount == 0) {
 			winText.text = "Victory";
-			winText.gameObject.SetActive(true);
-			Destroy(this);
+			winPanel.SetActive(true);
 		} else if (allyCount == 0) {
 			winText.text = "Defeat";
-			winText.gameObject.SetActive(true);
-			Destroy(this);
+			winPanel.SetActive(true);
 		}
     }
+
+	public void ResetGame()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 }
