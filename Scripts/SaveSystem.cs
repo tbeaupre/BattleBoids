@@ -4,13 +4,11 @@ using UnityEngine;
 
 public static class SaveSystem
 {
-	public static void SaveTeam(Boid[] boids)
+	public static void SaveTeam(TeamData data)
 	{
 		BinaryFormatter formatter = new BinaryFormatter();
 		string path = Application.persistentDataPath + "/boid.bin";
 		FileStream stream = new FileStream(path, FileMode.Create);
-
-		TeamData data = new TeamData(boids);
 
 		formatter.Serialize(stream, data);
 		stream.Close();

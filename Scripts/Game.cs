@@ -44,12 +44,7 @@ public class Game : MonoBehaviour
 
 	public void ResetGame()
 	{
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-	}
-
-	public void SaveBoids()
-	{
-		SaveSystem.SaveTeam(GetAllies());
+		SceneManager.LoadScene("BoidSelectionScene");
 	}
 
 	public void LoadBoids()

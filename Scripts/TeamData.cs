@@ -17,4 +17,9 @@ public class TeamData
 			new BoidData(boids[4]),
 		};
 	}
+
+	public TeamData(BoidData[] teamData)
+	{
+		team = teamData;
+	}
 }
