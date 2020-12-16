@@ -60,4 +60,35 @@ public class BoidData
 		fear = boid.fear;
 		maxEvadeDistance = boid.maxEvadeDistance;
 	}
+
+	public BoidData()
+	{
+		neighborhoodRadius = 10.0f;
+		accelerationMax = 0.1f;
+		velocityMax = 1.0f;
+		cohesionConstant = 100;
+		alignmentConstant = 20;
+		separationConstant = 3;
+		chaseConstant = 100;
+		evadeConstant = 100;
+		maxHealth = 100;
+
+		// Target Acquisition
+		targetAcqRadius = 20.0f;
+		targetAcqAngleMod = 0.7f;
+		targetAcqMinAngle = 75.0f;
+		targetAcqMinFitness = 0.3f;
+
+		// Chase
+		maxChaseDistance = 25.0f;
+		maxFireDistance = 20.0f;
+		maxFireAngle = 3.0f;
+		accuracy = 0.3f;
+		cooldown = 20; // In frames
+		damage = 70;
+
+		// Evade
+		fear = 0.5f;
+		maxEvadeDistance = 25.0f;
+	}
 }
