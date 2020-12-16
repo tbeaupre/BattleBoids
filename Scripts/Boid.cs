@@ -66,6 +66,34 @@ public class Boid : MonoBehaviour
 		transform.position += velocity;
     }
 
+	public void Initialize(BoidData boid)
+	{
+		neighborhoodRadius = boid.neighborhoodRadius;
+		accelerationMax = boid.accelerationMax;
+		velocityMax = boid.velocityMax;
+		cohesionConstant = boid.cohesionConstant;
+		alignmentConstant = boid.alignmentConstant;
+		separationConstant = boid.separationConstant;
+		chaseConstant = boid.chaseConstant;
+		evadeConstant = boid.evadeConstant;
+		maxHealth = boid.maxHealth;
+
+		targetAcqRadius = boid.targetAcqRadius;
+		targetAcqAngleMod = boid.targetAcqAngleMod;
+		targetAcqMinAngle = boid.targetAcqMinAngle;
+		targetAcqMinFitness = boid.targetAcqMinFitness;
+
+		maxChaseDistance = boid.maxChaseDistance;
+		maxFireDistance = boid.maxFireDistance;
+		maxFireAngle = boid.maxFireAngle;
+		accuracy = boid.accuracy;
+		cooldown = boid.cooldown;
+		damage = boid.damage;
+
+		fear = boid.fear;
+		maxEvadeDistance = boid.maxEvadeDistance;
+	}
+
 	void LimitVelocity()
 	{
 		velocity = Vector3.ClampMagnitude(velocity, velocityMax);

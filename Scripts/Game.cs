@@ -15,6 +15,7 @@ public class Game : MonoBehaviour
     void Start()
 	{
 		boids = FindObjectsOfType<Boid>();
+		LoadBoids();
     }
 
     // Update is called once per frame
@@ -48,23 +49,33 @@ public class Game : MonoBehaviour
 
 	public void SaveBoids()
 	{
-		List<Boid> filteredList  = new List<Boid>();
-		foreach(Boid boid in boids) {
-			if (boid.isEnemy) {
-				filteredList.Add(boid);
-			}
-		}
-		Boid[] allies = filteredList.ToArray();
-
-		SaveSystem.SaveTeam(allies);
+		SaveSystem.SaveTeam(GetAllies());
 	}
 
 	public void LoadBoids()
 	{
 		TeamData data = SaveSystem.LoadTeam();
+		Boid[] allies = GetAllies();
+		int index = -1;
 		foreach (BoidData boid in data.team) {
+			index++;
+			allies[index].Initialize(boid);
+
 			string json = JsonUtility.ToJson(boid);
 			Debug.Log(json);
 		}
+	}
+
+	private
+
+	Boid[] GetAllies()
+	{
+		List<Boid> filteredList  = new List<Boid>();
+		foreach(Boid boid in boids) {
+			if (!boid.isEnemy) {
+				filteredList.Add(boid);
+			}
+		}
+		return filteredList.ToArray();	
 	}
 }

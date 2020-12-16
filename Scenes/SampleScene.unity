@@ -2163,5 +2163,10 @@ PrefabInstance:
       propertyPath: velocity.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4496961382795418397, guid: e14b0383b24210a4bb028ffc28e0f730,
+        type: 3}
+      propertyPath: damage
+      value: 20.23
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e14b0383b24210a4bb028ffc28e0f730, type: 3}
