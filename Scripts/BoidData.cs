@@ -18,7 +18,7 @@ public class BoidData
 	// Target Acquisition
 	public float targetAcqRadius;
 	public float targetAcqAngleMod;
-	public float targetAcqMinAngle;
+	public float targetAcqMaxAngle;
 	public float targetAcqMinFitness;
 
 	// Chase
@@ -47,7 +47,7 @@ public class BoidData
 
 		targetAcqRadius = boid.targetAcqRadius;
 		targetAcqAngleMod = boid.targetAcqAngleMod;
-		targetAcqMinAngle = boid.targetAcqMinAngle;
+		targetAcqMaxAngle = boid.targetAcqMaxAngle;
 		targetAcqMinFitness = boid.targetAcqMinFitness;
 
 		maxChaseDistance = boid.maxChaseDistance;
@@ -76,7 +76,7 @@ public class BoidData
 		// Target Acquisition
 		targetAcqRadius = 20.0f;
 		targetAcqAngleMod = 0.7f;
-		targetAcqMinAngle = 75.0f;
+		targetAcqMaxAngle = 75.0f;
 		targetAcqMinFitness = 0.3f;
 
 		// Chase
@@ -90,5 +90,59 @@ public class BoidData
 		// Evade
 		fear = 0.5f;
 		maxEvadeDistance = 25.0f;
+	}
+
+	public void RerollPilot()
+	{
+		float sociability = Random.value;
+		float ego = Random.value;
+		float persistence = Random.value;
+		float vision = Random.value;
+		float skill = Random.value;
+
+		this.cohesionConstant = CalcRandProp(70, 60, sociability, true);
+		this.alignmentConstant = CalcRandProp(10, 20, ego, false);
+		this.targetAcqMaxAngle = CalcRandProp(60, 40, vision, false);
+		this.targetAcqMinFitness = CalcRandProp(0.2f, 0.2f, persistence, true);
+		this.maxChaseDistance = CalcRandProp(targetAcqMaxAngle, 10, persistence, false);
+		this.accuracy = CalcRandProp(0.3f, 0.8f, skill, false);
+		this.fear = CalcRandProp(0, 1, ego, true);
+	}
+
+	public void RerollShip()
+	{
+		float pointsToAllocate = 6;
+
+		float sensors = Random.value;
+		float acceleration = Random.value;
+		float topSpeed = Random.value;
+		float armor = Random.value;
+		float range = Random.value;
+		float damage = Random.value;
+
+		float sum = sensors + acceleration + topSpeed + armor + range + damage;
+		sensors = sensors * pointsToAllocate / sum;
+		acceleration = acceleration * pointsToAllocate / sum;
+		topSpeed = topSpeed * pointsToAllocate / sum;
+		armor = armor * pointsToAllocate / sum;
+		range = range * pointsToAllocate / sum;
+		damage = damage * pointsToAllocate / sum;
+
+		this.neighborhoodRadius = CalcRandProp(10, 5, sensors, false);
+		this.accelerationMax = CalcRandProp(0.07f, 0.1f, acceleration, false);
+		this.velocityMax = CalcRandProp(0.7f, 1, topSpeed, false);
+		this.maxHealth = CalcRandProp(50, 300, armor, false);
+		this.targetAcqRadius = CalcRandProp(15, 10, sensors, false);
+		this.maxFireDistance = CalcRandProp(15, 10, range, false);
+		this.cooldown = (int)CalcRandProp(20, 70, damage, false);
+		this.damage = CalcRandProp(10, 200, damage, false);
+	}
+
+	private
+
+	float CalcRandProp(float min, float range, float rand, bool invert)
+	{
+		float modifier = invert ? (1 - rand) : rand;
+		return range * modifier + min;
 	}
 }

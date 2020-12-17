@@ -22,7 +22,7 @@ public class Boid : MonoBehaviour
 	// Target Acquisition
 	public float targetAcqRadius = 20.0f;
 	public float targetAcqAngleMod = 0.7f;
-	public float targetAcqMinAngle = 75.0f;
+	public float targetAcqMaxAngle = 75.0f;
 	public float targetAcqMinFitness = 0.3f;
 
 	// Chase
@@ -80,7 +80,7 @@ public class Boid : MonoBehaviour
 
 		targetAcqRadius = boid.targetAcqRadius;
 		targetAcqAngleMod = boid.targetAcqAngleMod;
-		targetAcqMinAngle = boid.targetAcqMinAngle;
+		targetAcqMaxAngle = boid.targetAcqMaxAngle;
 		targetAcqMinFitness = boid.targetAcqMinFitness;
 
 		maxChaseDistance = boid.maxChaseDistance;
@@ -115,7 +115,7 @@ public class Boid : MonoBehaviour
 							continue;
 						}
 
-						float angleValue = ((targetAcqMinAngle - Vector3.Angle(velocity, displacement)) / targetAcqMinAngle) * targetAcqAngleMod;
+						float angleValue = ((targetAcqMaxAngle - Vector3.Angle(velocity, displacement)) / targetAcqMaxAngle) * targetAcqAngleMod;
 						float distValue = (displacement.magnitude / targetAcqRadius) * (1 - targetAcqAngleMod);
 						float fitnessValue = angleValue + distValue;
 
