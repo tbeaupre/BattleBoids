@@ -300,7 +300,8 @@ public class Boid : MonoBehaviour
 		CreateLine(
 			firedBy.gameObject.transform.position,
 			rayDir,
-			firedBy.isEnemy ? Color.red : Color.white
+			firedBy.isEnemy ? Color.red : Color.white,
+			firedBy.damage
 		);
 	}
 
@@ -320,12 +321,14 @@ public class Boid : MonoBehaviour
 		return boid.gameObject.transform.position - transform.position;
 	}
 
-	void CreateLine(Vector3 start, Vector3 rayDir, Color color)
+	void CreateLine(Vector3 start, Vector3 rayDir, Color color, float damage)
 	{
 		GameObject line = Instantiate(laserPrefab);
 		LineRenderer lineRenderer = line.GetComponent<LineRenderer>();
 		lineRenderer.SetPositions(new Vector3[] { start, start + rayDir });
 		lineRenderer.startColor = color;
+		lineRenderer.startWidth = damage * 0.005f;
 		lineRenderer.endColor = color;
+		lineRenderer.endWidth = damage * 0.005f;
 	}
 }
