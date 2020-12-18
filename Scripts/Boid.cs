@@ -66,32 +66,24 @@ public class Boid : MonoBehaviour
 		transform.position += velocity;
     }
 
-	public void Initialize(BoidData boid)
+	public void Initialize(PilotData pilot, ShipData ship)
 	{
-		neighborhoodRadius = boid.neighborhoodRadius;
-		accelerationMax = boid.accelerationMax;
-		velocityMax = boid.velocityMax;
-		cohesionConstant = boid.cohesionConstant;
-		alignmentConstant = boid.alignmentConstant;
-		separationConstant = boid.separationConstant;
-		chaseConstant = boid.chaseConstant;
-		evadeConstant = boid.evadeConstant;
-		maxHealth = boid.maxHealth;
+		this.cohesionConstant = CalcRandProp(70, 60, pilot.sociability, true);
+		this.alignmentConstant = CalcRandProp(10, 20, pilot.ego, false);
+		this.targetAcqMaxAngle = CalcRandProp(60, 40, pilot.vision, false);
+		this.targetAcqMinFitness = CalcRandProp(0.2f, 0.2f, pilot.persistence, true);
+		this.maxChaseDistance = CalcRandProp(targetAcqMaxAngle, 10, pilot.persistence, false);
+		this.accuracy = CalcRandProp(0.3f, 0.8f, pilot.skill, false);
+		this.fear = CalcRandProp(0, 1, pilot.ego, true);
 
-		targetAcqRadius = boid.targetAcqRadius;
-		targetAcqAngleMod = boid.targetAcqAngleMod;
-		targetAcqMaxAngle = boid.targetAcqMaxAngle;
-		targetAcqMinFitness = boid.targetAcqMinFitness;
-
-		maxChaseDistance = boid.maxChaseDistance;
-		maxFireDistance = boid.maxFireDistance;
-		maxFireAngle = boid.maxFireAngle;
-		accuracy = boid.accuracy;
-		cooldown = boid.cooldown;
-		damage = boid.damage;
-
-		fear = boid.fear;
-		maxEvadeDistance = boid.maxEvadeDistance;
+		this.neighborhoodRadius = CalcRandProp(10, 5, ship.sensors, false);
+		this.accelerationMax = CalcRandProp(0.07f, 0.1f, ship.acceleration, false);
+		this.velocityMax = CalcRandProp(0.7f, 1, ship.topSpeed, false);
+		this.maxHealth = CalcRandProp(50, 300, ship.armor, false);
+		this.targetAcqRadius = CalcRandProp(15, 10, ship.sensors, false);
+		this.maxFireDistance = CalcRandProp(15, 10, ship.range, false);
+		this.cooldown = (int)CalcRandProp(20, 70, ship.damage, false);
+		this.damage = CalcRandProp(10, 200, ship.damage, false);
 	}
 
 	void LimitVelocity()
@@ -330,5 +322,11 @@ public class Boid : MonoBehaviour
 		lineRenderer.startWidth = damage * 0.005f;
 		lineRenderer.endColor = color;
 		lineRenderer.endWidth = damage * 0.005f;
+	}
+
+	float CalcRandProp(float min, float range, float rand, bool invert)
+	{
+		float modifier = invert ? (1 - rand) : rand;
+		return range * modifier + min;
 	}
 }

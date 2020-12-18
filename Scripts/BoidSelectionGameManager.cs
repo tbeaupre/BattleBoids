@@ -2,26 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class BoidSelectionGameManager : MonoBehaviour
 {
 	public void Fight()
 	{
 		BoidPanel[] boidPanels = FindObjectsOfType<BoidPanel>();
-		BoidData[] team = new BoidData[5] {
-			boidPanels[0].boidData,
-			boidPanels[1].boidData,
-			boidPanels[2].boidData,
-			boidPanels[3].boidData,
-			boidPanels[4].boidData,
-		};
+		PilotData[] pilots = boidPanels.Select(boidPanel => boidPanel.pilotData).ToArray();
+		ShipData[] ships = boidPanels.Select(boidPanel => boidPanel.shipData).ToArray();
 
-		foreach(BoidData boid in team) {
-			string json = JsonUtility.ToJson(boid);
-			Debug.Log(json);
-		}
-
-		SaveSystem.SaveTeam(new TeamData(team));
+		SaveSystem.SaveTeam(new TeamData(pilots, ships));
 		SceneManager.LoadSceneAsync("BattleScene");
 	}
 }

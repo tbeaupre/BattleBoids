@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class BoidPanel : MonoBehaviour
 {
 	public Text info;
-	public BoidData boidData = new BoidData();
+	public PilotData pilotData = new PilotData();
+	public ShipData shipData = new ShipData();
 
 	// Start is called before the first frame update
 	void Start()
@@ -16,13 +17,13 @@ public class BoidPanel : MonoBehaviour
 
 	public void RerollPilot()
 	{
-		boidData.RerollPilot();
+		pilotData.Reroll();
 		SetInfo();
 	}
 
 	public void RerollShip()
 	{
-		boidData.RerollShip();
+		shipData.Reroll();
 		SetInfo();
 	}
 
@@ -31,21 +32,17 @@ public class BoidPanel : MonoBehaviour
 	void SetInfo()
 	{
 		info.text = "Pilot Stats:" +
-			"\ncohesionConstant: " + boidData.cohesionConstant +
-			"\nalignmentConstant: " + boidData.alignmentConstant +
-			"\ntargetAcqMaxAngle: " + boidData.targetAcqMaxAngle +
-			"\ntargetAcqMinFitness: " + boidData.targetAcqMinFitness +
-			"\nmaxChaseDistance: " + boidData.maxChaseDistance +
-			"\naccuracy: " + boidData.accuracy +
-			"\nfear: " + boidData.fear +
+			"\nsociability: " + pilotData.sociability +
+			"\nego: " + pilotData.ego +
+			"\npersistence: " + pilotData.persistence +
+			"\nvision: " + pilotData.vision +
+			"\nskill: " + pilotData.skill +
 			"\n\nShip Stats:" +
-			"\nneighborhoodRadius: " + boidData.neighborhoodRadius +
-			"\naccelerationMax: " + boidData.accelerationMax +
-			"\nvelocityMax: " + boidData.velocityMax +
-			"\nmaxHealth: " + boidData.maxHealth +
-			"\ntargetAcqRadius: " + boidData.targetAcqRadius +
-			"\nmaxFireDistance: " + boidData.maxFireDistance +
-			"\ncooldown: " + boidData.cooldown +
-			"\ndamage: " + boidData.damage;
+			"\nsensors: " + shipData.sensors +
+			"\nacceleration: " + shipData.acceleration +
+			"\ntopSpeed: " + shipData.topSpeed +
+			"\narmor: " + shipData.armor +
+			"\nrange: " + shipData.range +
+			"\ndamage: " + shipData.damage;
 	}
 }

@@ -51,13 +51,14 @@ public class Game : MonoBehaviour
 	{
 		TeamData data = SaveSystem.LoadTeam();
 		Boid[] allies = GetAllies();
-		int index = -1;
-		foreach (BoidData boid in data.team) {
-			index++;
-			allies[index].Initialize(boid);
 
-			string json = JsonUtility.ToJson(boid);
-			Debug.Log(json);
+		for (int i = 0; i < allies.Length; i++)
+		{
+			allies[i].Initialize(data.pilots[i], data.ships[i]);
+
+			string pilotJson = JsonUtility.ToJson(data.pilots[i]);
+			string shipJson = JsonUtility.ToJson(data.ships[i]);
+			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 	}
 
