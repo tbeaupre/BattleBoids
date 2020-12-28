@@ -84,6 +84,9 @@ public class Boid : MonoBehaviour
 		this.maxFireDistance = CalcRandProp(15, 10, ship.range, false);
 		this.cooldown = (int)CalcRandProp(20, 70, ship.damage, false);
 		this.damage = CalcRandProp(10, 200, ship.damage, false);
+
+		float scale = (maxHealth / 500) + 1;
+		transform.localScale = new Vector3(scale, scale, scale);
 	}
 
 	void LimitVelocity()
