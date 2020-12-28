@@ -245,7 +245,7 @@ MonoBehaviour:
     type: 3}
   boids: []
   neighborhoodRadius: 10
-  accelerationMax: 0.1
+  accelerationMax: 0.07
   velocityMax: 1
   cohesionConstant: 100
   alignmentConstant: 20

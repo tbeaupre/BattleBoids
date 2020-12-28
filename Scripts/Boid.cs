@@ -69,7 +69,7 @@ public class Boid : MonoBehaviour
 	public void Initialize(PilotData pilot, ShipData ship)
 	{
 		this.neighborhoodRadius = CalcRandProp(10, 5, ship.sensors, false);
-		this.accelerationMax = CalcRandProp(0.07f, 0.1f, ship.acceleration, false);
+		this.accelerationMax = CalcRandProp(0.05f, 0.05f, ship.acceleration - (ship.armor / 2), false);
 		this.velocityMax = CalcRandProp(0.7f, 1, ship.topSpeed, false);
 		this.maxHealth = CalcRandProp(50, 300, ship.armor, false);
 		this.targetAcqRadius = CalcRandProp(15, 10, ship.sensors, false);
@@ -188,6 +188,7 @@ public class Boid : MonoBehaviour
 			case BoidState.Evade:
 			{
 				deltaVelocity += Evade();
+				deltaVelocity += EvadeLineOfSight();
 				color = Color.blue;
 				break;
 			}
@@ -199,7 +200,8 @@ public class Boid : MonoBehaviour
 			color,
 			1f / 90f
 		);
-
+			
+		Debug.Log("Velocity: " + velocity + ";  DeltaVelocity: " + deltaVelocity + "; Clamped: " + Vector3.ClampMagnitude(deltaVelocity, accelerationMax));
 		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
 	}
 
@@ -208,9 +210,9 @@ public class Boid : MonoBehaviour
 		Vector3 separation = Vector3.zero;
 		foreach(Boid boid in boids) {
 			if (boid != null && boid != this) {
-				Vector3 displacement = boid.gameObject.transform.position - transform.position;
+				Vector3 displacement = Displacement(boid);
 				if (displacement.magnitude < neighborhoodRadius) {
-					separation = separation - displacement;
+					separation -= displacement;
 				}
 			}
 		}
@@ -255,6 +257,7 @@ public class Boid : MonoBehaviour
 		return (perceivedCenter - transform.position) / cohesionConstant;
 	}
 
+
 	// Chase
 	Vector3 Chase()
 	{
@@ -274,7 +277,17 @@ public class Boid : MonoBehaviour
 		return Vector3.zero;
 	}
 
+
+	// Evade
 	Vector3 Evade()
+	{
+		if (target != null) {
+			return -Displacement(target) / evadeConstant;
+		}
+		return Vector3.zero;
+	}
+
+	Vector3 EvadeLineOfSight()
 	{
 		if (target != null) {
 			Vector3 projection = Vector3.Project(-Displacement(target), target.velocity);
@@ -283,13 +296,14 @@ public class Boid : MonoBehaviour
 		return Vector3.zero;
 	}
 
+
 	void Fire(Boid firedBy, float accuracy, float damage)
 	{
 		Vector3 rayDir;
 		Vector3 displacement = Displacement(firedBy);
 		float distanceMod = 1 - (displacement.magnitude / maxFireDistance);
 		float precision = Random.value - (accuracy * distanceMod);
-		Debug.Log("Precision: " + precision + ";  Accuracy: " + accuracy + "; DistanceMod: " + distanceMod);
+//		Debug.Log("Precision: " + precision + ";  Accuracy: " + accuracy + "; DistanceMod: " + distanceMod);
 		if (precision < 0) {
 			rayDir = -displacement;
 			currentHealth -= damage;
