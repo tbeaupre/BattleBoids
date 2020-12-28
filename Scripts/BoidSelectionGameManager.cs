@@ -6,9 +6,21 @@ using System.Linq;
 
 public class BoidSelectionGameManager : MonoBehaviour
 {
+	BoidPanel[] boidPanels;
+
+	// Start is called before the first frame update
+	void Start()
+	{
+		boidPanels = FindObjectsOfType<BoidPanel>();
+		TeamData team = SaveSystem.LoadTeam();
+
+		for (int i = 0; i < boidPanels.Length; i++) {
+			boidPanels[i].SetData(team.pilots[i], team.ships[i]);
+		}
+	}
+
 	public void Fight()
 	{
-		BoidPanel[] boidPanels = FindObjectsOfType<BoidPanel>();
 		PilotData[] pilots = boidPanels.Select(boidPanel => boidPanel.pilotData).ToArray();
 		ShipData[] ships = boidPanels.Select(boidPanel => boidPanel.shipData).ToArray();
 

@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class BoidPanel : MonoBehaviour
 {
 	public Text info;
-	public PilotData pilotData = new PilotData();
-	public ShipData shipData = new ShipData();
+	public PilotData pilotData;
+	public ShipData shipData;
 
-	// Start is called before the first frame update
-	void Start()
+	public void SetData(PilotData pilot, ShipData ship)
 	{
+		pilotData = pilot;
+		shipData = ship;
 		SetInfo();
 	}
 
