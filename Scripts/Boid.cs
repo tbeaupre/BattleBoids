@@ -68,14 +68,6 @@ public class Boid : MonoBehaviour
 
 	public void Initialize(PilotData pilot, ShipData ship)
 	{
-		this.cohesionConstant = CalcRandProp(70, 60, pilot.sociability, true);
-		this.alignmentConstant = CalcRandProp(10, 20, pilot.ego, false);
-		this.targetAcqMaxAngle = CalcRandProp(60, 40, pilot.vision, false);
-		this.targetAcqMinFitness = CalcRandProp(0.2f, 0.2f, pilot.persistence, true);
-		this.maxChaseDistance = CalcRandProp(targetAcqMaxAngle, 10, pilot.persistence, false);
-		this.accuracy = CalcRandProp(0.3f, 0.8f, pilot.skill, false);
-		this.fear = CalcRandProp(0, 1, pilot.ego, true);
-
 		this.neighborhoodRadius = CalcRandProp(10, 5, ship.sensors, false);
 		this.accelerationMax = CalcRandProp(0.07f, 0.1f, ship.acceleration, false);
 		this.velocityMax = CalcRandProp(0.7f, 1, ship.topSpeed, false);
@@ -84,6 +76,14 @@ public class Boid : MonoBehaviour
 		this.maxFireDistance = CalcRandProp(15, 10, ship.range, false);
 		this.cooldown = (int)CalcRandProp(20, 70, ship.damage, false);
 		this.damage = CalcRandProp(10, 200, ship.damage, false);
+
+		this.cohesionConstant = CalcRandProp(70, 60, pilot.sociability, true);
+		this.alignmentConstant = CalcRandProp(10, 20, pilot.ego, false);
+		this.targetAcqMaxAngle = CalcRandProp(60, 40, pilot.vision, false);
+		this.targetAcqMinFitness = CalcRandProp(0.2f, 0.2f, pilot.persistence, true);
+		this.maxChaseDistance = CalcRandProp(targetAcqRadius, 10, pilot.persistence, false);
+		this.accuracy = CalcRandProp(0.3f, 0.8f, pilot.skill, false);
+		this.fear = CalcRandProp(0, 1, pilot.ego, true);
 
 		float scale = (maxHealth / 500) + 1;
 		transform.localScale = new Vector3(scale, scale, scale);
@@ -181,6 +181,7 @@ public class Boid : MonoBehaviour
 			case BoidState.Chase:
 			{
 				deltaVelocity += Chase();
+				deltaVelocity += AlignWithTarget();
 				color = Color.red;
 				break;
 			}
@@ -254,10 +255,21 @@ public class Boid : MonoBehaviour
 		return (perceivedCenter - transform.position) / cohesionConstant;
 	}
 
+	// Chase
 	Vector3 Chase()
 	{
 		if (target != null) {
-			return Displacement(target) / chaseConstant;
+			float trailDistance = maxFireDistance * 0.75f;
+			Vector3 behindTarget = target.gameObject.transform.position - (target.velocity.normalized * trailDistance);
+			return (behindTarget - transform.position) / chaseConstant;
+		}
+		return Vector3.zero;
+	}
+
+	Vector3 AlignWithTarget()
+	{
+		if (target != null) {
+			return (target.velocity - velocity) / alignmentConstant;
 		}
 		return Vector3.zero;
 	}
