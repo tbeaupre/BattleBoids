@@ -202,6 +202,7 @@ public class Boid : MonoBehaviour
 		);
 			
 		Debug.Log("Velocity: " + velocity + ";  DeltaVelocity: " + deltaVelocity + "; Clamped: " + Vector3.ClampMagnitude(deltaVelocity, accelerationMax));
+		deltaVelocity += (1 - Mathf.Abs(Vector3.Dot(velocity.normalized, deltaVelocity.normalized))) * -velocity;
 		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
 	}
 
