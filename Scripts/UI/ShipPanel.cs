@@ -1,10 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipPanel : MonoBehaviour
 {
 	public ShipData ship;
+
+	Text buttonText;
+	bool isActive = false;
+
+	void Start()
+	{
+		buttonText = GetComponentInChildren<Button>().gameObject.GetComponentInChildren<Text>();
+	}
 
 	public void SetShip(ShipData newShip)
 	{
@@ -17,5 +26,15 @@ public class ShipPanel : MonoBehaviour
 		attributes[3].value = ship.armor;
 		attributes[4].value = ship.range;
 		attributes[5].value = ship.damage;
+	}
+
+	public void ToggleIsActive()
+	{
+		isActive = !isActive;
+		if (isActive) {
+			buttonText.text = "Deselect";
+		} else {
+			buttonText.text = "Select";
+		}
 	}
 }
