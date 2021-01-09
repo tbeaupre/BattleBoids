@@ -5,15 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MasterManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-	{
-		SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
-    }
+	public static MasterManager Instance { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Awake()
+	{
+		if (Instance != null && Instance != this) {
+			Destroy(this);
+		} else {
+			Instance = this;
+			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
+		}
+	}
 }
