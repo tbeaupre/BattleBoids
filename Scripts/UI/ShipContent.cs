@@ -9,12 +9,10 @@ public class ShipContent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
 	{
-		TeamData data = SaveSystem.LoadTeam();
-
-		for (int i = 0; i < data.ships.Length; i++) {
+		for (int i = 0; i < MasterManager.Instance.Ships.Length; i++) {
 			GameObject panelObject = Instantiate(shipPanelPrefab, transform);
 			ShipPanel panel = panelObject.GetComponent<ShipPanel>();
-			panel.SetShip(data.ships[i], i);
+			panel.SetShip(MasterManager.Instance.Ships[i], i);
 		}
     }
 }

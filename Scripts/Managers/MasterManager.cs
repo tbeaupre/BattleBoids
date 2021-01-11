@@ -7,6 +7,8 @@ public class MasterManager : MonoBehaviour
 {
 	public static MasterManager Instance { get; private set; }
 
+	public ShipData[] Ships { get; private set; }
+	public PilotData[] Pilots { get; private set; }
 	HashSet<int> shipSelection = new HashSet<int>();
 
 	// Events
@@ -16,10 +18,14 @@ public class MasterManager : MonoBehaviour
 	private void Awake()
 	{
 		if (Instance != null && Instance != this) {
-			Destroy(this);
+			Destroy(this.gameObject);
 		} else {
 			Instance = this;
-			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
+
+			TeamData data = SaveSystem.LoadTeam();
+			Ships = data.ships;
+			Pilots = data.pilots;
+//			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
 		}
 	}
 
