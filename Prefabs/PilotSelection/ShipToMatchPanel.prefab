@@ -4862,7 +4862,7 @@ GameObject:
   - component: {fileID: 2680432442462749329}
   - component: {fileID: 2680432442462749334}
   - component: {fileID: 2680432442462749335}
-  - component: {fileID: 2680432442462749332}
+  - component: {fileID: 1768693579069759090}
   m_Layer: 5
   m_Name: ShipToMatchPanel
   m_TagString: Untagged
@@ -4956,7 +4956,7 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
---- !u!114 &2680432442462749332
+--- !u!114 &1768693579069759090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4965,7 +4965,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2680432442462749338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87f2b0bffa167814284913558903fd96, type: 3}
+  m_Script: {fileID: 11500000, guid: 642b36ca19fe1074f9a90ccfd5869b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ship:

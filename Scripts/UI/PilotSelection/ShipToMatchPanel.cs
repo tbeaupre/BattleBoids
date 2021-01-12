@@ -3,19 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShipPanel : MonoBehaviour
+public class ShipToMatchPanel : MonoBehaviour
 {
 	public ShipData ship;
 	int index;
-
-	Text buttonText;
-	bool isActive = false;
-
-	void Start()
-	{
-		buttonText = GetComponentInChildren<Button>().gameObject.GetComponentInChildren<Text>();
-
-	}
 
 	public void SetShip(ShipData newShip, int index)
 	{
@@ -30,22 +21,5 @@ public class ShipPanel : MonoBehaviour
 		attributes[5].SetValue(ship.damage);
 
 		this.index = index;
-
-		if (MasterManager.Instance.IsShipSelected(index)) {
-			isActive = true;
-			buttonText.text = "Deselect";
-		}
-	}
-
-	public void ToggleIsActive()
-	{
-		isActive = !isActive;
-		if (isActive) {
-			buttonText.text = "Deselect";
-			MasterManager.Instance.SelectShip(index);
-		} else {
-			buttonText.text = "Select";
-			MasterManager.Instance.DeselectShip(index);
-		}
 	}
 }
