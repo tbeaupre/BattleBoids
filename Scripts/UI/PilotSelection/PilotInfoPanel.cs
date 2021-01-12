@@ -14,7 +14,7 @@ public class PilotInfoPanel : MonoBehaviour
 	void Start()
 	{
 		buttonText = GetComponentInChildren<Button>().gameObject.GetComponentInChildren<Text>();
-
+		SetPilot(MasterManager.Instance.Pilots[0], 0);
 	}
 
 	public void SetPilot(PilotData newPilot, int index)
