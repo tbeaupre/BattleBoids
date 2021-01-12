@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipAttributePoint : MonoBehaviour
+public class AttributePoint : MonoBehaviour
 {
 }

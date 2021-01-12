@@ -7,13 +7,12 @@ public class ShipAttribute : MonoBehaviour
 {
 	public string symbol;
 	public float value = 0;
-	ShipAttributePoint[] points;
+	AttributePoint[] points;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		points = GetComponentsInChildren<ShipAttributePoint>();
-		Debug.Log(points.Length);
+		points = GetComponentsInChildren<AttributePoint>();
 
 		for (int i = 0; i < points.Length; i++) {
 			points[i].gameObject.SetActive(value >= (i + 1f) / 10f);
