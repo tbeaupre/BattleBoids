@@ -8,6 +8,13 @@ public class PilotScrollPreview : MonoBehaviour
 	PilotData pilot;
 	int index;
 
+	public PilotInfoPanel pilotInfoPanel;
+
+	void Start()
+	{
+		pilotInfoPanel = GameObject.Find("PilotInfoPanel").GetComponent<PilotInfoPanel>();
+	}
+
 	public void SetPilot(PilotData newPilot, int index)
 	{
 		pilot = newPilot;
@@ -20,6 +27,7 @@ public class PilotScrollPreview : MonoBehaviour
 
 	public void SelectPreview()
 	{
+		pilotInfoPanel.SetPilot(pilot, index);
 		Debug.Log("I got clicked!" + index);
 	}
 }
