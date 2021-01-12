@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PilotAttribute : MonoBehaviour
+public class Attribute : MonoBehaviour
 {
 	public string symbol;
 	public float value = 0;

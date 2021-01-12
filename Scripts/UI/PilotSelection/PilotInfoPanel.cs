@@ -21,7 +21,7 @@ public class PilotInfoPanel : MonoBehaviour
 	{
 		pilot = newPilot;
 
-		PilotAttribute[] attributes = GetComponentsInChildren<PilotAttribute>();
+		Attribute[] attributes = GetComponentsInChildren<Attribute>();
 		attributes[0].SetValue(pilot.sociability);
 		attributes[1].SetValue(pilot.ego);
 		attributes[2].SetValue(pilot.persistence);

@@ -12,7 +12,7 @@ public class ShipToMatchPanel : MonoBehaviour
 	{
 		ship = newShip;
 
-		ShipAttribute[] attributes = GetComponentsInChildren<ShipAttribute>();
+		Attribute[] attributes = GetComponentsInChildren<Attribute>();
 		attributes[0].SetValue(ship.sensors);
 		attributes[1].SetValue(ship.acceleration);
 		attributes[2].SetValue(ship.topSpeed);

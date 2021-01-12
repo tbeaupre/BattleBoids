@@ -530,6 +530,11 @@ PrefabInstance:
       propertyPath: symbol
       value: Ac
       objectReference: {fileID: 0}
+    - target: {fileID: 127528235970339454, guid: 9a2250e4b3595db428e623a7dd895f4f,
+        type: 3}
+      propertyPath: symbol
+      value: Ac
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a2250e4b3595db428e623a7dd895f4f, type: 3}
 --- !u!224 &7208605012065082239 stripped
@@ -656,6 +661,11 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775813367818506577, guid: 9a2250e4b3595db428e623a7dd895f4f,
+        type: 3}
+      propertyPath: symbol
+      value: Da
+      objectReference: {fileID: 0}
+    - target: {fileID: 127528235970339454, guid: 9a2250e4b3595db428e623a7dd895f4f,
         type: 3}
       propertyPath: symbol
       value: Da
@@ -790,6 +800,11 @@ PrefabInstance:
       propertyPath: symbol
       value: Ar
       objectReference: {fileID: 0}
+    - target: {fileID: 127528235970339454, guid: 9a2250e4b3595db428e623a7dd895f4f,
+        type: 3}
+      propertyPath: symbol
+      value: Ar
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a2250e4b3595db428e623a7dd895f4f, type: 3}
 --- !u!224 &7208605010916832407 stripped
@@ -920,6 +935,11 @@ PrefabInstance:
       propertyPath: symbol
       value: TS
       objectReference: {fileID: 0}
+    - target: {fileID: 127528235970339454, guid: 9a2250e4b3595db428e623a7dd895f4f,
+        type: 3}
+      propertyPath: symbol
+      value: TS
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a2250e4b3595db428e623a7dd895f4f, type: 3}
 --- !u!224 &7208605011169777626 stripped
@@ -1046,6 +1066,11 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8775813367818506577, guid: 9a2250e4b3595db428e623a7dd895f4f,
+        type: 3}
+      propertyPath: symbol
+      value: Ra
+      objectReference: {fileID: 0}
+    - target: {fileID: 127528235970339454, guid: 9a2250e4b3595db428e623a7dd895f4f,
         type: 3}
       propertyPath: symbol
       value: Ra
