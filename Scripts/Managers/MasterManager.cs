@@ -9,7 +9,8 @@ public class MasterManager : MonoBehaviour
 
 	public ShipData[] Ships { get; private set; }
 	public PilotData[] Pilots { get; private set; }
-	HashSet<int> shipSelection = new HashSet<int>();
+	List<int> shipSelection = new List<int>();
+	public PilotShipSelectionData[] Selection { get; private set; }
 
 	// Events
 	public delegate void ShipSelectionChangedDelegate(int count);
@@ -44,5 +45,13 @@ public class MasterManager : MonoBehaviour
 	public bool IsShipSelected(int index)
 	{
 		return shipSelection.Contains(index);
+	}
+
+	public void ConfirmShipSelection()
+	{
+		Selection = new PilotShipSelectionData[5];
+		for (int i = 0; i < 5; i++) {
+			Selection[i] = new PilotShipSelectionData(0, shipSelection[i]);
+		}
 	}
 }

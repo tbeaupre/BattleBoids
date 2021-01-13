@@ -8,6 +8,12 @@ public class ShipToMatchPanel : MonoBehaviour
 	public ShipData ship;
 	int index;
 
+	void Start()
+	{
+		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
+		HandleSelectionChanged(0);
+	}
+
 	public void SetShip(ShipData newShip, int index)
 	{
 		ship = newShip;
@@ -21,5 +27,11 @@ public class ShipToMatchPanel : MonoBehaviour
 		attributes[5].SetValue(ship.damage);
 
 		this.index = index;
+	}
+
+	public void HandleSelectionChanged(int index)
+	{
+		int newShipIndex = MasterManager.Instance.Selection[index].shipIndex;
+		SetShip(MasterManager.Instance.Ships[newShipIndex], newShipIndex);
 	}
 }
