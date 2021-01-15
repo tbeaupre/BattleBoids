@@ -51,7 +51,7 @@ public class MasterManager : MonoBehaviour
 	{
 		Selection = new PilotShipSelectionData[5];
 		for (int i = 0; i < 5; i++) {
-			Selection[i] = new PilotShipSelectionData(0, shipSelection[i]);
+			Selection[i] = new PilotShipSelectionData(-1, shipSelection[i]);
 		}
 	}
 }

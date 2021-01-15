@@ -23,8 +23,16 @@ public class PilotSelectionManager : MonoBehaviour
 
 	public void SelectMatch(int index)
 	{
-		Debug.Log(index + " was selected");
 		selectionIndex = index;
 		SelectionChanged(index);
+	}
+
+	public void ConfirmPilotSelection(int pilotIndex)
+	{
+		MasterManager.Instance.Selection[selectionIndex].pilotIndex = pilotIndex;
+		if (++selectionIndex > 4) {
+			selectionIndex = 0;
+		}
+		SelectionChanged(selectionIndex);
 	}
 }
