@@ -13,4 +13,17 @@ public class TeamData
 		pilots = pilotData;
 		ships = shipData;
 	}
+
+	public TeamData()
+	{
+		pilots = new PilotData[5];
+		for (int i = 0; i < 5; i++) {
+			pilots[i] = new PilotData();
+		}
+
+		ships = new ShipData[5];
+		for (int i = 0; i < 5; i++) {
+			ships[i] = new ShipData();
+		}
+	}
 }

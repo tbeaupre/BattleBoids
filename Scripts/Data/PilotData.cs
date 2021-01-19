@@ -11,6 +11,11 @@ public class PilotData
 	public float vision;
 	public float skill;
 
+	public PilotData()
+	{
+		Reroll();
+	}
+
 	public void Reroll()
 	{
 		sociability = Random.value;
