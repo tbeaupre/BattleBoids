@@ -10,7 +10,7 @@ public class PilotSelectionManager : MonoBehaviour
 
 	// Delegates
 	public delegate void SelectionChangedDelegate(int index);
-	public delegate void PilotSelectionChangedDelegate(int fromPilotIndex, int toPilotIndex);
+	public delegate void PilotSelectionChangedDelegate(int selectionIndex, int fromPilotIndex, int toPilotIndex);
 
 	// Events
 	public event SelectionChangedDelegate SelectionChanged;
@@ -35,11 +35,16 @@ public class PilotSelectionManager : MonoBehaviour
 	{
 		for (int i = 0; i < 5; i++) {
 			if (MasterManager.Instance.Selection[i].pilotIndex == pilotIndex && i != selectionIndex) {
+				PilotSelectionChanged(i, MasterManager.Instance.Selection[i].pilotIndex, -1);
 				MasterManager.Instance.Selection[i].pilotIndex = -1;
 			}
 		}
 
-		PilotSelectionChanged(MasterManager.Instance.Selection[selectionIndex].pilotIndex, pilotIndex); 
+		PilotSelectionChanged(
+			selectionIndex,
+			MasterManager.Instance.Selection[selectionIndex].pilotIndex,
+			pilotIndex
+		);
 		MasterManager.Instance.Selection[selectionIndex].pilotIndex = pilotIndex;
 
 		if (++selectionIndex > 4) {

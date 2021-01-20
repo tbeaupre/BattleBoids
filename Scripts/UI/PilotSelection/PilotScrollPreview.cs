@@ -31,10 +31,9 @@ public class PilotScrollPreview : MonoBehaviour
 	public void SelectPreview()
 	{
 		pilotInfoPanel.SetPilot(pilot, index);
-		Debug.Log("I got clicked!" + index);
 	}
 
-	public void HandlePilotSelectionChanged(int fromPilotIndex, int toPilotIndex)
+	public void HandlePilotSelectionChanged(int selectionIndex, int fromPilotIndex, int toPilotIndex)
 	{
 		if (fromPilotIndex == index) {
 			pilotSelectedPanel.SetActive(false);
