@@ -24,6 +24,10 @@ public class MasterManager : MonoBehaviour
 			Instance = this;
 
 			TeamData data = SaveSystem.LoadTeam();
+			if (data == null) {
+				data = new TeamData();
+				SaveSystem.SaveTeam(data);
+			}
 			Ships = data.ships;
 			Pilots = data.pilots;
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
