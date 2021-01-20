@@ -33,8 +33,15 @@ public class PilotSelectionManager : MonoBehaviour
 
 	public void ConfirmPilotSelection(int pilotIndex)
 	{
+		for (int i = 0; i < 5; i++) {
+			if (MasterManager.Instance.Selection[i].pilotIndex == pilotIndex && i != selectionIndex) {
+				MasterManager.Instance.Selection[i].pilotIndex = -1;
+			}
+		}
+
 		PilotSelectionChanged(MasterManager.Instance.Selection[selectionIndex].pilotIndex, pilotIndex); 
 		MasterManager.Instance.Selection[selectionIndex].pilotIndex = pilotIndex;
+
 		if (++selectionIndex > 4) {
 			selectionIndex = 0;
 		}
