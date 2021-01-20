@@ -9,10 +9,13 @@ public class PilotScrollPreview : MonoBehaviour
 	int index;
 
 	public PilotInfoPanel pilotInfoPanel;
+	public GameObject pilotSelectedPanel;
 
 	void Start()
 	{
+		PilotSelectionManager.Instance.PilotSelectionChanged += HandlePilotSelectionChanged;
 		pilotInfoPanel = GameObject.Find("PilotInfoPanel").GetComponent<PilotInfoPanel>();
+		pilotSelectedPanel.SetActive(false);
 	}
 
 	public void SetPilot(PilotData newPilot, int index)
@@ -29,5 +32,15 @@ public class PilotScrollPreview : MonoBehaviour
 	{
 		pilotInfoPanel.SetPilot(pilot, index);
 		Debug.Log("I got clicked!" + index);
+	}
+
+	public void HandlePilotSelectionChanged(int fromPilotIndex, int toPilotIndex)
+	{
+		if (fromPilotIndex == index) {
+			pilotSelectedPanel.SetActive(false);
+		}
+		if (toPilotIndex == index) {
+			pilotSelectedPanel.SetActive(true);
+		}
 	}
 }

@@ -8,9 +8,13 @@ public class PilotSelectionManager : MonoBehaviour
 
 	int selectionIndex = 0;
 
-	// Events
+	// Delegates
 	public delegate void SelectionChangedDelegate(int index);
+	public delegate void PilotSelectionChangedDelegate(int fromPilotIndex, int toPilotIndex);
+
+	// Events
 	public event SelectionChangedDelegate SelectionChanged;
+	public event PilotSelectionChangedDelegate PilotSelectionChanged;
 
 	private void Awake()
 	{
@@ -29,6 +33,7 @@ public class PilotSelectionManager : MonoBehaviour
 
 	public void ConfirmPilotSelection(int pilotIndex)
 	{
+		PilotSelectionChanged(MasterManager.Instance.Selection[selectionIndex].pilotIndex, pilotIndex); 
 		MasterManager.Instance.Selection[selectionIndex].pilotIndex = pilotIndex;
 		if (++selectionIndex > 4) {
 			selectionIndex = 0;
