@@ -44,7 +44,7 @@ public class Game : MonoBehaviour
 
 	public void ResetGame()
 	{
-		SceneManager.LoadScene("BoidSelectionScene");
+		SceneManager.LoadScene("ShipSelectionScene");
 	}
 
 	public void LoadBoids()

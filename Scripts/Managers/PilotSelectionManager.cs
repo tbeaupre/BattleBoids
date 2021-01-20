@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class PilotSelectionManager : MonoBehaviour
 {
+	public GameObject toBattlePanel;
 	public static PilotSelectionManager Instance { get; private set; }
 
 	int selectionIndex = 0;
+	int matchesCount = 0;
 
 	// Delegates
 	public delegate void SelectionChangedDelegate(int index);
+	public delegate void PilotPreviewChangedDelegate(int pilotIndex);
 	public delegate void PilotSelectionChangedDelegate(int selectionIndex, int fromPilotIndex, int toPilotIndex);
 
 	// Events
 	public event SelectionChangedDelegate SelectionChanged;
+	public event PilotPreviewChangedDelegate PilotPreviewChanged;
 	public event PilotSelectionChangedDelegate PilotSelectionChanged;
 
 	private void Awake()
@@ -23,6 +27,11 @@ public class PilotSelectionManager : MonoBehaviour
 		} else {
 			Instance = this;
 		}
+	}
+
+	void Start()
+	{
+		toBattlePanel.SetActive(false);
 	}
 
 	public void SelectMatch(int index)
@@ -37,6 +46,7 @@ public class PilotSelectionManager : MonoBehaviour
 			if (MasterManager.Instance.Selection[i].pilotIndex == pilotIndex && i != selectionIndex) {
 				PilotSelectionChanged(i, MasterManager.Instance.Selection[i].pilotIndex, -1);
 				MasterManager.Instance.Selection[i].pilotIndex = -1;
+				matchesCount--;
 			}
 		}
 
@@ -46,10 +56,18 @@ public class PilotSelectionManager : MonoBehaviour
 			pilotIndex
 		);
 		MasterManager.Instance.Selection[selectionIndex].pilotIndex = pilotIndex;
+		matchesCount++;
 
 		if (++selectionIndex > 4) {
 			selectionIndex = 0;
 		}
 		SelectionChanged(selectionIndex);
+
+		toBattlePanel.SetActive(matchesCount == 5);
+	}
+
+	public void ChangePilotPreview(int pilotIndex)
+	{
+		PilotPreviewChanged(pilotIndex);
 	}
 }

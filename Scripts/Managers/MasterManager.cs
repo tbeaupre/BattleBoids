@@ -58,4 +58,9 @@ public class MasterManager : MonoBehaviour
 			Selection[i] = new PilotShipSelectionData(-1, shipSelection[i]);
 		}
 	}
+
+	public void ConfirmPilotSelection()
+	{
+		SaveSystem.SaveTeam(new TeamData(Pilots, Ships));
+	}
 }
