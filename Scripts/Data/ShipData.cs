@@ -12,11 +12,6 @@ public class ShipData
 	public float range;
 	public float damage;
 
-	public ShipData()
-	{
-		Reroll();
-	}
-
 	public void Reroll()
 	{
 		float pointsToAllocate = 6;

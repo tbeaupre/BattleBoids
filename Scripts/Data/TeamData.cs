@@ -19,11 +19,13 @@ public class TeamData
 		pilots = new PilotData[5];
 		for (int i = 0; i < 5; i++) {
 			pilots[i] = new PilotData();
+			pilots[i].Reroll();
 		}
 
 		ships = new ShipData[5];
 		for (int i = 0; i < 5; i++) {
 			ships[i] = new ShipData();
+			ships[i].Reroll();
 		}
 	}
 }
