@@ -18,6 +18,7 @@ public class Boid : MonoBehaviour
 	public float goalConstant = 100;
 	public float chaseConstant = 100;
 	public float evadeConstant = 100;
+	public float bloodthirstConstant = 100;
 
 	// Target Acquisition
 	public float targetAcqRadius = 20.0f;
@@ -77,12 +78,13 @@ public class Boid : MonoBehaviour
 		this.cooldown = (int)CalcRandProp(20, 70, ship.damage, false);
 		this.damage = CalcRandProp(10, 200, ship.damage, false);
 
+		this.bloodthirstConstant = CalcRandProp(150, 60, pilot.ego, true);
 		this.cohesionConstant = CalcRandProp(70, 60, pilot.sociability, true);
 		this.alignmentConstant = CalcRandProp(10, 20, pilot.ego, false);
 		this.targetAcqMaxAngle = CalcRandProp(60, 40, pilot.vision, false);
 		this.targetAcqMinFitness = CalcRandProp(0.2f, 0.2f, pilot.persistence, true);
 		this.maxChaseDistance = CalcRandProp(targetAcqRadius, 10, pilot.persistence, false);
-		this.accuracy = CalcRandProp(0.3f, 0.8f, pilot.skill, false);
+		this.accuracy = CalcRandProp(0.5f, 0.6f, pilot.skill, false);
 		this.fear = CalcRandProp(0, 1, pilot.ego, true);
 
 		float scale = (maxHealth / 500) + 1;
@@ -175,6 +177,7 @@ public class Boid : MonoBehaviour
 			{
 				deltaVelocity += Alignment();
 				deltaVelocity += Cohesion();
+				deltaVelocity += Bloodthirst();
 				color = Color.white;
 				break;
 			}
@@ -182,6 +185,7 @@ public class Boid : MonoBehaviour
 			{
 				deltaVelocity += Chase();
 				deltaVelocity += AlignWithTarget();
+				deltaVelocity += Bloodthirst();
 				color = Color.red;
 				break;
 			}
@@ -204,6 +208,25 @@ public class Boid : MonoBehaviour
 		Debug.Log("Velocity: " + velocity + ";  DeltaVelocity: " + deltaVelocity + "; Clamped: " + Vector3.ClampMagnitude(deltaVelocity, accelerationMax));
 		deltaVelocity += (1 - Mathf.Abs(Vector3.Dot(velocity.normalized, deltaVelocity.normalized))) * -velocity;
 		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
+	}
+
+	Vector3 Bloodthirst()
+	{
+		Vector3 perceivedCenter = Vector3.zero;
+		int count = 0;
+		foreach(Boid boid in boids) {
+			if (boid != null && boid.isEnemy != isEnemy) {
+				count++;
+				perceivedCenter += boid.gameObject.transform.position;
+			}
+		}
+
+		if (count == 0) {
+			return Vector3.zero;
+		}
+
+		perceivedCenter = perceivedCenter / count;
+		return (perceivedCenter - transform.position) / bloodthirstConstant;
 	}
 
 	Vector3 Separation()
