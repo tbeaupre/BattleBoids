@@ -49,15 +49,18 @@ public class BattleManager : MonoBehaviour
 
 	public void LoadBoids()
 	{
-		TeamData data = SaveSystem.LoadTeam();
 		Boid[] allies = GetAllies();
 
 		for (int i = 0; i < allies.Length; i++)
 		{
-			allies[i].Initialize(data.pilots[i], data.ships[i]);
+			PilotShipSelectionData match = MasterManager.Instance.Selection[i];
+			allies[i].Initialize(
+				MasterManager.Instance.Pilots[match.pilotIndex],
+				MasterManager.Instance.Ships[match.shipIndex]
+			);
 
-			string pilotJson = JsonUtility.ToJson(data.pilots[i]);
-			string shipJson = JsonUtility.ToJson(data.ships[i]);
+			string pilotJson = JsonUtility.ToJson(MasterManager.Instance.Pilots[match.pilotIndex]);
+			string shipJson = JsonUtility.ToJson(MasterManager.Instance.Ships[match.shipIndex]);
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 	}
