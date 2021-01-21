@@ -44,7 +44,8 @@ public class BattleManager : MonoBehaviour
 
 	public void ResetGame()
 	{
-		SceneManager.LoadScene("ShipSelectionScene");
+		SceneManager.LoadScene("ShipSelectionScene", LoadSceneMode.Additive);
+		SceneManager.UnloadSceneAsync("BattleScene");
 	}
 
 	public void LoadBoids()
