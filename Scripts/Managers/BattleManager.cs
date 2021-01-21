@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class Game : MonoBehaviour
+public class BattleManager : MonoBehaviour
 {
 	public Boid[] boids;
 	public Text winText;
