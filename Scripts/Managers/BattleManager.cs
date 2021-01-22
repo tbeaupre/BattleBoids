@@ -51,6 +51,7 @@ public class BattleManager : MonoBehaviour
 	public void LoadBoids()
 	{
 		Boid[] allies = GetAllies();
+		Boid[] enemies = GetEnemies();
 
 		for (int i = 0; i < allies.Length; i++)
 		{
@@ -64,6 +65,12 @@ public class BattleManager : MonoBehaviour
 			string shipJson = JsonUtility.ToJson(MasterManager.Instance.Ships[match.shipIndex]);
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
+
+		TeamData enemyData = SaveSystem.LoadTeamJson(0);
+		for (int i = 0; i < allies.Length; i++)
+		{
+			enemies[i].Initialize(enemyData.pilots[i], enemyData.ships[i]);
+		}
 	}
 
 	private
@@ -76,6 +83,17 @@ public class BattleManager : MonoBehaviour
 				filteredList.Add(boid);
 			}
 		}
-		return filteredList.ToArray();	
+		return filteredList.ToArray();
+	}
+
+	Boid[] GetEnemies()
+	{
+		List<Boid> filteredList  = new List<Boid>();
+		foreach(Boid boid in boids) {
+			if (boid.isEnemy) {
+				filteredList.Add(boid);
+			}
+		}
+		return filteredList.ToArray();
 	}
 }

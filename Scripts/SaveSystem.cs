@@ -4,6 +4,26 @@ using UnityEngine;
 
 public static class SaveSystem
 {
+	public static void SaveTeamJson(TeamData data)
+	{
+		string jsonData = JsonUtility.ToJson(data, true);
+		System.IO.File.WriteAllText(
+			Application.persistentDataPath + "/enemy.json", jsonData);
+	}
+
+	public static TeamData LoadTeamJson(int level)
+	{
+		string path = Application.persistentDataPath + "/" + level + ".json";
+		if (File.Exists(path)) {
+			string jsonString = File.ReadAllText(path);
+			TeamData data = JsonUtility.FromJson<TeamData>(jsonString);
+			return data;
+		} else {
+			Debug.LogError("File not found at " + path);
+			return null;
+		}
+	}
+
 	public static void SaveTeam(TeamData data)
 	{
 		BinaryFormatter formatter = new BinaryFormatter();
