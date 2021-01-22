@@ -24,7 +24,7 @@ public class BoidSelectionGameManager : MonoBehaviour
 		PilotData[] pilots = boidPanels.Select(boidPanel => boidPanel.pilotData).ToArray();
 		ShipData[] ships = boidPanels.Select(boidPanel => boidPanel.shipData).ToArray();
 
-		SaveSystem.SaveTeam(new TeamData(pilots, ships));
+		SaveSystem.SaveTeam(new TeamData(1, pilots, ships));
 		SceneManager.LoadSceneAsync("BattleScene");
 	}
 }

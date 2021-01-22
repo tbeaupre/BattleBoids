@@ -7,6 +7,7 @@ public class MasterManager : MonoBehaviour
 {
 	public static MasterManager Instance { get; private set; }
 
+	public int Level { get; private set; }
 	public ShipData[] Ships { get; private set; }
 	public PilotData[] Pilots { get; private set; }
 	List<int> shipSelection = new List<int>();
@@ -25,13 +26,32 @@ public class MasterManager : MonoBehaviour
 
 			TeamData data = SaveSystem.LoadTeam();
 			if (data == null) {
+				Debug.Log("Creating new save file");
 				data = new TeamData();
 				SaveSystem.SaveTeam(data);
 			}
+			Level = data.level;
 			Ships = data.ships;
 			Pilots = data.pilots;
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
 		}
+	}
+
+	public void ResetGame()
+	{
+		data = new TeamData();
+		SaveSystem.SaveTeam(data);
+		Level = data.level;
+		Ships = data.ships;
+		Pilots = data.pilots;
+	}
+
+	public void CompleteLevel(PilotData pilotReward, ShipData shipReward)
+	{
+		Level++;
+		// Pilots += pilotReward;
+		// Ships += shipReward;
+		SaveSystem.SaveTeam(new TeamData(Level, Pilots, Ships));
 	}
 
 	public void SelectShip(int index)
@@ -61,6 +81,6 @@ public class MasterManager : MonoBehaviour
 
 	public void ConfirmPilotSelection()
 	{
-		SaveSystem.SaveTeam(new TeamData(Pilots, Ships));
+		SaveSystem.SaveTeam(new TeamData(Level, Pilots, Ships));
 	}
 }

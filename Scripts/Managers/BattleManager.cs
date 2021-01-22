@@ -9,7 +9,10 @@ public class BattleManager : MonoBehaviour
 {
 	public Boid[] boids;
 	public Text winText;
-	public GameObject winPanel; 
+	public GameObject winPanel;
+
+	PilotData pilotReward;
+	ShipData shipReward;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +37,11 @@ public class BattleManager : MonoBehaviour
 		}
 
 		if (enemyCount == 0) {
+			MasterManager.Instance.CompleteLevel(pilotReward, shipReward);
 			winText.text = "Victory";
 			winPanel.SetActive(true);
 		} else if (allyCount == 0) {
+			MasterManager.Instance.ResetGame();
 			winText.text = "Defeat";
 			winPanel.SetActive(true);
 		}
@@ -66,7 +71,9 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 
-		TeamData enemyData = SaveSystem.LoadTeamJson(0);
+		TeamData enemyData = SaveSystem.LoadTeamJson(MasterManager.Instance.Level);
+		pilotReward = enemyData.pilotReward;
+		shipReward = enemyData.shipReward;
 		for (int i = 0; i < allies.Length; i++)
 		{
 			enemies[i].Initialize(enemyData.pilots[i], enemyData.ships[i]);
