@@ -8,8 +8,8 @@ public class MasterManager : MonoBehaviour
 	public static MasterManager Instance { get; private set; }
 
 	public int Level { get; private set; }
-	public ShipData[] Ships { get; private set; }
-	public PilotData[] Pilots { get; private set; }
+	public List<ShipData> Ships { get; private set; }
+	public List<PilotData> Pilots { get; private set; }
 	List<int> shipSelection = new List<int>();
 	public PilotShipSelectionData[] Selection { get; private set; }
 
@@ -31,19 +31,19 @@ public class MasterManager : MonoBehaviour
 				SaveSystem.SaveTeam(data);
 			}
 			Level = data.level;
-			Ships = data.ships;
-			Pilots = data.pilots;
+			Ships = new List<ShipData>(data.ships);
+			Pilots = new List<PilotData>(data.pilots);
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
 		}
 	}
 
 	public void ResetGame()
 	{
-		data = new TeamData();
+		TeamData data = new TeamData();
 		SaveSystem.SaveTeam(data);
 		Level = data.level;
-		Ships = data.ships;
-		Pilots = data.pilots;
+		Ships = new List<ShipData>(data.ships);
+		Pilots = new List<PilotData>(data.pilots);
 	}
 
 	public void CompleteLevel(PilotData pilotReward, ShipData shipReward)
@@ -51,7 +51,7 @@ public class MasterManager : MonoBehaviour
 		Level++;
 		// Pilots += pilotReward;
 		// Ships += shipReward;
-		SaveSystem.SaveTeam(new TeamData(Level, Pilots, Ships));
+		SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));
 	}
 
 	public void SelectShip(int index)
@@ -77,10 +77,5 @@ public class MasterManager : MonoBehaviour
 		for (int i = 0; i < 5; i++) {
 			Selection[i] = new PilotShipSelectionData(-1, shipSelection[i]);
 		}
-	}
-
-	public void ConfirmPilotSelection()
-	{
-		SaveSystem.SaveTeam(new TeamData(Level, Pilots, Ships));
 	}
 }

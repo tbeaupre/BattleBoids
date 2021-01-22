@@ -9,7 +9,7 @@ public class PilotContent : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		for (int i = 0; i < MasterManager.Instance.Pilots.Length; i++) {
+		for (int i = 0; i < MasterManager.Instance.Pilots.Count; i++) {
 			GameObject scrollPreviewObject = Instantiate(pilotScrollPreviewPrefab, transform);
 			PilotScrollPreview pilotScrollPreview = scrollPreviewObject.GetComponent<PilotScrollPreview>();
 			pilotScrollPreview.SetPilot(MasterManager.Instance.Pilots[i], i);

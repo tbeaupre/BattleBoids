@@ -7,7 +7,6 @@ public class ToBattleButton : MonoBehaviour
 {
     public void ToBattle()
 	{
-		MasterManager.Instance.ConfirmPilotSelection();
 		SceneManager.LoadSceneAsync("BattleScene", LoadSceneMode.Additive);
 		SceneManager.UnloadSceneAsync("PilotSelectionScene");
 	}

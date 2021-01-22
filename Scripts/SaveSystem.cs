@@ -11,12 +11,12 @@ public static class SaveSystem
 			Application.persistentDataPath + "/enemy.json", jsonData);
 	}
 
-	public static TeamData LoadTeamJson(int level)
+	public static EnemyTeamData LoadEnemyTeamJson(int level)
 	{
 		string path = Application.persistentDataPath + "/" + level + ".json";
 		if (File.Exists(path)) {
 			string jsonString = File.ReadAllText(path);
-			TeamData data = JsonUtility.FromJson<TeamData>(jsonString);
+			EnemyTeamData data = JsonUtility.FromJson<EnemyTeamData>(jsonString);
 			return data;
 		} else {
 			Debug.LogError("File not found at " + path);

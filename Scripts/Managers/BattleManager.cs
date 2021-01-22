@@ -71,7 +71,7 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 
-		TeamData enemyData = SaveSystem.LoadTeamJson(MasterManager.Instance.Level);
+		EnemyTeamData enemyData = SaveSystem.LoadEnemyTeamJson(MasterManager.Instance.Level);
 		pilotReward = enemyData.pilotReward;
 		shipReward = enemyData.shipReward;
 		for (int i = 0; i < allies.Length; i++)
