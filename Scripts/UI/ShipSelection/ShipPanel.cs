@@ -8,14 +8,8 @@ public class ShipPanel : MonoBehaviour
 	public ShipData ship;
 	int index;
 
-	Text buttonText;
+	public Text buttonText;
 	bool isActive = false;
-
-	void Start()
-	{
-		buttonText = GetComponentInChildren<Button>().gameObject.GetComponentInChildren<Text>();
-
-	}
 
 	public void SetShip(ShipData newShip, int index)
 	{

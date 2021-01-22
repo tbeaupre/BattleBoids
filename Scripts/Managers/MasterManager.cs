@@ -48,9 +48,11 @@ public class MasterManager : MonoBehaviour
 
 	public void CompleteLevel(PilotData pilotReward, ShipData shipReward)
 	{
+		Debug.Log(JsonUtility.ToJson(shipReward));
 		Level++;
-		// Pilots += pilotReward;
-		// Ships += shipReward;
+		Pilots.Add(pilotReward);
+		Ships.Add(shipReward);
+		Debug.Log(JsonUtility.ToJson(Ships.ToArray()));
 		SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));
 	}
 

@@ -37,7 +37,6 @@ public class BattleManager : MonoBehaviour
 		}
 
 		if (enemyCount == 0) {
-			MasterManager.Instance.CompleteLevel(pilotReward, shipReward);
 			winText.text = "Victory";
 			winPanel.SetActive(true);
 		} else if (allyCount == 0) {
@@ -49,6 +48,7 @@ public class BattleManager : MonoBehaviour
 
 	public void ResetGame()
 	{
+		MasterManager.Instance.CompleteLevel(pilotReward, shipReward);
 		SceneManager.LoadScene("ShipSelectionScene", LoadSceneMode.Additive);
 		SceneManager.UnloadSceneAsync("BattleScene");
 	}
