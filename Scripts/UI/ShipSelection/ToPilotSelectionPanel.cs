@@ -5,19 +5,24 @@ using UnityEngine.UI;
 
 public class ToPilotSelectionPanel : MonoBehaviour
 {
-	Button toPilotSelectionButton;
+	public Button toPilotSelectionButton;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	void Awake()
+	{
 		MasterManager.Instance.ShipSelectionChanged += ShipSelectionChangeHandler;
-
-		toPilotSelectionButton = GetComponentInChildren<Button>();
 		toPilotSelectionButton.gameObject.SetActive(false);
-    }
+	}
+
+	void OnDisable()
+	{
+		MasterManager.Instance.ShipSelectionChanged -= ShipSelectionChangeHandler;
+	}
 
 	public void ShipSelectionChangeHandler(int count)
 	{
+		if (toPilotSelectionButton == null) {
+			toPilotSelectionButton = GetComponentInChildren<Button>();
+		}
 		if (count == 5) {
 			toPilotSelectionButton.gameObject.SetActive(true);
 		} else {
