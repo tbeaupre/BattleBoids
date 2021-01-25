@@ -205,7 +205,7 @@ public class Boid : MonoBehaviour
 			1f / 90f
 		);
 			
-		Debug.Log("Velocity: " + velocity + ";  DeltaVelocity: " + deltaVelocity + "; Clamped: " + Vector3.ClampMagnitude(deltaVelocity, accelerationMax));
+		// Debug.Log("Velocity: " + velocity + ";  DeltaVelocity: " + deltaVelocity + "; Clamped: " + Vector3.ClampMagnitude(deltaVelocity, accelerationMax));
 		deltaVelocity += (1 - Mathf.Abs(Vector3.Dot(velocity.normalized, deltaVelocity.normalized))) * -velocity;
 		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
 	}
@@ -332,6 +332,7 @@ public class Boid : MonoBehaviour
 			rayDir = -displacement;
 			currentHealth -= damage;
 			if (currentHealth < 0) {
+				BattleManager.Instance.OnBoidDeath(isEnemy);
 				Destroy(this);
 			}
 		} else {

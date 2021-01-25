@@ -13,6 +13,9 @@ public class BattleManager : MonoBehaviour
 	public Text winText;
 	public GameObject winPanel;
 
+	int allyCount;
+	int enemyCount;
+
 	PilotData pilotReward;
 	ShipData shipReward;
 
@@ -30,36 +33,29 @@ public class BattleManager : MonoBehaviour
 	{
 		boids = FindObjectsOfType<Boid>();
 		LoadBoids();
+		allyCount = 5;
+		enemyCount = 5;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-		int allyCount = 0;
-		int enemyCount = 0;
-		foreach(Boid boid in boids) {
-			if (boid != null) {
-				if (boid.isEnemy) {
-					enemyCount++;
-				} else {
-					allyCount++;
-				}
+	public void OnBoidDeath(bool isEnemy)
+	{
+		if (isEnemy) {
+			if (--enemyCount == 0) {
+				winText.text = "Victory";
+				winPanel.SetActive(true);
+				MasterManager.Instance.CompleteLevel(pilotReward, shipReward);
+			}
+		} else {
+			if (--allyCount == 0) {
+				winText.text = "Defeat";
+				winPanel.SetActive(true);
+				MasterManager.Instance.ResetGame();
 			}
 		}
-
-		if (enemyCount == 0) {
-			winText.text = "Victory";
-			winPanel.SetActive(true);
-		} else if (allyCount == 0) {
-			MasterManager.Instance.ResetGame();
-			winText.text = "Defeat";
-			winPanel.SetActive(true);
-		}
-    }
+	}
 
 	public void ResetGame()
 	{
-		MasterManager.Instance.CompleteLevel(pilotReward, shipReward);
 		SceneManager.LoadScene("ShipSelectionScene", LoadSceneMode.Additive);
 		SceneManager.UnloadSceneAsync("BattleScene");
 	}
