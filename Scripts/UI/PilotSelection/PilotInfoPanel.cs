@@ -10,7 +10,6 @@ public class PilotInfoPanel : MonoBehaviour
 	int index;
 
 	Text buttonText;
-	bool isActive = false;
 	Attribute[] attributes;
 
 	void Start()
