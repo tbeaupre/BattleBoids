@@ -7,12 +7,23 @@ using UnityEngine.Events;
 
 public class BattleManager : MonoBehaviour
 {
+	public static BattleManager Instance { get; private set; }
+
 	public Boid[] boids;
 	public Text winText;
 	public GameObject winPanel;
 
 	PilotData pilotReward;
 	ShipData shipReward;
+
+	private void Awake()
+	{
+		if (Instance != null && Instance != this) {
+			Destroy(this.gameObject);
+		} else {
+			Instance = this;
+		}
+	}
 
     // Start is called before the first frame update
     void Start()
