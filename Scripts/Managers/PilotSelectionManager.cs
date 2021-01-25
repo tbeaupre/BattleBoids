@@ -43,11 +43,17 @@ public class PilotSelectionManager : MonoBehaviour
 	public void ConfirmPilotSelection(int pilotIndex)
 	{
 		for (int i = 0; i < 5; i++) {
-			if (MasterManager.Instance.Selection[i].pilotIndex == pilotIndex && i != selectionIndex) {
-				PilotSelectionChanged(i, MasterManager.Instance.Selection[i].pilotIndex, -1);
-				MasterManager.Instance.Selection[i].pilotIndex = -1;
+			if (MasterManager.Instance.Selection[i].pilotIndex == pilotIndex) {
 				matchesCount--;
+				if (i != selectionIndex) {
+					PilotSelectionChanged(i, MasterManager.Instance.Selection[i].pilotIndex, -1);
+					MasterManager.Instance.Selection[i].pilotIndex = -1;
+				}
 			}
+		}
+
+		if (MasterManager.Instance.Selection[selectionIndex].pilotIndex == -1) {
+			matchesCount++;
 		}
 
 		PilotSelectionChanged(
@@ -56,7 +62,6 @@ public class PilotSelectionManager : MonoBehaviour
 			pilotIndex
 		);
 		MasterManager.Instance.Selection[selectionIndex].pilotIndex = pilotIndex;
-		matchesCount++;
 
 		if (++selectionIndex > 4) {
 			selectionIndex = 0;
