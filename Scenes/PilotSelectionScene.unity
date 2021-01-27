@@ -3245,6 +3245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 2
   shipPortrait: {fileID: 875694652}
+  pilotPortrait: {fileID: 843011837}
 --- !u!114 &293694484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4007,6 +4008,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 3
   shipPortrait: {fileID: 395279172}
+  pilotPortrait: {fileID: 1430508087}
 --- !u!114 &462846904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9255,6 +9257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   shipPortrait: {fileID: 485365969}
+  pilotPortrait: {fileID: 505656458}
 --- !u!114 &1687017203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9855,6 +9858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 4
   shipPortrait: {fileID: 228191322}
+  pilotPortrait: {fileID: 1317628042}
 --- !u!114 &1846712392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10539,6 +10543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 1
   shipPortrait: {fileID: 1831599270}
+  pilotPortrait: {fileID: 633977185}
 --- !u!114 &1958431359
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ public class MatchPanel : MonoBehaviour
 {
 	public int index;
 	public Image shipPortrait;
+	public Image pilotPortrait;
 	Image image;
 	bool hasPilot = false;
 
@@ -16,6 +17,9 @@ public class MatchPanel : MonoBehaviour
 		PilotSelectionManager.Instance.PilotSelectionChanged += HandlePilotSelectionChanged;
 
 		shipPortrait.sprite = MasterManager.Instance.Ships[MasterManager.Instance.Selection[index].shipIndex].portrait;
+		if (MasterManager.Instance.Selection[index].pilotIndex > -1) {
+			pilotPortrait.sprite = MasterManager.Instance.Pilots[MasterManager.Instance.Selection[index].pilotIndex].portrait;
+		}
 
 		image = GetComponent<Image>();
 
@@ -44,6 +48,13 @@ public class MatchPanel : MonoBehaviour
 	{
 		if (selectionIndex == index) {
 			hasPilot = toPilotIndex != -1;
+			if (hasPilot) {
+				pilotPortrait.sprite = MasterManager.Instance.Pilots[toPilotIndex].portrait;
+				hasPilot = true;
+			} else {
+				pilotPortrait.sprite = null;
+				hasPilot = false;
+			}
 		}
 	}
 }

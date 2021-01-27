@@ -5,12 +5,12 @@ using UnityEngine;
 [System.Serializable]
 public class EnemyTeamData
 {
-	public PilotData[] pilots;
+	public string[] pilots;
 	public string[] ships;
 	public PilotData pilotReward;
 	public ShipData shipReward;
 
-	public EnemyTeamData(PilotData[] pilotData, string[] shipData, PilotData pilotReward, ShipData shipReward)
+	public EnemyTeamData(string[] pilotData, string[] shipData, PilotData pilotReward, ShipData shipReward)
 	{
 		pilots = pilotData;
 		ships = shipData;

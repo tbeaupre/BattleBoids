@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class PilotScrollPreview : MonoBehaviour
 {
-	PilotData pilot;
+	public Image pilotPortrait;
+
+	PilotScriptableObject pilot;
 	int index;
 	Image image;
 	Color defaultColor;
@@ -26,12 +28,14 @@ public class PilotScrollPreview : MonoBehaviour
 		defaultColor = image.color;
 	}
 
-	public void SetPilot(PilotData newPilot, int index)
+	public void SetPilot(PilotScriptableObject newPilot, int index)
 	{
 		pilot = newPilot;
 
 		Text nameText = GetComponentInChildren<Text>();
-		nameText.text = "Tyler J. Beaupre " + index;
+		nameText.text = pilot.pilotName;
+
+		pilotPortrait.sprite = pilot.portrait;
 
 		this.index = index;
 	}

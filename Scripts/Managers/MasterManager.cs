@@ -9,7 +9,7 @@ public class MasterManager : MonoBehaviour
 
 	public int Level { get; private set; }
 	public List<ShipScriptableObject> Ships { get; private set; }
-	public List<PilotData> Pilots { get; private set; }
+	public List<PilotScriptableObject> Pilots { get; private set; }
 	List<int> shipSelection = new List<int>();
 	public PilotShipSelectionData[] Selection { get; private set; }
 
@@ -23,6 +23,14 @@ public class MasterManager : MonoBehaviour
 		"GoldenFox",
 		"WhiteCat",
 		"WildGoose"
+	};
+
+	public List<string> startingPilots = new List<string> {
+		"CaptainFalcon",
+		"DrStewart",
+		"JodySummer",
+		"Pico",
+		"SamuraiGoroh"
 	};
 
 	private void Awake()
@@ -44,18 +52,23 @@ public class MasterManager : MonoBehaviour
 			foreach(string shipKey in data.ships) {
 				Ships.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
 			}
-			Pilots = new List<PilotData>(data.pilots);
-			TEST_SetReasonableDefault();
+			Pilots = new List<PilotScriptableObject>();
+			foreach(string pilotKey in data.pilots) {
+				Pilots.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
+			}
+			// TEST_SetReasonableDefault();
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
 		}
 	}
 
 	TeamData GetFreshTeamData()
 	{
-		PilotData[] pilots = new PilotData[5];
+		List<string> pilotPool = new List<string>(startingPilots);
+		string[] pilots = new string[5];
 		for (int i = 0; i < 5; i++) {
-			pilots[i] = new PilotData();
-			pilots[i].Reroll();
+			int randIndex = (int)Mathf.Round(Random.value * (float)(pilotPool.Count - 1));
+			pilots[i] = pilotPool[randIndex];
+			pilotPool.RemoveAt(randIndex);
 		}
 
 		List<string> shipPool = new List<string>(startingShips);
@@ -86,15 +99,18 @@ public class MasterManager : MonoBehaviour
 		foreach(string shipKey in data.ships) {
 			Ships.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
 		}
+		Pilots = new List<PilotScriptableObject>();
+		foreach(string pilotKey in data.pilots) {
+			Pilots.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
+		}
 	}
 
 	public void CompleteLevel(PilotData pilotReward, ShipData shipReward)
 	{
 		Debug.Log(JsonUtility.ToJson(shipReward));
 		Level++;
-		Pilots.Add(pilotReward);
+		// Pilots.Add(pilotReward);
 		// Ships.Add(shipReward);
-		Debug.Log(JsonUtility.ToJson(Ships.ToArray()));
 		// SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));
 	}
 

@@ -6,13 +6,13 @@ using UnityEngine;
 public class TeamData
 {
 	public int level;
-	public PilotData[] pilots;
+	public string[] pilots;
 	public string[] ships;
 
-	public TeamData(int level, PilotData[] pilotData, string[] ships)
+	public TeamData(int level, string[] pilots, string[] ships)
 	{
 		this.level = level;
-		pilots = pilotData;
+		this.pilots = pilots;
 		this.ships = ships;
 	}
 

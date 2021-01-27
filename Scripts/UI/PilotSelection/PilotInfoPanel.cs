@@ -5,8 +5,10 @@ using UnityEngine.UI;
 
 public class PilotInfoPanel : MonoBehaviour
 {
-	public PilotData pilot;
+	public PilotScriptableObject pilot;
+	public Image pilotPortrait;
 	public GameObject noPilotPanel;
+	public Text pilotName;
 	int index;
 
 	Text buttonText;
@@ -22,7 +24,7 @@ public class PilotInfoPanel : MonoBehaviour
 		NoPilot();
 	}
 
-	public void SetPilot(PilotData newPilot, int index)
+	public void SetPilot(PilotScriptableObject newPilot, int index)
 	{
 		pilot = newPilot;
 
@@ -31,6 +33,10 @@ public class PilotInfoPanel : MonoBehaviour
 		attributes[2].SetValue(pilot.persistence);
 		attributes[3].SetValue(pilot.vision);
 		attributes[4].SetValue(pilot.skill);
+
+		pilotPortrait.sprite = pilot.portrait;
+
+		pilotName.text = pilot.pilotName;
 
 		this.index = index;
 		noPilotPanel.SetActive(false);
@@ -45,6 +51,10 @@ public class PilotInfoPanel : MonoBehaviour
 		attributes[2].SetValue(0);
 		attributes[3].SetValue(0);
 		attributes[4].SetValue(0);
+
+		pilotPortrait.sprite = null;
+
+		pilotName.text = "";
 
 		this.index = -1;
 	}
