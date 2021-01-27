@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 487f40103251c7544a0f165e818548c4, type: 3}
+  m_Name: SamuraiGoroh
+  m_EditorClassIdentifier: 
+  pilotName: Samurai Goroh
+  portrait: {fileID: 21300000, guid: 1501bbce808183b4ab4a5ac503fa6db3, type: 3}
+  sociability: 0.6
+  ego: 0.7
+  persistence: 0.8
+  vision: 0.4
+  skill: 0.5
