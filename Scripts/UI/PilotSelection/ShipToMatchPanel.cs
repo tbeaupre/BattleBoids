@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ShipToMatchPanel : MonoBehaviour
 {
-	public ShipData ship;
+	public ShipScriptableObject ship;
+	public Image shipPortrait;
 	int index;
 
 	void Start()
@@ -14,7 +15,7 @@ public class ShipToMatchPanel : MonoBehaviour
 		HandleSelectionChanged(0);
 	}
 
-	public void SetShip(ShipData newShip, int index)
+	public void SetShip(ShipScriptableObject newShip, int index)
 	{
 		ship = newShip;
 
@@ -25,6 +26,8 @@ public class ShipToMatchPanel : MonoBehaviour
 		attributes[3].SetValue(ship.armor);
 		attributes[4].SetValue(ship.range);
 		attributes[5].SetValue(ship.damage);
+
+		shipPortrait.sprite = ship.portrait;
 
 		this.index = index;
 	}

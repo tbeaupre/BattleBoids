@@ -3244,6 +3244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 2
+  shipPortrait: {fileID: 875694652}
 --- !u!114 &293694484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4005,6 +4006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 3
+  shipPortrait: {fileID: 395279172}
 --- !u!114 &462846904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9252,6 +9254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 0
+  shipPortrait: {fileID: 485365969}
 --- !u!114 &1687017203
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9851,6 +9854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 4
+  shipPortrait: {fileID: 228191322}
 --- !u!114 &1846712392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10534,6 +10538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 1
+  shipPortrait: {fileID: 1831599270}
 --- !u!114 &1958431359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11550,10 +11555,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b36ca19fe1074f9a90ccfd5869b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship:
-    sensors: 0
-    acceleration: 0
-    topSpeed: 0
-    armor: 0
-    range: 0
-    damage: 0
+  ship: {fileID: 0}
+  shipPortrait: {fileID: 1453577297}

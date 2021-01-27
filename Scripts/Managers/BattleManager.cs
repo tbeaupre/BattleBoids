@@ -83,7 +83,7 @@ public class BattleManager : MonoBehaviour
 		shipReward = enemyData.shipReward;
 		for (int i = 0; i < allies.Length; i++)
 		{
-			enemies[i].Initialize(enemyData.pilots[i], enemyData.ships[i]);
+			enemies[i].Initialize(enemyData.pilots[i], (ShipScriptableObject)Resources.Load("Ships/" + enemyData.ships[i]));
 		}
 	}
 

@@ -67,7 +67,7 @@ public class Boid : MonoBehaviour
 		transform.position += velocity;
     }
 
-	public void Initialize(PilotData pilot, ShipData ship)
+	public void Initialize(PilotData pilot, ShipScriptableObject ship)
 	{
 		this.neighborhoodRadius = CalcRandProp(10, 5, ship.sensors, false);
 		this.accelerationMax = CalcRandProp(0.05f, 0.05f, ship.acceleration - (ship.armor / 2), false);

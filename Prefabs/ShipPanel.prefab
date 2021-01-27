@@ -120,14 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f2b0bffa167814284913558903fd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship:
-    sensors: 0
-    acceleration: 0
-    topSpeed: 0
-    armor: 0
-    range: 0
-    damage: 0
+  ship: {fileID: 0}
   buttonText: {fileID: 4428594793604407810}
+  image: {fileID: 4428594792618604064}
 --- !u!1 &4428594792618604066
 GameObject:
   m_ObjectHideFlags: 0

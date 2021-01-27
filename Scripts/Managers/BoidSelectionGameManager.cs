@@ -15,7 +15,7 @@ public class BoidSelectionGameManager : MonoBehaviour
 		TeamData team = SaveSystem.LoadTeam();
 
 		for (int i = 0; i < boidPanels.Length; i++) {
-			boidPanels[i].SetData(team.pilots[i], team.ships[i]);
+			// boidPanels[i].SetData(team.pilots[i], team.ships[i]);
 		}
 	}
 
@@ -24,7 +24,7 @@ public class BoidSelectionGameManager : MonoBehaviour
 		PilotData[] pilots = boidPanels.Select(boidPanel => boidPanel.pilotData).ToArray();
 		ShipData[] ships = boidPanels.Select(boidPanel => boidPanel.shipData).ToArray();
 
-		SaveSystem.SaveTeam(new TeamData(1, pilots, ships));
+		// SaveSystem.SaveTeam(new TeamData(1, pilots, ships));
 		SceneManager.LoadSceneAsync("BattleScene");
 	}
 }

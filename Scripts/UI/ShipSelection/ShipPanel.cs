@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class ShipPanel : MonoBehaviour
 {
-	public ShipData ship;
+	public ShipScriptableObject ship;
+	// public ShipData ship;
 	int index;
 
 	public Text buttonText;
+	public Image image;
 	bool isActive = false;
 
-	public void SetShip(ShipData newShip, int index)
+	public void SetShip(ShipScriptableObject newShip, int index)
 	{
 		ship = newShip;
 
@@ -29,6 +31,12 @@ public class ShipPanel : MonoBehaviour
 			isActive = true;
 			buttonText.text = "Deselect";
 		}
+
+		Sprite sprite = ship.portrait;
+		if (sprite == null) {
+			sprite = Resources.Load<Sprite>("Images/BlueFalcon");
+		}
+		image.sprite = sprite;
 	}
 
 	public void ToggleIsActive()

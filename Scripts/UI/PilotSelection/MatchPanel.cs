@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MatchPanel : MonoBehaviour
 {
 	public int index;
+	public Image shipPortrait;
 	Image image;
 	bool hasPilot = false;
 
@@ -13,6 +14,8 @@ public class MatchPanel : MonoBehaviour
 	{
 		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
 		PilotSelectionManager.Instance.PilotSelectionChanged += HandlePilotSelectionChanged;
+
+		shipPortrait.sprite = MasterManager.Instance.Ships[MasterManager.Instance.Selection[index].shipIndex].portrait;
 
 		image = GetComponent<Image>();
 

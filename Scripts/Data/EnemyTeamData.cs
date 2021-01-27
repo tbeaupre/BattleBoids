@@ -6,11 +6,11 @@ using UnityEngine;
 public class EnemyTeamData
 {
 	public PilotData[] pilots;
-	public ShipData[] ships;
+	public string[] ships;
 	public PilotData pilotReward;
 	public ShipData shipReward;
 
-	public EnemyTeamData(PilotData[] pilotData, ShipData[] shipData, PilotData pilotReward, ShipData shipReward)
+	public EnemyTeamData(PilotData[] pilotData, string[] shipData, PilotData pilotReward, ShipData shipReward)
 	{
 		pilots = pilotData;
 		ships = shipData;
