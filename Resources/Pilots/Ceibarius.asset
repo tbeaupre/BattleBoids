@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c63e86de85b1a4bac786b71c1e983a, type: 3}
-  m_Name: 1
+  m_Script: {fileID: 11500000, guid: 487f40103251c7544a0f165e818548c4, type: 3}
+  m_Name: Ceibarius
   m_EditorClassIdentifier: 
-  enemyOptions:
-  - {fileID: 11400000, guid: 79cb729a8124e5142b49134a4a71a685, type: 2}
+  pilotName: Ceibarius
+  portrait: {fileID: 21300000, guid: b2e94c251ac4d3c4fbebec6234045e0c, type: 3}
+  sociability: 1
+  ego: 0.05
+  persistence: 0.3
+  vision: 0.95
+  skill: 0.5

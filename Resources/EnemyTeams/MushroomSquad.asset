@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
+  m_Name: MushroomSquad
+  m_EditorClassIdentifier: 
+  pilots:
+  - {fileID: 11400000, guid: 2ca2fe52f03b8bc49979f0e440359136, type: 2}
+  - {fileID: 11400000, guid: 63d03e41b4144704391e8cbce88926cb, type: 2}
+  - {fileID: 11400000, guid: 63d03e41b4144704391e8cbce88926cb, type: 2}
+  - {fileID: 11400000, guid: 63d03e41b4144704391e8cbce88926cb, type: 2}
+  - {fileID: 11400000, guid: 63d03e41b4144704391e8cbce88926cb, type: 2}
+  ships:
+  - {fileID: 11400000, guid: ba6b01160634dd8418022eddd4603d27, type: 2}
+  - {fileID: 11400000, guid: a189658ae67a2e6459288dbc69a83393, type: 2}
+  - {fileID: 11400000, guid: a189658ae67a2e6459288dbc69a83393, type: 2}
+  - {fileID: 11400000, guid: a189658ae67a2e6459288dbc69a83393, type: 2}
+  - {fileID: 11400000, guid: a189658ae67a2e6459288dbc69a83393, type: 2}
+  pilotReward: {fileID: 11400000, guid: 2ca2fe52f03b8bc49979f0e440359136, type: 2}
+  shipReward: {fileID: 11400000, guid: ba6b01160634dd8418022eddd4603d27, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
