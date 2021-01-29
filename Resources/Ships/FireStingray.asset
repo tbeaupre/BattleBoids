@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb2498fef6e4a745aa736e955e7ab76, type: 3}
   m_Name: FireStingray
   m_EditorClassIdentifier: 
+  prefab: {fileID: 4496961382795418398, guid: e14b0383b24210a4bb028ffc28e0f730, type: 3}
   shipName: Fire Stringray
   portrait: {fileID: 21300000, guid: b26bf7ae3e8eda84a8a9ac9adc298002, type: 3}
   sensors: 0.4

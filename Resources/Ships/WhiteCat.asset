@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb2498fef6e4a745aa736e955e7ab76, type: 3}
   m_Name: WhiteCat
   m_EditorClassIdentifier: 
+  prefab: {fileID: 4496961382795418398, guid: e14b0383b24210a4bb028ffc28e0f730, type: 3}
   shipName: White Cat
   portrait: {fileID: 21300000, guid: 955c33d1e4fee3a48927510e90425f82, type: 3}
   sensors: 0.8
