@@ -9,15 +9,15 @@ public class BattleManager : MonoBehaviour
 {
 	public static BattleManager Instance { get; private set; }
 
-	public Boid[] boids;
+	public List<Boid> Boids { get; private set; }
 	public Text winText;
 	public GameObject winPanel;
 
 	int allyCount;
 	int enemyCount;
 
-	PilotData pilotReward;
-	ShipData shipReward;
+	PilotScriptableObject pilotReward;
+	ShipScriptableObject shipReward;
 
 	private void Awake()
 	{
@@ -25,21 +25,28 @@ public class BattleManager : MonoBehaviour
 			Destroy(this.gameObject);
 		} else {
 			Instance = this;
+			Boids = new List<Boid>();
 		}
 	}
 
     // Start is called before the first frame update
     void Start()
 	{
-		boids = FindObjectsOfType<Boid>();
+		SceneManager.SetActiveScene(SceneManager.GetSceneByName("BattleScene"));
 		LoadBoids();
 		allyCount = 5;
 		enemyCount = 5;
     }
 
-	public void OnBoidDeath(bool isEnemy)
+	public void RegisterBoid(Boid boid)
 	{
-		if (isEnemy) {
+		Boids.Add(boid);
+	}
+
+	public void OnBoidDeath(Boid boid)
+	{
+		Boids.Remove(boid);
+		if (boid.isEnemy) {
 			if (--enemyCount == 0) {
 				winText.text = "Victory";
 				winPanel.SetActive(true);
@@ -78,16 +85,11 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 
-		EnemyTeamData enemyData = SaveSystem.LoadEnemyTeamJson(MasterManager.Instance.Level);
-		pilotReward = enemyData.pilotReward;
-		shipReward = enemyData.shipReward;
-		for (int i = 0; i < allies.Length; i++)
-		{
-			enemies[i].Initialize(
-				Resources.Load<PilotScriptableObject>("Pilots/" + enemyData.pilots[i]),
-				Resources.Load<ShipScriptableObject>("Ships/" + enemyData.ships[i])
-			);
-		}
+		LevelScriptableObject level = Resources.Load<LevelScriptableObject>("Levels/" + MasterManager.Instance.Level);
+		EnemyTeamScriptableObject enemyTeam = level.enemyOptions[0];
+		pilotReward = enemyTeam.pilotReward;
+		shipReward = enemyTeam.shipReward;
+		EnemyFactory.InstantiateTeam(enemyTeam);
 	}
 
 	private
@@ -95,7 +97,7 @@ public class BattleManager : MonoBehaviour
 	Boid[] GetAllies()
 	{
 		List<Boid> filteredList  = new List<Boid>();
-		foreach(Boid boid in boids) {
+		foreach(Boid boid in Boids) {
 			if (!boid.isEnemy) {
 				filteredList.Add(boid);
 			}
@@ -106,7 +108,7 @@ public class BattleManager : MonoBehaviour
 	Boid[] GetEnemies()
 	{
 		List<Boid> filteredList  = new List<Boid>();
-		foreach(Boid boid in boids) {
+		foreach(Boid boid in Boids) {
 			if (boid.isEnemy) {
 				filteredList.Add(boid);
 			}

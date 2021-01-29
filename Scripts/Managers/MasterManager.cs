@@ -105,12 +105,12 @@ public class MasterManager : MonoBehaviour
 		}
 	}
 
-	public void CompleteLevel(PilotData pilotReward, ShipData shipReward)
+	public void CompleteLevel(PilotScriptableObject pilotReward, ShipScriptableObject shipReward)
 	{
 		Debug.Log(JsonUtility.ToJson(shipReward));
 		Level++;
-		// Pilots.Add(pilotReward);
-		// Ships.Add(shipReward);
+		Pilots.Add(pilotReward);
+		Ships.Add(shipReward);
 		// SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));
 	}
 

@@ -6,7 +6,6 @@ public class Boid : MonoBehaviour
 {
 	public Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
-	public Boid[] boids;
 	private Goal goal;
 
 	public float neighborhoodRadius = 10.0f;
@@ -52,7 +51,6 @@ public class Boid : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-		boids = FindObjectsOfType<Boid>();
 		goal = FindObjectOfType<Goal>();
     }
 
@@ -89,6 +87,8 @@ public class Boid : MonoBehaviour
 
 		float scale = (maxHealth / 500) + 1;
 		transform.localScale = new Vector3(scale, scale, scale);
+
+		BattleManager.Instance.RegisterBoid(this);
 	}
 
 	void LimitVelocity()
@@ -104,7 +104,7 @@ public class Boid : MonoBehaviour
 				Boid fittestTarget = null;
 				float fittestValue = targetAcqMinFitness;
 
-				foreach(Boid boid in boids) {
+				foreach(Boid boid in BattleManager.Instance.Boids) {
 					if (boid != null && boid.isEnemy != isEnemy) {
 						Vector3 displacement = boid.gameObject.transform.position - transform.position;
 
@@ -214,7 +214,7 @@ public class Boid : MonoBehaviour
 	{
 		Vector3 perceivedCenter = Vector3.zero;
 		int count = 0;
-		foreach(Boid boid in boids) {
+		foreach(Boid boid in BattleManager.Instance.Boids) {
 			if (boid != null && boid.isEnemy != isEnemy) {
 				count++;
 				perceivedCenter += boid.gameObject.transform.position;
@@ -232,7 +232,7 @@ public class Boid : MonoBehaviour
 	Vector3 Separation()
 	{
 		Vector3 separation = Vector3.zero;
-		foreach(Boid boid in boids) {
+		foreach(Boid boid in BattleManager.Instance.Boids) {
 			if (boid != null && boid != this) {
 				Vector3 displacement = Displacement(boid);
 				if (displacement.magnitude < neighborhoodRadius) {
@@ -247,7 +247,7 @@ public class Boid : MonoBehaviour
 	{
 		Vector3 perceivedVelocity = Vector3.zero;
 		int count = 0;
-		foreach(Boid boid in boids) {
+		foreach(Boid boid in BattleManager.Instance.Boids) {
 			if (boid != null && boid != this && boid.isEnemy == isEnemy) {
 				count++;
 				perceivedVelocity += boid.velocity;
@@ -266,7 +266,7 @@ public class Boid : MonoBehaviour
 	{
 		Vector3 perceivedCenter = Vector3.zero;
 		int count = 0;
-		foreach(Boid boid in boids) {
+		foreach(Boid boid in BattleManager.Instance.Boids) {
 			if (boid != null && boid != this && boid.isEnemy == isEnemy) {
 				count++;
 				perceivedCenter += boid.gameObject.transform.position;
@@ -332,7 +332,7 @@ public class Boid : MonoBehaviour
 			rayDir = -displacement;
 			currentHealth -= damage;
 			if (currentHealth < 0) {
-				BattleManager.Instance.OnBoidDeath(isEnemy);
+				BattleManager.Instance.OnBoidDeath(this);
 				Destroy(this);
 			}
 		} else {
