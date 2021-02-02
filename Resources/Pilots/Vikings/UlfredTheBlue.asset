@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9c63e86de85b1a4bac786b71c1e983a, type: 3}
-  m_Name: 1
+  m_Script: {fileID: 11500000, guid: 487f40103251c7544a0f165e818548c4, type: 3}
+  m_Name: UlfredTheBlue
   m_EditorClassIdentifier: 
-  enemyOptions:
-  - {fileID: 11400000, guid: 79cb729a8124e5142b49134a4a71a685, type: 2}
-  - {fileID: 11400000, guid: 15f6214441bb77a47ac23d7f0703a9e5, type: 2}
+  pilotName: Ulfred the Blue
+  portrait: {fileID: 21300000, guid: 1501bbce808183b4ab4a5ac503fa6db3, type: 3}
+  sociability: 0.7
+  ego: 0.5
+  persistence: 0.7
+  vision: 0.55
+  skill: 0.55

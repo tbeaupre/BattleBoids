@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
+  m_Name: Vikings
+  m_EditorClassIdentifier: 
+  pilots:
+  - {fileID: 11400000, guid: 574bf08e5eb7f4c49926597faaf549dc, type: 2}
+  - {fileID: 11400000, guid: 8bba9e90235f5e84aada9606df844996, type: 2}
+  - {fileID: 11400000, guid: 8bba9e90235f5e84aada9606df844996, type: 2}
+  - {fileID: 11400000, guid: 8bba9e90235f5e84aada9606df844996, type: 2}
+  - {fileID: 11400000, guid: 8bba9e90235f5e84aada9606df844996, type: 2}
+  ships:
+  - {fileID: 11400000, guid: e2b90518b1cbe114d8a58329c0b9c7a1, type: 2}
+  - {fileID: 11400000, guid: b001ad36d9b17ec4d9ddaa5c1a53d898, type: 2}
+  - {fileID: 11400000, guid: b001ad36d9b17ec4d9ddaa5c1a53d898, type: 2}
+  - {fileID: 11400000, guid: b001ad36d9b17ec4d9ddaa5c1a53d898, type: 2}
+  - {fileID: 11400000, guid: b001ad36d9b17ec4d9ddaa5c1a53d898, type: 2}
+  pilotReward: {fileID: 11400000, guid: 574bf08e5eb7f4c49926597faaf549dc, type: 2}
+  shipReward: {fileID: 11400000, guid: e2b90518b1cbe114d8a58329c0b9c7a1, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
