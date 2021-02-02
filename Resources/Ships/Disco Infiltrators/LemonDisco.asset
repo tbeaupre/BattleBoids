@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cb2498fef6e4a745aa736e955e7ab76, type: 3}
   m_Name: LemonDisco
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  shipName: 
-  portrait: {fileID: 0}
-  sensors: 0
-  acceleration: 0
-  topSpeed: 0
-  armor: 0
-  range: 0
-  damage: 0
+  prefab: {fileID: 4496961382795418398, guid: e14b0383b24210a4bb028ffc28e0f730, type: 3}
+  shipName: Lemon Disco
+  portrait: {fileID: 21300000, guid: ebd9ef6968aa06b44978c41fa23e3d0c, type: 3}
+  sensors: 0.6
+  acceleration: 0.9
+  topSpeed: 0.45
+  armor: 0.65
+  range: 0.75
+  damage: 0.55

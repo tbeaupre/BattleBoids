@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487f40103251c7544a0f165e818548c4, type: 3}
   m_Name: DougieFresh
   m_EditorClassIdentifier: 
-  pilotName: 
-  portrait: {fileID: 0}
-  sociability: 0
-  ego: 0
-  persistence: 0
-  vision: 0
-  skill: 0
+  pilotName: Dougie Fresh
+  portrait: {fileID: 21300000, guid: 3ae103cb578a2cb4cbba4fd2087f1eaa, type: 3}
+  sociability: 0.9
+  ego: 0.3
+  persistence: 0.5
+  vision: 0.6
+  skill: 0.7

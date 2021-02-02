@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c63e86de85b1a4bac786b71c1e983a, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  enemyOptions: []
+  enemyOptions:
+  - {fileID: 11400000, guid: 2cc24ada109fdf747bfde904aa2ac94e, type: 2}

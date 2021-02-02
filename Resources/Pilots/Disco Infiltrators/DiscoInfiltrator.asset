@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pilotName: 
   portrait: {fileID: 0}
-  sociability: 0
-  ego: 0
-  persistence: 0
-  vision: 0
-  skill: 0
+  sociability: 0.9
+  ego: 0.3
+  persistence: 0.4
+  vision: 0.5
+  skill: 0.6

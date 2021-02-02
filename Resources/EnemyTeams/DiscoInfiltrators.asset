@@ -12,8 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: DiscoInfiltrators
   m_EditorClassIdentifier: 
-  pilots: []
-  ships: []
-  pilotReward: {fileID: 0}
-  shipReward: {fileID: 0}
-  spawnPoints: {fileID: 0}
+  pilots:
+  - {fileID: 11400000, guid: 0b930f90420f2f34e9bf21c08ec1fbd4, type: 2}
+  - {fileID: 11400000, guid: d916f93d565a3b042866c7575acf190c, type: 2}
+  - {fileID: 11400000, guid: d916f93d565a3b042866c7575acf190c, type: 2}
+  - {fileID: 11400000, guid: d916f93d565a3b042866c7575acf190c, type: 2}
+  - {fileID: 11400000, guid: d916f93d565a3b042866c7575acf190c, type: 2}
+  ships:
+  - {fileID: 11400000, guid: 51f49502995461040b573104c6a77837, type: 2}
+  - {fileID: 11400000, guid: c3d6799078aa7be408aae21892e8f563, type: 2}
+  - {fileID: 11400000, guid: c3d6799078aa7be408aae21892e8f563, type: 2}
+  - {fileID: 11400000, guid: c3d6799078aa7be408aae21892e8f563, type: 2}
+  - {fileID: 11400000, guid: c3d6799078aa7be408aae21892e8f563, type: 2}
+  pilotReward: {fileID: 11400000, guid: 0b930f90420f2f34e9bf21c08ec1fbd4, type: 2}
+  shipReward: {fileID: 11400000, guid: 51f49502995461040b573104c6a77837, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
