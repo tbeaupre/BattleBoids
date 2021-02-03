@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
+  m_Name: SunsetBandits
+  m_EditorClassIdentifier: 
+  pilots:
+  - {fileID: 11400000, guid: 74ca1aa68aeba0845b50cc545764caea, type: 2}
+  - {fileID: 11400000, guid: 7c7130a1a749e0f4089d118a09199a9e, type: 2}
+  - {fileID: 11400000, guid: 7c7130a1a749e0f4089d118a09199a9e, type: 2}
+  - {fileID: 11400000, guid: 7c7130a1a749e0f4089d118a09199a9e, type: 2}
+  - {fileID: 11400000, guid: 7c7130a1a749e0f4089d118a09199a9e, type: 2}
+  ships:
+  - {fileID: 11400000, guid: dc7c3b5b0c532cc41afdde27ae67a3b4, type: 2}
+  - {fileID: 11400000, guid: 1c53673cd14bb6d4e834f85d1099926b, type: 2}
+  - {fileID: 11400000, guid: 1c53673cd14bb6d4e834f85d1099926b, type: 2}
+  - {fileID: 11400000, guid: 1c53673cd14bb6d4e834f85d1099926b, type: 2}
+  - {fileID: 11400000, guid: 1c53673cd14bb6d4e834f85d1099926b, type: 2}
+  pilotReward: {fileID: 11400000, guid: 74ca1aa68aeba0845b50cc545764caea, type: 2}
+  shipReward: {fileID: 11400000, guid: dc7c3b5b0c532cc41afdde27ae67a3b4, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
