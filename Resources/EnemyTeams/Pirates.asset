@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
+  m_Name: Pirates
+  m_EditorClassIdentifier: 
+  pilots:
+  - {fileID: 11400000, guid: 657c9923784838a4e9259187483f29b0, type: 2}
+  - {fileID: 11400000, guid: 7c408af0930a45a45a1c9e127c090aa7, type: 2}
+  - {fileID: 11400000, guid: 7c408af0930a45a45a1c9e127c090aa7, type: 2}
+  - {fileID: 11400000, guid: 7c408af0930a45a45a1c9e127c090aa7, type: 2}
+  - {fileID: 11400000, guid: 7c408af0930a45a45a1c9e127c090aa7, type: 2}
+  ships:
+  - {fileID: 11400000, guid: 0769101d12dffb349a8ceb259e66ebb5, type: 2}
+  - {fileID: 11400000, guid: 4d165ba08ddbdd74690c2a0d81283833, type: 2}
+  - {fileID: 11400000, guid: 4d165ba08ddbdd74690c2a0d81283833, type: 2}
+  - {fileID: 11400000, guid: 4d165ba08ddbdd74690c2a0d81283833, type: 2}
+  - {fileID: 11400000, guid: 4d165ba08ddbdd74690c2a0d81283833, type: 2}
+  pilotReward: {fileID: 11400000, guid: 657c9923784838a4e9259187483f29b0, type: 2}
+  shipReward: {fileID: 11400000, guid: 0769101d12dffb349a8ceb259e66ebb5, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
