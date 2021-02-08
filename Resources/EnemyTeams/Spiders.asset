@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
+  m_Name: Spiders
+  m_EditorClassIdentifier: 
+  pilots:
+  - {fileID: 11400000, guid: 898c1f851a9272248b97b8a94135b2f9, type: 2}
+  - {fileID: 11400000, guid: 05a453608278f2344a0da826b2b1ce7a, type: 2}
+  - {fileID: 11400000, guid: 05a453608278f2344a0da826b2b1ce7a, type: 2}
+  - {fileID: 11400000, guid: 05a453608278f2344a0da826b2b1ce7a, type: 2}
+  - {fileID: 11400000, guid: 05a453608278f2344a0da826b2b1ce7a, type: 2}
+  ships:
+  - {fileID: 11400000, guid: 5559bda86363a2742abb8ac9d3e4a37f, type: 2}
+  - {fileID: 11400000, guid: ed191e460c3156840ab1fd9c6d96cd64, type: 2}
+  - {fileID: 11400000, guid: ed191e460c3156840ab1fd9c6d96cd64, type: 2}
+  - {fileID: 11400000, guid: ed191e460c3156840ab1fd9c6d96cd64, type: 2}
+  - {fileID: 11400000, guid: ed191e460c3156840ab1fd9c6d96cd64, type: 2}
+  pilotReward: {fileID: 11400000, guid: 898c1f851a9272248b97b8a94135b2f9, type: 2}
+  shipReward: {fileID: 11400000, guid: 5559bda86363a2742abb8ac9d3e4a37f, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
