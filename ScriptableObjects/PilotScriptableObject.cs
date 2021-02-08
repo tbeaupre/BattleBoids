@@ -7,6 +7,7 @@ public class PilotScriptableObject : ScriptableObject
 {
     public string pilotName;
     public Sprite portrait;
+	public string quote;
 
     public float sociability;
 	public float ego;

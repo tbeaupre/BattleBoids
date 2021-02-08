@@ -3,7 +3,10 @@ guid: 7f5021843810ae84380411ee1e382fd5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - pilotReward: {instanceID: 0}
+  - shipReward: {instanceID: 0}
+  - spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

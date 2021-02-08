@@ -12,6 +12,7 @@ public class MasterManager : MonoBehaviour
 	public List<PilotScriptableObject> Pilots { get; private set; }
 	List<int> shipSelection = new List<int>();
 	public PilotShipSelectionData[] Selection { get; private set; }
+	public EnemyTeamScriptableObject EnemyTeam { get; private set; }
 
 	// Events
 	public delegate void ShipSelectionChangedDelegate(int count);

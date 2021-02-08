@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 221017277}
   - component: {fileID: 221017279}
   - component: {fileID: 221017278}
+  - component: {fileID: 221017280}
   m_Layer: 5
   m_Name: EnemyTeamDescription
   m_TagString: Untagged
@@ -202,6 +203,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 221017276}
   m_CullTransparentMesh: 0
+--- !u!114 &221017280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221017276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ae9471c4d086414a8e85a0fd03da110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &384145640
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,8 +791,9 @@ GameObject:
   - component: {fileID: 1682295481}
   - component: {fileID: 1682295483}
   - component: {fileID: 1682295482}
+  - component: {fileID: 1682295484}
   m_Layer: 5
-  m_Name: EnemyName
+  m_Name: EnemyCaptainName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -846,6 +860,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682295480}
   m_CullTransparentMesh: 0
+--- !u!114 &1682295484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682295480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d8eec7d40a3f8946b2335f5d35ce25e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1765248642
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,8 +883,9 @@ GameObject:
   - component: {fileID: 1765248643}
   - component: {fileID: 1765248645}
   - component: {fileID: 1765248644}
+  - component: {fileID: 1765248646}
   m_Layer: 5
-  m_Name: Quote
+  m_Name: EnemyCaptainQuote
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -923,6 +950,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1765248642}
   m_CullTransparentMesh: 0
+--- !u!114 &1765248646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765248642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2ca3a235b08d7469471037bc5ebc17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2025750489
 GameObject:
   m_ObjectHideFlags: 0
@@ -934,8 +973,9 @@ GameObject:
   - component: {fileID: 2025750490}
   - component: {fileID: 2025750492}
   - component: {fileID: 2025750491}
+  - component: {fileID: 2025750493}
   m_Layer: 5
-  m_Name: Image
+  m_Name: EnemyCaptainPortrait
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -996,6 +1036,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025750489}
   m_CullTransparentMesh: 0
+--- !u!114 &2025750493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2025750489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c0151cb4f51cd8429f4f52942890b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2093187281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1059,7 @@ GameObject:
   - component: {fileID: 2093187282}
   - component: {fileID: 2093187284}
   - component: {fileID: 2093187283}
+  - component: {fileID: 2093187285}
   m_Layer: 5
   m_Name: EnemyTeamName
   m_TagString: Untagged
@@ -1073,3 +1126,15 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093187281}
   m_CullTransparentMesh: 0
+--- !u!114 &2093187285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093187281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8c2c7d2942db2b45bc4cb435a385d8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
