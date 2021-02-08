@@ -16,9 +16,6 @@ public class BattleManager : MonoBehaviour
 	int allyCount;
 	int enemyCount;
 
-	PilotScriptableObject pilotReward;
-	ShipScriptableObject shipReward;
-
 	private void Awake()
 	{
 		if (Instance != null && Instance != this) {
@@ -50,7 +47,7 @@ public class BattleManager : MonoBehaviour
 			if (--enemyCount == 0) {
 				winText.text = "Victory";
 				winPanel.SetActive(true);
-				MasterManager.Instance.CompleteLevel(pilotReward, shipReward);
+				MasterManager.Instance.CompleteLevel();
 			}
 		} else {
 			if (--allyCount == 0) {
@@ -63,14 +60,13 @@ public class BattleManager : MonoBehaviour
 
 	public void ResetGame()
 	{
-		SceneManager.LoadScene("ShipSelectionScene", LoadSceneMode.Additive);
+		SceneManager.LoadScene("OpponentScene", LoadSceneMode.Additive);
 		SceneManager.UnloadSceneAsync("BattleScene");
 	}
 
 	public void LoadBoids()
 	{
 		Boid[] allies = GetAllies();
-		Boid[] enemies = GetEnemies();
 
 		for (int i = 0; i < allies.Length; i++)
 		{
@@ -85,11 +81,7 @@ public class BattleManager : MonoBehaviour
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 
-		LevelScriptableObject level = Resources.Load<LevelScriptableObject>("Levels/" + MasterManager.Instance.Level);
-		EnemyTeamScriptableObject enemyTeam = level.enemyOptions[0];
-		pilotReward = enemyTeam.pilotReward;
-		shipReward = enemyTeam.shipReward;
-		EnemyFactory.InstantiateTeam(enemyTeam);
+		EnemyFactory.InstantiateTeam(MasterManager.Instance.EnemyTeam);
 	}
 
 	private
@@ -99,17 +91,6 @@ public class BattleManager : MonoBehaviour
 		List<Boid> filteredList  = new List<Boid>();
 		foreach(Boid boid in Boids) {
 			if (!boid.isEnemy) {
-				filteredList.Add(boid);
-			}
-		}
-		return filteredList.ToArray();
-	}
-
-	Boid[] GetEnemies()
-	{
-		List<Boid> filteredList  = new List<Boid>();
-		foreach(Boid boid in Boids) {
-			if (boid.isEnemy) {
 				filteredList.Add(boid);
 			}
 		}

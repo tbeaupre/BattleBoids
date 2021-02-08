@@ -49,6 +49,8 @@ public class MasterManager : MonoBehaviour
 				SaveSystem.SaveTeam(data);
 			}
 			Level = data.level;
+			PickEnemy();
+
 			Ships = new List<ShipScriptableObject>();
 			foreach(string shipKey in data.ships) {
 				Ships.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
@@ -60,6 +62,13 @@ public class MasterManager : MonoBehaviour
 			// TEST_SetReasonableDefault();
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
 		}
+	}
+
+	void PickEnemy()
+	{
+		LevelScriptableObject levelSO = Resources.Load<LevelScriptableObject>("Levels/" + Level);
+		int randIndex = (int)Mathf.Round(Random.value * (float)(levelSO.enemyOptions.Length - 1));
+		EnemyTeam = levelSO.enemyOptions[randIndex];
 	}
 
 	TeamData GetFreshTeamData()
@@ -106,12 +115,13 @@ public class MasterManager : MonoBehaviour
 		}
 	}
 
-	public void CompleteLevel(PilotScriptableObject pilotReward, ShipScriptableObject shipReward)
+	public void CompleteLevel()
 	{
-		Debug.Log(JsonUtility.ToJson(shipReward));
+		Debug.Log(JsonUtility.ToJson(EnemyTeam.shipReward));
+		Pilots.Add(EnemyTeam.pilotReward);
+		Ships.Add(EnemyTeam.shipReward);
 		Level++;
-		Pilots.Add(pilotReward);
-		Ships.Add(shipReward);
+		PickEnemy();
 		// SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));
 	}
 

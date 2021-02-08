@@ -7,7 +7,7 @@ public class PlayButton : MonoBehaviour
 {
 	public void Play()
 	{
-		SceneManager.LoadSceneAsync("ShipSelectionScene", LoadSceneMode.Additive);
+		SceneManager.LoadSceneAsync("OpponentScene", LoadSceneMode.Additive);
 		SceneManager.UnloadSceneAsync("MainMenuScene");
 	}
 }
