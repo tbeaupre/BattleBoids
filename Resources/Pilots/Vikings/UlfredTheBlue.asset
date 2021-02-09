@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pilotName: Ulfred the Blue
   portrait: {fileID: 21300000, guid: 1501bbce808183b4ab4a5ac503fa6db3, type: 3}
-  quote: Blood and Glory for the clan!
+  quote: Blood and glory for the clan!
   sociability: 0.7
   ego: 0.5
   persistence: 0.7
