@@ -26,6 +26,8 @@ public class BoidInfoPanel : MonoBehaviour
             }
             boidHealthBar.maxHealth = boid.maxHealth;
             boidHealthBar.currentHealth = boid.currentHealth;
+        } else {
+            boidHealthBar.currentHealth = 0;
         }
     }
 }

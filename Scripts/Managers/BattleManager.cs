@@ -66,7 +66,7 @@ public class BattleManager : MonoBehaviour
 
 	public void LoadBoids()
 	{
-		Boid[] allies = GetAllies();
+		Boid[] allies = FindObjectsOfType<Boid>();
 
 		for (int i = 0; i < allies.Length; i++)
 		{

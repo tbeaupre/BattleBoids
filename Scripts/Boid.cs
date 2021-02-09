@@ -342,7 +342,7 @@ public class Boid : MonoBehaviour
 		if (precision < 0) {
 			rayDir = -displacement;
 			currentHealth -= damage;
-			if (currentHealth < 0) {
+			if (currentHealth <= 0) {
 				BattleManager.Instance.OnBoidDeath(this);
 				Destroy(this);
 			}
