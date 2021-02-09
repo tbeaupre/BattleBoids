@@ -6,7 +6,10 @@ public class Boid : MonoBehaviour
 {
 	public Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
+	public BoidInfoPanel boidInfoPanel;
 	private Goal goal;
+	public PilotScriptableObject pilot;
+	public ShipScriptableObject ship;
 
 	public float neighborhoodRadius = 10.0f;
 	public float accelerationMax = 0.1f;
@@ -87,6 +90,14 @@ public class Boid : MonoBehaviour
 
 		float scale = (maxHealth / 500) + 1;
 		transform.localScale = new Vector3(scale, scale, scale);
+
+		this.currentHealth = this.maxHealth;
+
+		if (!isEnemy) {
+			Debug.Log("Setting pilot and ship");
+		}
+		this.pilot = pilot;
+		this.ship = ship;
 
 		BattleManager.Instance.RegisterBoid(this);
 	}

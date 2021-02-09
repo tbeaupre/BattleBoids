@@ -16,6 +16,8 @@ public static class EnemyFactory
             Boid boid = enemy.GetComponent<Boid>();
             boid.isEnemy = true;
             boid.Initialize(enemyTeam.pilots[i], enemyTeam.ships[i]);
+
+            EnemyInfoPanelFactory.Instance.InstantiateEnemyInfoPanel(boid);
         }
     }
 }
