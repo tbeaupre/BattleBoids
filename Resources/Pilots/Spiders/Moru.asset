@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pilotName: "M\xF3ru"
   portrait: {fileID: 21300000, guid: 645410bee5d0bad4fbdeb926f4670fe3, type: 3}
+  quote: You look... delicious
   sociability: 0.2
   ego: 0.4
   persistence: 0.6

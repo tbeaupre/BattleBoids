@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: Pirates
   m_EditorClassIdentifier: 
+  teamName: Pirates of the Black Kraken
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: 657c9923784838a4e9259187483f29b0, type: 2}
   - {fileID: 11400000, guid: 7c408af0930a45a45a1c9e127c090aa7, type: 2}

@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: DiscoInfiltrators
   m_EditorClassIdentifier: 
+  teamName: Disco Infiltrators
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: 0b930f90420f2f34e9bf21c08ec1fbd4, type: 2}
   - {fileID: 11400000, guid: d916f93d565a3b042866c7575acf190c, type: 2}

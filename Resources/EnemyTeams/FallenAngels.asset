@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: FallenAngels
   m_EditorClassIdentifier: 
+  teamName: Fallen Angels
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: c3021f032b599f849b8ee94dbd265d39, type: 2}
   - {fileID: 11400000, guid: 64c3ceaa1d22da648af7e894500cb736, type: 2}

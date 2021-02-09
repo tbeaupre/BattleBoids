@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: PriestessesOfTheMoon
   m_EditorClassIdentifier: 
+  teamName: Preistesses of the Moon
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: f64d1a4b17546b9479a937bc54ef14e2, type: 2}
   - {fileID: 11400000, guid: 689f012420283bc4dada663e7300110e, type: 2}

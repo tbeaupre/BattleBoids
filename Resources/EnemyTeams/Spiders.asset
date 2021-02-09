@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: Spiders
   m_EditorClassIdentifier: 
+  teamName: The Spider Queen's Brood
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: 898c1f851a9272248b97b8a94135b2f9, type: 2}
   - {fileID: 11400000, guid: 05a453608278f2344a0da826b2b1ce7a, type: 2}

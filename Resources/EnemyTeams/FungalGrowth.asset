@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
-  m_Name: MushroomSquad
+  m_Name: FungalGrowth
   m_EditorClassIdentifier: 
+  teamName: Fungal Growth
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: 2ca2fe52f03b8bc49979f0e440359136, type: 2}
   - {fileID: 11400000, guid: 63d03e41b4144704391e8cbce88926cb, type: 2}

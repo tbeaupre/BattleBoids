@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
   m_Name: SunsetBandits
   m_EditorClassIdentifier: 
+  teamName: The Sunset Bandits
+  teamDescription: 
   pilots:
   - {fileID: 11400000, guid: 74ca1aa68aeba0845b50cc545764caea, type: 2}
   - {fileID: 11400000, guid: 7c7130a1a749e0f4089d118a09199a9e, type: 2}
