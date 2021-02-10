@@ -4,55 +4,54 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour
 {
-	public Vector3 velocity = Vector3.zero;
+	private Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
 	public BoidInfoPanel boidInfoPanel;
 	private Goal goal;
 	public PilotScriptableObject pilot;
 	public ShipScriptableObject ship;
 
-	public float neighborhoodRadius = 10.0f;
-	public float accelerationMax = 0.1f;
-	public float velocityMax = 1.0f;
-	public float cohesionConstant = 100;
-	public float alignmentConstant = 20;
-	public float separationConstant = 3;
-	public float goalConstant = 100;
-	public float chaseConstant = 100;
-	public float evadeConstant = 100;
-	public float bloodthirstConstant = 100;
+	private float neighborhoodRadius = 10.0f;
+	private float accelerationMax = 0.1f;
+	private float velocityMax = 1.0f;
+	private float cohesionConstant = 100;
+	private float alignmentConstant = 20;
+	private float separationConstant = 3;
+	private float goalConstant = 100;
+	private float chaseConstant = 100;
+	private float evadeConstant = 100;
+	private float bloodthirstConstant = 100;
 
 	// Target Acquisition
-	public float targetAcqRadius = 20.0f;
-	public float targetAcqAngleMod = 0.7f;
-	public float targetAcqMaxAngle = 75.0f;
-	public float targetAcqMinFitness = 0.3f;
+	private float targetAcqRadius = 20.0f;
+	private float targetAcqAngleMod = 0.7f;
+	private float targetAcqMaxAngle = 75.0f;
+	private float targetAcqMinFitness = 0.3f;
 
 	// Chase
-	public float maxChaseDistance = 25.0f;
-	public float maxFireDistance = 20.0f;
-	public float maxFireAngle = 3.0f;
-	public float accuracy = 0.3f;
-	public int cooldown = 20; // In frames
-	public float damage = 70;
+	private float maxChaseDistance = 25.0f;
+	private float maxFireDistance = 20.0f;
+	private float maxFireAngle = 3.0f;
+	private float accuracy = 0.3f;
+	private int cooldown = 20; // In frames
+	private float damage = 70;
 
 	// Evade
-	public float fear = 0.5f;
-	public float maxEvadeDistance = 25.0f;
+	private float fear = 0.5f;
+	private float maxEvadeDistance = 25.0f;
 
 	// Boundaries
-	public float boundaryRadius = 50.0f;
+	private float boundaryRadius = 50.0f;
 
 	// Internal
 	public bool isEnemy = false;
-	public BoidState state = BoidState.Flock;
-	public Boid target;
-	public int cooldownTimer = 0;
+	private BoidState state = BoidState.Flock;
+	private Boid target;
+	private int cooldownTimer = 0;
 	public float maxHealth = 100;
 	public float currentHealth = 100;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 		goal = FindObjectOfType<Goal>();
     }
@@ -93,9 +92,6 @@ public class Boid : MonoBehaviour
 
 		this.currentHealth = this.maxHealth;
 
-		if (!isEnemy) {
-			Debug.Log("Setting pilot and ship");
-		}
 		this.pilot = pilot;
 		this.ship = ship;
 

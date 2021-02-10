@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BoidInfoPanel : MonoBehaviour
 {
     public Boid boid;
+    public SelectedBoidScriptableObject HoveredBoid;
 
     private Portrait pilotPortrait;
     private HealthBar boidHealthBar;
@@ -29,5 +30,15 @@ public class BoidInfoPanel : MonoBehaviour
         } else {
             boidHealthBar.currentHealth = 0;
         }
+    }
+
+    public void OnMouseEnter()
+    {
+        HoveredBoid.Boid = boid;
+    }
+
+    public void OnMouseExit()
+    {
+        HoveredBoid.Boid = null;
     }
 }

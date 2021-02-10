@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 2415872486720020679}
   - component: {fileID: 2415872486720020676}
   - component: {fileID: 2415872486720020678}
+  - component: {fileID: 2426724195149644274}
   m_Layer: 5
   m_Name: BoidInfoPanel
   m_TagString: Untagged
@@ -201,7 +202,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boid: {fileID: 0}
-  pilot: {fileID: 0}
+  HoveredBoid: {fileID: 11400000, guid: ef903d906be45da43ab92df7577837b7, type: 2}
+--- !u!65 &2426724195149644274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2415872486720020682}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 160, y: 175, z: 24}
+  m_Center: {x: 80, y: -87, z: 0}
 --- !u!1 &2415872486960520054
 GameObject:
   m_ObjectHideFlags: 0

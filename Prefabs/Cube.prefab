@@ -57,6 +57,7 @@ TrailRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -148,6 +149,7 @@ GameObject:
   - component: {fileID: 4496961382795418395}
   - component: {fileID: 4496961382795418396}
   - component: {fileID: 4496961382795418397}
+  - component: {fileID: 7737780624602830404}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -203,6 +205,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -240,35 +243,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0250402f5a2464fb5125cd9f85bf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0.5, y: 0, z: 0}
   laserPrefab: {fileID: 8627302759309090070, guid: d5b847d0d5c717545aa58a1cf0d3df01,
     type: 3}
-  boids: []
-  neighborhoodRadius: 10
-  accelerationMax: 0.05
-  velocityMax: 1
-  cohesionConstant: 100
-  alignmentConstant: 20
-  separationConstant: 3
-  goalConstant: 100
-  chaseConstant: 100
-  evadeConstant: 100
-  targetAcqRadius: 20
-  targetAcqAngleMod: 0.7
-  targetAcqMaxAngle: 75
-  targetAcqMinFitness: 0.3
-  maxChaseDistance: 30
-  maxFireDistance: 20
-  maxFireAngle: 7
-  accuracy: 0.3
-  cooldown: 5
-  damage: 70
-  fear: 0.5
-  maxEvadeDistance: 35
-  boundaryRadius: 50
+  boidInfoPanel: {fileID: 0}
+  pilot: {fileID: 0}
+  ship: {fileID: 0}
   isEnemy: 0
-  state: 2
-  target: {fileID: 0}
-  cooldownTimer: 0
   maxHealth: 100
   currentHealth: 100
+--- !u!114 &7737780624602830404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4496961382795418398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1606e48d29fa90145b1cbf08518a7389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoveredBoid: {fileID: 11400000, guid: ef903d906be45da43ab92df7577837b7, type: 2}
+  HoveredMaterial: {fileID: 2100000, guid: 5f6d5c0b3fde4f74b83c6851ee5338c2, type: 2}
+  Boid: {fileID: 4496961382795418397}
