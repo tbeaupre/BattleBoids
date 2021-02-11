@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f5021843810ae84380411ee1e382fd5, type: 3}
+  m_Name: Veterans
+  m_EditorClassIdentifier: 
+  teamName: Residents of Greenwoods Retirement Village
+  teamDescription: These nursing home residents may not seem like much of a threat,
+    but they're all veterans of foreign wars and some of the most skilled military
+    men in the entire retirement village.
+  pilots:
+  - {fileID: 11400000, guid: 36de0c5792597da49b00002712109a93, type: 2}
+  - {fileID: 11400000, guid: 6d848085a21f7f4429550e52beaa8bd6, type: 2}
+  - {fileID: 11400000, guid: 6d848085a21f7f4429550e52beaa8bd6, type: 2}
+  - {fileID: 11400000, guid: 6d848085a21f7f4429550e52beaa8bd6, type: 2}
+  - {fileID: 11400000, guid: 6d848085a21f7f4429550e52beaa8bd6, type: 2}
+  ships:
+  - {fileID: 11400000, guid: 183ef1d258fc75044af4b13189011e65, type: 2}
+  - {fileID: 11400000, guid: 07545f2f115dcc54a9c10923b0dc238f, type: 2}
+  - {fileID: 11400000, guid: 07545f2f115dcc54a9c10923b0dc238f, type: 2}
+  - {fileID: 11400000, guid: 07545f2f115dcc54a9c10923b0dc238f, type: 2}
+  - {fileID: 11400000, guid: 07545f2f115dcc54a9c10923b0dc238f, type: 2}
+  pilotReward: {fileID: 11400000, guid: 36de0c5792597da49b00002712109a93, type: 2}
+  shipReward: {fileID: 11400000, guid: 183ef1d258fc75044af4b13189011e65, type: 2}
+  spawnPoints: {fileID: 11400000, guid: 2834aa8a18e98534889262aea75302ce, type: 2}

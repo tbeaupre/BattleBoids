@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cb2498fef6e4a745aa736e955e7ab76, type: 3}
+  m_Name: VeteranShip
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 4496961382795418398, guid: e14b0383b24210a4bb028ffc28e0f730, type: 3}
+  shipName: 
+  portrait: {fileID: 0}
+  sensors: 0.6
+  acceleration: 0.8
+  topSpeed: 0.8
+  armor: 0.8
+  range: 0.6
+  damage: 0.9
