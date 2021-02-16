@@ -9,6 +9,8 @@ public class BattleManager : MonoBehaviour
 {
 	public static BattleManager Instance { get; private set; }
 
+	public ShipSet Ships;
+
 	public List<Boid> Boids { get; private set; }
 	public Text winText;
 	public GameObject winPanel;
@@ -73,11 +75,11 @@ public class BattleManager : MonoBehaviour
 			PilotShipSelectionData match = MasterManager.Instance.Selection[i];
 			allies[i].Initialize(
 				MasterManager.Instance.Pilots[match.pilotIndex],
-				MasterManager.Instance.Ships[match.shipIndex]
+				Ships.Value[match.shipIndex]
 			);
 
 			string pilotJson = JsonUtility.ToJson(MasterManager.Instance.Pilots[match.pilotIndex]);
-			string shipJson = JsonUtility.ToJson(MasterManager.Instance.Ships[match.shipIndex]);
+			string shipJson = JsonUtility.ToJson(Ships.Value[match.shipIndex]);
 			Debug.Log("Pilot:\n" + pilotJson + "\nShip:\n" + shipJson);
 		}
 

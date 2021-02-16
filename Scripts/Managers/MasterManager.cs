@@ -7,8 +7,9 @@ public class MasterManager : MonoBehaviour
 {
 	public static MasterManager Instance { get; private set; }
 
+	public ShipSet Ships;
+
 	public int Level { get; private set; }
-	public List<ShipScriptableObject> Ships { get; private set; }
 	public List<PilotScriptableObject> Pilots { get; private set; }
 	List<int> shipSelection = new List<int>();
 	public PilotShipSelectionData[] Selection { get; private set; }
@@ -51,9 +52,9 @@ public class MasterManager : MonoBehaviour
 			Level = data.level;
 			PickEnemy();
 
-			Ships = new List<ShipScriptableObject>();
+			Ships.Value = new List<ShipScriptableObject>();
 			foreach(string shipKey in data.ships) {
-				Ships.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
+				Ships.Value.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
 			}
 			Pilots = new List<PilotScriptableObject>();
 			foreach(string pilotKey in data.pilots) {
@@ -105,9 +106,9 @@ public class MasterManager : MonoBehaviour
 		TeamData data = GetFreshTeamData();
 		SaveSystem.SaveTeam(data);
 		Level = data.level;
-		Ships = new List<ShipScriptableObject>();
+		Ships.Value = new List<ShipScriptableObject>();
 		foreach(string shipKey in data.ships) {
-			Ships.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
+			Ships.Value.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
 		}
 		Pilots = new List<PilotScriptableObject>();
 		foreach(string pilotKey in data.pilots) {
@@ -119,7 +120,7 @@ public class MasterManager : MonoBehaviour
 	{
 		Debug.Log(JsonUtility.ToJson(EnemyTeam.shipReward));
 		Pilots.Add(EnemyTeam.pilotReward);
-		Ships.Add(EnemyTeam.shipReward);
+		Ships.Value.Add(EnemyTeam.shipReward);
 		Level++;
 		PickEnemy();
 		// SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));

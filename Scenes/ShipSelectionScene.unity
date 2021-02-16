@@ -286,6 +286,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2be0a5fef65838c4191ea7b77f68cfe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   shipPanelPrefab: {fileID: 4428594792490629972, guid: 756aba77a9e84cd43bdf738c64e559ae,
     type: 3}
 --- !u!1 &397070022

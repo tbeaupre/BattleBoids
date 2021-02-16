@@ -1521,6 +1521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6b6fbb348136654986d10ff34d6bcca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   winText: {fileID: 1649436146}
   winPanel: {fileID: 706469591}
 --- !u!4 &1619183863

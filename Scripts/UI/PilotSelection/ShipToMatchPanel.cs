@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ShipToMatchPanel : MonoBehaviour
 {
+	public ShipSet Ships;
+
 	public ShipScriptableObject ship;
 	public Image shipPortrait;
 	int index;
@@ -35,6 +37,6 @@ public class ShipToMatchPanel : MonoBehaviour
 	public void HandleSelectionChanged(int index)
 	{
 		int newShipIndex = MasterManager.Instance.Selection[index].shipIndex;
-		SetShip(MasterManager.Instance.Ships[newShipIndex], newShipIndex);
+		SetShip(Ships.Value[newShipIndex], newShipIndex);
 	}
 }

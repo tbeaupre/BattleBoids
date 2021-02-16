@@ -3243,6 +3243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948aa6ecc65ee864b98117a1d09300b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   index: 2
   shipPortrait: {fileID: 875694652}
   pilotPortrait: {fileID: 843011837}
@@ -4006,6 +4007,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948aa6ecc65ee864b98117a1d09300b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   index: 3
   shipPortrait: {fileID: 395279172}
   pilotPortrait: {fileID: 1430508087}
@@ -9255,6 +9257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948aa6ecc65ee864b98117a1d09300b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   index: 0
   shipPortrait: {fileID: 485365969}
   pilotPortrait: {fileID: 505656458}
@@ -9856,6 +9859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948aa6ecc65ee864b98117a1d09300b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   index: 4
   shipPortrait: {fileID: 228191322}
   pilotPortrait: {fileID: 1317628042}
@@ -10541,6 +10545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948aa6ecc65ee864b98117a1d09300b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   index: 1
   shipPortrait: {fileID: 1831599270}
   pilotPortrait: {fileID: 633977185}
@@ -11560,5 +11565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 642b36ca19fe1074f9a90ccfd5869b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   ship: {fileID: 0}
   shipPortrait: {fileID: 1453577297}

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MatchPanel : MonoBehaviour
 {
+	public ShipSet Ships;
+
 	public int index;
 	public Image shipPortrait;
 	public Image pilotPortrait;
@@ -16,7 +18,7 @@ public class MatchPanel : MonoBehaviour
 		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
 		PilotSelectionManager.Instance.PilotSelectionChanged += HandlePilotSelectionChanged;
 
-		shipPortrait.sprite = MasterManager.Instance.Ships[MasterManager.Instance.Selection[index].shipIndex].portrait;
+		shipPortrait.sprite = Ships.Value[MasterManager.Instance.Selection[index].shipIndex].portrait;
 		if (MasterManager.Instance.Selection[index].pilotIndex > -1) {
 			pilotPortrait.sprite = MasterManager.Instance.Pilots[MasterManager.Instance.Selection[index].pilotIndex].portrait;
 		}

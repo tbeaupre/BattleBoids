@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class ShipContent : MonoBehaviour
 {
+	public ShipSet Ships;
 	public GameObject shipPanelPrefab;
 
     // Start is called before the first frame update
     void Start()
 	{
-		for (int i = 0; i < MasterManager.Instance.Ships.Count; i++) {
+		for (int i = 0; i < Ships.Value.Count; i++) {
 			GameObject panelObject = Instantiate(shipPanelPrefab, transform);
 			ShipPanel panel = panelObject.GetComponent<ShipPanel>();
-			panel.SetShip(MasterManager.Instance.Ships[i], i);
+			panel.SetShip(Ships.Value[i], i);
 		}
     }
 }
