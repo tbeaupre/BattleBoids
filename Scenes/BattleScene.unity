@@ -421,6 +421,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 489194410}
     m_Modifications:
+    - target: {fileID: 283174357056510318, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6b2858991e39f84fa1756349233f3dd,
+        type: 3}
     - target: {fileID: 2415872486720020677, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -627,6 +633,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 489194410}
     m_Modifications:
+    - target: {fileID: 283174357056510318, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6b2858991e39f84fa1756349233f3dd,
+        type: 3}
     - target: {fileID: 2415872486720020677, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1625,6 +1637,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 489194410}
     m_Modifications:
+    - target: {fileID: 283174357056510318, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6b2858991e39f84fa1756349233f3dd,
+        type: 3}
     - target: {fileID: 2415872486720020677, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1930,6 +1948,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 489194410}
     m_Modifications:
+    - target: {fileID: 283174357056510318, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6b2858991e39f84fa1756349233f3dd,
+        type: 3}
     - target: {fileID: 2415872486720020677, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2070,6 +2094,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 489194410}
     m_Modifications:
+    - target: {fileID: 283174357056510318, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a6b2858991e39f84fa1756349233f3dd,
+        type: 3}
     - target: {fileID: 2415872486720020677, guid: 688d8d85f1e077c45ba422b0f98c6c6b,
         type: 3}
       propertyPath: m_LocalPosition.x
