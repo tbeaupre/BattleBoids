@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PilotInfoPanel : MonoBehaviour
 {
+	public PilotSet Pilots;
+
 	public PilotScriptableObject pilot;
 	public Image pilotPortrait;
 	public GameObject noPilotPanel;
@@ -66,7 +68,7 @@ public class PilotInfoPanel : MonoBehaviour
 		if (newPilotIndex == -1) {
 			NoPilot();
 		} else {
-			SetPilot(MasterManager.Instance.Pilots[newPilotIndex], newPilotIndex);
+			SetPilot(Pilots.Value[newPilotIndex], newPilotIndex);
 		}
 	}
 

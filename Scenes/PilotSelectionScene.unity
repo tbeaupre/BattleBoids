@@ -3052,6 +3052,12 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8326822213622441477, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: Pilots
+      value: 
+      objectReference: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52,
+        type: 2}
     - target: {fileID: 8529104962231663527, guid: d60f2446c4fa325458f81042cb657f25,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3244,6 +3250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   index: 2
   shipPortrait: {fileID: 875694652}
   pilotPortrait: {fileID: 843011837}
@@ -4008,6 +4015,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   index: 3
   shipPortrait: {fileID: 395279172}
   pilotPortrait: {fileID: 1430508087}
@@ -7629,6 +7637,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 602f3b44c408c6e448dd35875857e4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   pilotScrollPreviewPrefab: {fileID: 3834815737313922292, guid: 5cbaa1d643491ff4fb417e1bc4b20628,
     type: 3}
 --- !u!114 &1400565670
@@ -9258,6 +9267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   index: 0
   shipPortrait: {fileID: 485365969}
   pilotPortrait: {fileID: 505656458}
@@ -9860,6 +9870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   index: 4
   shipPortrait: {fileID: 228191322}
   pilotPortrait: {fileID: 1317628042}
@@ -10546,6 +10557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   index: 1
   shipPortrait: {fileID: 1831599270}
   pilotPortrait: {fileID: 633977185}

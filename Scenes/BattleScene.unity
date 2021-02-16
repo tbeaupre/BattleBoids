@@ -1522,6 +1522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
+  Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   winText: {fileID: 1649436146}
   winPanel: {fileID: 706469591}
 --- !u!4 &1619183863

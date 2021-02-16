@@ -8,9 +8,9 @@ public class MasterManager : MonoBehaviour
 	public static MasterManager Instance { get; private set; }
 
 	public ShipSet Ships;
+	public PilotSet Pilots;
 
 	public int Level { get; private set; }
-	public List<PilotScriptableObject> Pilots { get; private set; }
 	List<int> shipSelection = new List<int>();
 	public PilotShipSelectionData[] Selection { get; private set; }
 	public EnemyTeamScriptableObject EnemyTeam { get; private set; }
@@ -56,9 +56,9 @@ public class MasterManager : MonoBehaviour
 			foreach(string shipKey in data.ships) {
 				Ships.Value.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
 			}
-			Pilots = new List<PilotScriptableObject>();
+			Pilots.Value = new List<PilotScriptableObject>();
 			foreach(string pilotKey in data.pilots) {
-				Pilots.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
+				Pilots.Value.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
 			}
 			// TEST_SetReasonableDefault();
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
@@ -110,16 +110,16 @@ public class MasterManager : MonoBehaviour
 		foreach(string shipKey in data.ships) {
 			Ships.Value.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
 		}
-		Pilots = new List<PilotScriptableObject>();
+		Pilots.Value = new List<PilotScriptableObject>();
 		foreach(string pilotKey in data.pilots) {
-			Pilots.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
+			Pilots.Value.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
 		}
 	}
 
 	public void CompleteLevel()
 	{
 		Debug.Log(JsonUtility.ToJson(EnemyTeam.shipReward));
-		Pilots.Add(EnemyTeam.pilotReward);
+		Pilots.Value.Add(EnemyTeam.pilotReward);
 		Ships.Value.Add(EnemyTeam.shipReward);
 		Level++;
 		PickEnemy();

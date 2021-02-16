@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PilotContent : MonoBehaviour
 {
+	public PilotSet Pilots;
 	public GameObject pilotScrollPreviewPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-		for (int i = 0; i < MasterManager.Instance.Pilots.Count; i++) {
+		for (int i = 0; i < Pilots.Value.Count; i++) {
 			GameObject scrollPreviewObject = Instantiate(pilotScrollPreviewPrefab, transform);
 			PilotScrollPreview pilotScrollPreview = scrollPreviewObject.GetComponent<PilotScrollPreview>();
-			pilotScrollPreview.SetPilot(MasterManager.Instance.Pilots[i], i);
+			pilotScrollPreview.SetPilot(Pilots.Value[i], i);
 		}
     }
 }

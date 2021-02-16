@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MatchPanel : MonoBehaviour
 {
 	public ShipSet Ships;
+	public PilotSet Pilots;
 
 	public int index;
 	public Image shipPortrait;
@@ -20,7 +21,7 @@ public class MatchPanel : MonoBehaviour
 
 		shipPortrait.sprite = Ships.Value[MasterManager.Instance.Selection[index].shipIndex].portrait;
 		if (MasterManager.Instance.Selection[index].pilotIndex > -1) {
-			pilotPortrait.sprite = MasterManager.Instance.Pilots[MasterManager.Instance.Selection[index].pilotIndex].portrait;
+			pilotPortrait.sprite = Pilots.Value[MasterManager.Instance.Selection[index].pilotIndex].portrait;
 		}
 
 		image = GetComponent<Image>();
@@ -51,7 +52,7 @@ public class MatchPanel : MonoBehaviour
 		if (selectionIndex == index) {
 			hasPilot = toPilotIndex != -1;
 			if (hasPilot) {
-				pilotPortrait.sprite = MasterManager.Instance.Pilots[toPilotIndex].portrait;
+				pilotPortrait.sprite = Pilots.Value[toPilotIndex].portrait;
 				hasPilot = true;
 			} else {
 				pilotPortrait.sprite = null;
