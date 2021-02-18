@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour
 {
+	public SelectedBoidScriptableObject TargetBoid;
+
 	private Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
 	public BoidInfoPanel boidInfoPanel;
@@ -43,10 +45,11 @@ public class Boid : MonoBehaviour
 	// Boundaries
 	private float boundaryRadius = 50.0f;
 
-	// Internal
 	public bool isEnemy = false;
-	private BoidState state = BoidState.Flock;
-	private Boid target;
+	public BoidState state = BoidState.Flock;
+	public Boid target;
+
+	// Internal
 	private int cooldownTimer = 0;
 	public float maxHealth = 100;
 	public float currentHealth = 100;
@@ -121,7 +124,16 @@ public class Boid : MonoBehaviour
 
 						float angleValue = ((targetAcqMaxAngle - Vector3.Angle(velocity, displacement)) / targetAcqMaxAngle) * targetAcqAngleMod;
 						float distValue = (displacement.magnitude / targetAcqRadius) * (1 - targetAcqAngleMod);
-						float fitnessValue = angleValue + distValue;
+
+						float targetValue = 0.0f;
+						if (!isEnemy && TargetBoid.Boid != this) {
+							bool isChasingTarget = boid.state == BoidState.Chase && boid.target == TargetBoid.Boid;
+							if (boid == TargetBoid.Boid || isChasingTarget) {
+								targetValue += 0.3f;
+							}
+						}
+
+						float fitnessValue = angleValue + distValue + targetValue;
 
 						if (fitnessValue > fittestValue) {
 							fittestTarget = boid;

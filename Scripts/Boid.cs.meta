@@ -3,7 +3,12 @@ guid: 4a0250402f5a2464fb5125cd9f85bf8e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - TargetBoid: {fileID: 11400000, guid: 4cf7ff0501eba8246be5b36cdea5a456, type: 2}
+  - laserPrefab: {instanceID: 0}
+  - boidInfoPanel: {instanceID: 0}
+  - pilot: {instanceID: 0}
+  - ship: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
