@@ -45,6 +45,13 @@ public class Boid : MonoBehaviour
 	// Boundaries
 	private float boundaryRadius = 50.0f;
 
+	// Burst
+	private int burstTimer = 0;
+	private int burstDuration = 30;
+	private int burstCooldown = 240;
+	private int burstCooldownTimer = 0;
+	private Vector3 burstVector;
+
 	public bool isEnemy = false;
 	public BoidState state = BoidState.Flock;
 	public Boid target;
@@ -62,13 +69,26 @@ public class Boid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		cooldownTimer--;
+		UpdateTimers();
 		UpdateState();
 		UpdateVelocity();
 		LimitVelocity();
 		transform.forward = velocity;
-		transform.position += velocity;
+
+		if (burstTimer > 0) {
+			transform.position += burstVector / (1 + burstDuration - burstTimer);
+			transform.position += velocity / burstTimer;
+		} else {
+			transform.position += velocity;
+		}
     }
+
+	void UpdateTimers()
+	{
+		cooldownTimer--;
+		burstTimer--;
+		burstCooldownTimer--;
+	}
 
 	public void Initialize(PilotScriptableObject pilot, ShipScriptableObject ship)
 	{
@@ -223,9 +243,21 @@ public class Boid : MonoBehaviour
 			color,
 			1f / 90f
 		);
-			
-		// Debug.Log("Velocity: " + velocity + ";  DeltaVelocity: " + deltaVelocity + "; Clamped: " + Vector3.ClampMagnitude(deltaVelocity, accelerationMax));
-		deltaVelocity += (1 - Mathf.Abs(Vector3.Dot(velocity.normalized, deltaVelocity.normalized))) * -velocity;
+		
+		float normalizedDot = Vector3.Dot(velocity.normalized, deltaVelocity.normalized); // 1 if same dir, -1 if opposite dirs, and 0 if perpendicular.
+		float perpendicularRatio = (1 - Mathf.Abs(normalizedDot)); // 0 if forward or back, 1 if perpendicular.
+
+		// // Burst Logic
+		// if (perpendicularRatio > 0.6 && burstCooldownTimer < 0)
+		// {
+		// 	Debug.Log("Bursting");
+		// 	burstVector = Vector3.ClampMagnitude(deltaVelocity, velocityMax * 1.5f);
+		// 	burstCooldownTimer = burstCooldown;
+		// 	burstTimer = burstDuration;
+		// 	velocity = Vector3.zero;
+		// }
+
+		deltaVelocity += perpendicularRatio * -velocity; // If the boid wants to move in a perpendicular direction, it has to slow down first.
 		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
 	}
 
