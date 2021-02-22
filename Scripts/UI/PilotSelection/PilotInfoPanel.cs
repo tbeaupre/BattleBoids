@@ -9,6 +9,7 @@ public class PilotInfoPanel : MonoBehaviour
 	public PilotSetSO Pilots;
 	public IntVariableSO MatchSelectionIndex;
 	public PilotVariableSO PilotPreview;
+	public PilotSelectionManagerSO PilotSelectionManager;
 
 	public PilotSO pilot;
 	public Image pilotPortrait;
@@ -23,7 +24,7 @@ public class PilotInfoPanel : MonoBehaviour
 		buttonText = GetComponentInChildren<Button>().gameObject.GetComponentInChildren<Text>();
 		attributes = GetComponentsInChildren<Attribute>();
 
-		NoPilot();
+		HandlePilotPreviewChanged();
 	}
 
 	public void SetPilot(PilotSO newPilot)
@@ -77,6 +78,6 @@ public class PilotInfoPanel : MonoBehaviour
 
 	public void ConfirmSelection()
 	{
-		PilotSelectionManager.Instance.ConfirmPilotSelection();
+		PilotSelectionManager.ConfirmPilotSelection();
 	}
 }

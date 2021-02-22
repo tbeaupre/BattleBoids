@@ -2365,6 +2365,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721040c9a6e90b349ac16c39ce146c84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Selection: {fileID: 0}
+  Pilots: {fileID: 0}
+  MatchSelectionIndex: {fileID: 0}
+  PilotPreview: {fileID: 0}
+  PilotSelectionManager: {fileID: 0}
   pilot: {fileID: 0}
   pilotPortrait: {fileID: 524063615968022284}
   noPilotPanel: {fileID: 1719057320309701645}
@@ -4041,8 +4046,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8326822213622441477}
-        m_MethodName: ConfirmSelection
+      - m_Target: {fileID: 11400000, guid: 81119806dfa397442ac545a09df74a7f, type: 2}
+        m_MethodName: ConfirmPilotSelection
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -122,11 +122,12 @@ MonoBehaviour:
   Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   MatchSelectionIndex: {fileID: 11400000, guid: 6def1593df098c24297f2fcec8066104,
     type: 2}
+  PilotPreview: {fileID: 11400000, guid: 34757f81b5cfd0942bb409eedc6929b8, type: 2}
   MatchSelectionChanged: {fileID: 11400000, guid: 8cbdceaddf19f184a9ee5fc1261ab6ee,
     type: 2}
-  index: 0
   shipPortrait: {fileID: 70667218112341399}
   pilotPortrait: {fileID: 70667218132945356}
+  index: 0
 --- !u!114 &70667216902302645
 MonoBehaviour:
   m_ObjectHideFlags: 0

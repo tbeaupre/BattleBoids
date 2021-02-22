@@ -9,14 +9,16 @@ public class MatchPanel : MonoBehaviour
 	public ShipSetSO Ships;
 	public PilotSetSO Pilots;
 	public IntVariableSO MatchSelectionIndex;
+	public PilotVariableSO PilotPreview;
 
 	public GameEventSO MatchSelectionChanged;
 
-	public int index;
 	public Image shipPortrait;
 	public Image pilotPortrait;
-	Image image;
-	bool hasPilot = false;
+	public int index;
+
+	private Image image;
+	private bool hasPilot = false;
 
 	void Start()
 	{
@@ -39,6 +41,7 @@ public class MatchPanel : MonoBehaviour
 	public void SelectMatch()
 	{
 		MatchSelectionIndex.Value = index;
+		PilotPreview.Value = Selection.Value[index].Pilot;
 		MatchSelectionChanged.Raise();
 	}
 

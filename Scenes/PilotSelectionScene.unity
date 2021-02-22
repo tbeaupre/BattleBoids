@@ -2954,6 +2954,42 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 81119806dfa397442ac545a09df74a7f,
+        type: 2}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ConfirmPilotSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8135284709890664595, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ConfirmPilotSelection
+      objectReference: {fileID: 0}
     - target: {fileID: 8206430819077976530, guid: d60f2446c4fa325458f81042cb657f25,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -3002,6 +3038,12 @@ PrefabInstance:
       propertyPath: Selection
       value: 
       objectReference: {fileID: 11400000, guid: cebbc69ab3ee3304ba53a39f1247b534,
+        type: 2}
+    - target: {fileID: 8326822213622441477, guid: d60f2446c4fa325458f81042cb657f25,
+        type: 3}
+      propertyPath: PilotSelectionManager
+      value: 
+      objectReference: {fileID: 11400000, guid: 81119806dfa397442ac545a09df74a7f,
         type: 2}
     - target: {fileID: 8529104962231663527, guid: d60f2446c4fa325458f81042cb657f25,
         type: 3}
@@ -8156,57 +8198,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599266867}
   m_CullTransparentMesh: 0
---- !u!1 &1600753677
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1600753679}
-  - component: {fileID: 1600753678}
-  m_Layer: 0
-  m_Name: PilotSelectionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1600753678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600753677}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0067366c6a7961d45a107da2b1538814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Selection: {fileID: 11400000, guid: cebbc69ab3ee3304ba53a39f1247b534, type: 2}
-  MatchSelectionIndex: {fileID: 11400000, guid: 6def1593df098c24297f2fcec8066104,
-    type: 2}
-  PilotPreview: {fileID: 11400000, guid: 34757f81b5cfd0942bb409eedc6929b8, type: 2}
-  MatchSelectionChanged: {fileID: 11400000, guid: 8cbdceaddf19f184a9ee5fc1261ab6ee,
-    type: 2}
-  PilotSelectionChanged: {fileID: 11400000, guid: 0009b9e463e74c347ae771720e7c7ff4,
-    type: 2}
---- !u!4 &1600753679
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1600753677}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 478.2289, y: 698.265, z: -2.1300392}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1643046183
 GameObject:
   m_ObjectHideFlags: 0
