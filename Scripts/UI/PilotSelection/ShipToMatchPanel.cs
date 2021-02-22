@@ -6,18 +6,18 @@ using UnityEngine.UI;
 public class ShipToMatchPanel : MonoBehaviour
 {
 	public ShipSet Ships;
+	public IntVariableSO MatchSelectionIndex;
+	public SelectionScriptableObject Selection;
 
 	public ShipScriptableObject ship;
 	public Image shipPortrait;
-	int index;
 
 	void Start()
 	{
-		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
-		HandleSelectionChanged(0);
+		HandleMatchSelectionChanged();
 	}
 
-	public void SetShip(ShipScriptableObject newShip, int index)
+	public void SetShip(ShipScriptableObject newShip)
 	{
 		ship = newShip;
 
@@ -30,13 +30,10 @@ public class ShipToMatchPanel : MonoBehaviour
 		attributes[5].SetValue(ship.damage);
 
 		shipPortrait.sprite = ship.portrait;
-
-		this.index = index;
 	}
 
-	public void HandleSelectionChanged(int index)
+	public void HandleMatchSelectionChanged()
 	{
-		int newShipIndex = MasterManager.Instance.Selection[index].shipIndex;
-		SetShip(Ships.Value[newShipIndex], newShipIndex);
+		SetShip(Selection.Value[MatchSelectionIndex.Value].Ship);
 	}
 }

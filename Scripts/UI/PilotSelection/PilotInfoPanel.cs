@@ -5,48 +5,53 @@ using UnityEngine.UI;
 
 public class PilotInfoPanel : MonoBehaviour
 {
+	public SelectionScriptableObject Selection;
 	public PilotSet Pilots;
+	public IntVariableSO MatchSelectionIndex;
+	public PilotVariableSO PilotPreview;
 
 	public PilotScriptableObject pilot;
 	public Image pilotPortrait;
 	public GameObject noPilotPanel;
 	public Text pilotName;
-	int index;
 
 	Text buttonText;
 	Attribute[] attributes;
 
 	void Start()
 	{
-		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
-
 		buttonText = GetComponentInChildren<Button>().gameObject.GetComponentInChildren<Text>();
 		attributes = GetComponentsInChildren<Attribute>();
 
 		NoPilot();
 	}
 
-	public void SetPilot(PilotScriptableObject newPilot, int index)
+	public void SetPilot(PilotScriptableObject newPilot)
 	{
 		pilot = newPilot;
 
-		attributes[0].SetValue(pilot.sociability);
-		attributes[1].SetValue(pilot.ego);
-		attributes[2].SetValue(pilot.persistence);
-		attributes[3].SetValue(pilot.vision);
-		attributes[4].SetValue(pilot.skill);
+		if (pilot == null) {
+			NoPilot();
+		} else {
+			attributes[0].SetValue(pilot.sociability);
+			attributes[1].SetValue(pilot.ego);
+			attributes[2].SetValue(pilot.persistence);
+			attributes[3].SetValue(pilot.vision);
+			attributes[4].SetValue(pilot.skill);
 
-		pilotPortrait.sprite = pilot.portrait;
+			pilotPortrait.sprite = pilot.portrait;
 
-		pilotName.text = pilot.pilotName;
+			pilotName.text = pilot.pilotName;
 
-		this.index = index;
-		noPilotPanel.SetActive(false);
+			noPilotPanel.SetActive(false);
+		}
 	}
 
 	public void NoPilot()
 	{
 		noPilotPanel.SetActive(true);
+
+		pilot = null;
 
 		attributes[0].SetValue(0);
 		attributes[1].SetValue(0);
@@ -57,23 +62,21 @@ public class PilotInfoPanel : MonoBehaviour
 		pilotPortrait.sprite = null;
 
 		pilotName.text = "";
-
-		this.index = -1;
 	}
 
-	public void HandleSelectionChanged(int index)
+	public void HandleMatchSelectionChanged()
 	{
-		int newPilotIndex = MasterManager.Instance.Selection[index].pilotIndex;
+		PilotScriptableObject newPilot = Selection.Value[MatchSelectionIndex.Value].Pilot;
+		SetPilot(newPilot);
+	}
 
-		if (newPilotIndex == -1) {
-			NoPilot();
-		} else {
-			SetPilot(Pilots.Value[newPilotIndex], newPilotIndex);
-		}
+	public void HandlePilotPreviewChanged()
+	{
+		SetPilot(PilotPreview.Value);
 	}
 
 	public void ConfirmSelection()
 	{
-		PilotSelectionManager.Instance.ConfirmPilotSelection(index);
+		PilotSelectionManager.Instance.ConfirmPilotSelection();
 	}
 }

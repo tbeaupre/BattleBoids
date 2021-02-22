@@ -9,10 +9,10 @@ public class MasterManager : MonoBehaviour
 
 	public ShipSet Ships;
 	public PilotSet Pilots;
+	public SelectionScriptableObject Selection;
 
 	public int Level { get; private set; }
 	List<int> shipSelection = new List<int>();
-	public PilotShipSelectionData[] Selection { get; private set; }
 	public EnemyTeamScriptableObject EnemyTeam { get; private set; }
 
 	// Events
@@ -93,14 +93,6 @@ public class MasterManager : MonoBehaviour
 		return new TeamData(1, pilots, ships);
 	}
 
-	void TEST_SetReasonableDefault()
-	{
-		Selection = new PilotShipSelectionData[5];
-		for (int i = 0; i < 5; i++) {
-			Selection[i] = new PilotShipSelectionData(i, i);
-		}
-	}
-
 	public void ResetGame()
 	{
 		TeamData data = GetFreshTeamData();
@@ -145,9 +137,9 @@ public class MasterManager : MonoBehaviour
 
 	public void ConfirmShipSelection()
 	{
-		Selection = new PilotShipSelectionData[5];
+		Selection.Value = new PilotShipPair[5];
 		for (int i = 0; i < 5; i++) {
-			Selection[i] = new PilotShipSelectionData(-1, shipSelection[i]);
+			Selection.Value[i] = new PilotShipPair(null, Ships.Value[shipSelection[i]]);
 		}
 	}
 }

@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class PilotScrollPreview : MonoBehaviour
 {
+	public SelectionScriptableObject Selection;
+	public IntVariableSO MatchSelectionIndex;
+	public PilotVariableSO PilotPreview;
+	public GameEvent PilotPreviewChanged;
+
 	public Image pilotPortrait;
 
 	PilotScriptableObject pilot;
@@ -12,16 +17,10 @@ public class PilotScrollPreview : MonoBehaviour
 	Image image;
 	Color defaultColor;
 
-	public PilotInfoPanel pilotInfoPanel;
 	public GameObject pilotSelectedPanel;
 
 	void Start()
 	{
-		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
-		PilotSelectionManager.Instance.PilotPreviewChanged += HandlePilotPreviewChanged;
-		PilotSelectionManager.Instance.PilotSelectionChanged += HandlePilotSelectionChanged;
-
-		pilotInfoPanel = GameObject.Find("PilotInfoPanel").GetComponent<PilotInfoPanel>();
 		pilotSelectedPanel.SetActive(false);
 
 		image = GetComponent<Image>();
@@ -42,35 +41,36 @@ public class PilotScrollPreview : MonoBehaviour
 
 	public void SelectPreview()
 	{
-		pilotInfoPanel.SetPilot(pilot, index);
-		PilotSelectionManager.Instance.ChangePilotPreview(index);
+		PilotPreview.Value = pilot;
+		PilotPreviewChanged.Raise();
 	}
 
-	public void HandleSelectionChanged(int selectionIndex)
+	public void HandleMatchSelectionChanged()
 	{
-		if (MasterManager.Instance.Selection[selectionIndex].pilotIndex == index) {
+		if (Selection.Value[MatchSelectionIndex.Value].Pilot == pilot) {
 			image.color = Color.yellow;
 		} else {
 			image.color = defaultColor;
 		}
 	}
 
-	public void HandlePilotPreviewChanged(int pilotIndex)
+	public void HandlePilotPreviewChanged()
 	{
-		if (pilotIndex == index) {
+		if (PilotPreview.Value == pilot) {
 			image.color = Color.yellow;
 		} else {
 			image.color = defaultColor;
 		}
 	}
 
-	public void HandlePilotSelectionChanged(int selectionIndex, int fromPilotIndex, int toPilotIndex)
+	public void HandlePilotSelectionChanged()
 	{
-		if (fromPilotIndex == index) {
-			pilotSelectedPanel.SetActive(false);
+		bool isSelected = false;
+		foreach (PilotShipPair match in Selection.Value) {
+			if (match.Pilot == pilot) {
+				isSelected = true;
+			}
 		}
-		if (toPilotIndex == index) {
-			pilotSelectedPanel.SetActive(true);
-		}
+		pilotSelectedPanel.SetActive(isSelected);
 	}
 }

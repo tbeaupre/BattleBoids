@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class MatchPanel : MonoBehaviour
 {
+	public SelectionScriptableObject Selection;
 	public ShipSet Ships;
 	public PilotSet Pilots;
+	public IntVariableSO MatchSelectionIndex;
+
+	public GameEvent MatchSelectionChanged;
 
 	public int index;
 	public Image shipPortrait;
@@ -16,12 +20,11 @@ public class MatchPanel : MonoBehaviour
 
 	void Start()
 	{
-		PilotSelectionManager.Instance.SelectionChanged += HandleSelectionChanged;
-		PilotSelectionManager.Instance.PilotSelectionChanged += HandlePilotSelectionChanged;
+		shipPortrait.sprite = Selection.Value[index].Ship.portrait;
 
-		shipPortrait.sprite = Ships.Value[MasterManager.Instance.Selection[index].shipIndex].portrait;
-		if (MasterManager.Instance.Selection[index].pilotIndex > -1) {
-			pilotPortrait.sprite = Pilots.Value[MasterManager.Instance.Selection[index].pilotIndex].portrait;
+		hasPilot = Selection.Value[index].Pilot != null;
+		if (hasPilot) {
+			pilotPortrait.sprite = Selection.Value[index].Pilot.portrait;
 		}
 
 		image = GetComponent<Image>();
@@ -29,35 +32,32 @@ public class MatchPanel : MonoBehaviour
 		if (index == 0) {
 			image.color = Color.yellow;
 		} else {
-			image.color = Color.red;
+			image.color = hasPilot ? Color.green : Color.red;
 		}
 	}
 
 	public void SelectMatch()
 	{
-		PilotSelectionManager.Instance.SelectMatch(index);
+		MatchSelectionIndex.Value = index;
+		MatchSelectionChanged.Raise();
 	}
 
-	public void HandleSelectionChanged(int index)
+	public void HandleMatchSelectionChanged()
 	{
-		if (index == this.index) {
+		if (MatchSelectionIndex.Value == this.index) {
 			image.color = Color.yellow;
 		} else {
 			image.color = hasPilot ? Color.green : Color.red;
 		}
 	}
 
-	public void HandlePilotSelectionChanged(int selectionIndex, int fromPilotIndex, int toPilotIndex)
+	public void HandlePilotSelectionChanged()
 	{
-		if (selectionIndex == index) {
-			hasPilot = toPilotIndex != -1;
-			if (hasPilot) {
-				pilotPortrait.sprite = Pilots.Value[toPilotIndex].portrait;
-				hasPilot = true;
-			} else {
-				pilotPortrait.sprite = null;
-				hasPilot = false;
-			}
+		hasPilot = Selection.Value[index].Pilot != null;
+		if (hasPilot) {
+			pilotPortrait.sprite = Selection.Value[index].Pilot.portrait;
+		} else {
+			pilotPortrait.sprite = null;
 		}
 	}
 }
