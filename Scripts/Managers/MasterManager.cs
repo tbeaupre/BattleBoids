@@ -10,14 +10,10 @@ public class MasterManager : MonoBehaviour
 	public ShipSetSO Ships;
 	public PilotSetSO Pilots;
 	public SelectionSO Selection;
+	public ShipSetSO ShipSelection;
 
 	public int Level { get; private set; }
-	List<int> shipSelection = new List<int>();
 	public EnemyTeamSO EnemyTeam { get; private set; }
-
-	// Events
-	public delegate void ShipSelectionChangedDelegate(int count);
-	public event ShipSelectionChangedDelegate ShipSelectionChanged;
 
 	public List<string> startingShips = new List<string> { 
 		"BlueFalcon",
@@ -118,28 +114,11 @@ public class MasterManager : MonoBehaviour
 		// SaveSystem.SaveTeam(new TeamData(Level, Pilots.ToArray(), Ships.ToArray()));
 	}
 
-	public void SelectShip(int index)
-	{
-		shipSelection.Add(index);
-		ShipSelectionChanged(shipSelection.Count);
-	}
-
-	public void DeselectShip(int index)
-	{
-		shipSelection.Remove(index);
-		ShipSelectionChanged(shipSelection.Count);
-	}
-
-	public bool IsShipSelected(int index)
-	{
-		return shipSelection.Contains(index);
-	}
-
 	public void ConfirmShipSelection()
 	{
 		Selection.Value = new PilotShipPair[5];
 		for (int i = 0; i < 5; i++) {
-			Selection.Value[i] = new PilotShipPair(null, Ships.Value[shipSelection[i]]);
+			Selection.Value[i] = new PilotShipPair(null, ShipSelection.Value[i]);
 		}
 	}
 }

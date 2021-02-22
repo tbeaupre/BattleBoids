@@ -5,28 +5,18 @@ using UnityEngine.UI;
 
 public class ToPilotSelectionPanel : MonoBehaviour
 {
-	public Button toPilotSelectionButton;
+	public ShipSetSO ShipSelection;
+
+	private Button toPilotSelectionButton;
 
 	void Awake()
 	{
-		MasterManager.Instance.ShipSelectionChanged += ShipSelectionChangeHandler;
-		toPilotSelectionButton.gameObject.SetActive(false);
+		toPilotSelectionButton = GetComponentInChildren<Button>();
+		toPilotSelectionButton.gameObject.SetActive(ShipSelection.Value.Count == 5);
 	}
 
-	void OnDisable()
+	public void HandleShipSelectionChanged()
 	{
-		MasterManager.Instance.ShipSelectionChanged -= ShipSelectionChangeHandler;
-	}
-
-	public void ShipSelectionChangeHandler(int count)
-	{
-		if (toPilotSelectionButton == null) {
-			toPilotSelectionButton = GetComponentInChildren<Button>();
-		}
-		if (count == 5) {
-			toPilotSelectionButton.gameObject.SetActive(true);
-		} else {
-			toPilotSelectionButton.gameObject.SetActive(false);
-		}
+		toPilotSelectionButton.gameObject.SetActive(ShipSelection.Value.Count == 5);
 	}
 }

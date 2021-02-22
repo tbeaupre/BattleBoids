@@ -152,6 +152,7 @@ MonoBehaviour:
   Ships: {fileID: 11400000, guid: b4f5db1e3c4ad2f4983c656006e574a3, type: 2}
   Pilots: {fileID: 11400000, guid: d41202a779b56e64c996e6bf407ece52, type: 2}
   Selection: {fileID: 11400000, guid: cebbc69ab3ee3304ba53a39f1247b534, type: 2}
+  ShipSelection: {fileID: 11400000, guid: 10cb147471605164c899d46298014792, type: 2}
   startingShips:
   - BlueFalcon
   - FireStingray

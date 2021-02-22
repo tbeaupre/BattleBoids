@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class ShipPanel : MonoBehaviour
 {
-	public ShipSO ship;
-	// public ShipData ship;
-	int index;
+	public GameEventSO ShipSelectionChanged;
+
+	public ShipSetSO ShipSelection;
 
 	public Text buttonText;
 	public Image image;
-	bool isActive = false;
 
-	public void SetShip(ShipSO newShip, int index)
+	private ShipSO ship;
+	private bool isActive = false;
+
+	public void SetShip(ShipSO newShip)
 	{
 		ship = newShip;
 
@@ -25,11 +27,12 @@ public class ShipPanel : MonoBehaviour
 		attributes[4].SetValue(ship.range);
 		attributes[5].SetValue(ship.damage);
 
-		this.index = index;
-
-		if (MasterManager.Instance.IsShipSelected(index)) {
-			isActive = true;
+		// Check if the ship is selected or not.
+		isActive = ShipSelection.Value.Contains(ship);
+		if (isActive) {
 			buttonText.text = "Deselect";
+		} else {
+			buttonText.text = "Select";
 		}
 
 		Sprite sprite = ship.portrait;
@@ -44,10 +47,11 @@ public class ShipPanel : MonoBehaviour
 		isActive = !isActive;
 		if (isActive) {
 			buttonText.text = "Deselect";
-			MasterManager.Instance.SelectShip(index);
+			ShipSelection.Value.Add(ship);
 		} else {
 			buttonText.text = "Select";
-			MasterManager.Instance.DeselectShip(index);
+			ShipSelection.Value.Remove(ship);
 		}
+		ShipSelectionChanged.Raise();
 	}
 }

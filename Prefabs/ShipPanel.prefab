@@ -120,7 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87f2b0bffa167814284913558903fd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 0}
+  ShipSelectionChanged: {fileID: 11400000, guid: d9bd3f1f6cd510545bc44ff56fd90a3b,
+    type: 2}
+  ShipSelection: {fileID: 11400000, guid: 10cb147471605164c899d46298014792, type: 2}
   buttonText: {fileID: 4428594793604407810}
   image: {fileID: 4428594792618604064}
 --- !u!1 &4428594792618604066
