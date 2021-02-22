@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BoidInfoPanel : MonoBehaviour
 {
     public Boid boid;
-    public SelectedBoidScriptableObject HoveredBoid;
+    public SelectedBoidSO HoveredBoid;
 
     private Portrait pilotPortrait;
     private HealthBar boidHealthBar;

@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class PilotScrollPreview : MonoBehaviour
 {
-	public SelectionScriptableObject Selection;
+	public SelectionSO Selection;
 	public IntVariableSO MatchSelectionIndex;
 	public PilotVariableSO PilotPreview;
-	public GameEvent PilotPreviewChanged;
+	public GameEventSO PilotPreviewChanged;
 
 	public Image pilotPortrait;
 
-	PilotScriptableObject pilot;
+	PilotSO pilot;
 	int index;
 	Image image;
 	Color defaultColor;
@@ -27,7 +27,7 @@ public class PilotScrollPreview : MonoBehaviour
 		defaultColor = image.color;
 	}
 
-	public void SetPilot(PilotScriptableObject newPilot, int index)
+	public void SetPilot(PilotSO newPilot, int index)
 	{
 		pilot = newPilot;
 

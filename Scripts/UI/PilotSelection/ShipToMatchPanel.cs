@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class ShipToMatchPanel : MonoBehaviour
 {
-	public ShipSet Ships;
+	public ShipSetSO Ships;
 	public IntVariableSO MatchSelectionIndex;
-	public SelectionScriptableObject Selection;
+	public SelectionSO Selection;
 
-	public ShipScriptableObject ship;
+	public ShipSO ship;
 	public Image shipPortrait;
 
 	void Start()
@@ -17,7 +17,7 @@ public class ShipToMatchPanel : MonoBehaviour
 		HandleMatchSelectionChanged();
 	}
 
-	public void SetShip(ShipScriptableObject newShip)
+	public void SetShip(ShipSO newShip)
 	{
 		ship = newShip;
 

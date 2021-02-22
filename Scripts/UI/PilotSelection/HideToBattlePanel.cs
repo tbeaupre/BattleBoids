@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HideToBattlePanel : MonoBehaviour
 {
-    public SelectionScriptableObject Selection;
+    public SelectionSO Selection;
     public GameObject ToBattlePanel;
 
     // Start is called before the first frame update

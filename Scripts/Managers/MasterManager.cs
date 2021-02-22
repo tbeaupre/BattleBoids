@@ -7,13 +7,13 @@ public class MasterManager : MonoBehaviour
 {
 	public static MasterManager Instance { get; private set; }
 
-	public ShipSet Ships;
-	public PilotSet Pilots;
-	public SelectionScriptableObject Selection;
+	public ShipSetSO Ships;
+	public PilotSetSO Pilots;
+	public SelectionSO Selection;
 
 	public int Level { get; private set; }
 	List<int> shipSelection = new List<int>();
-	public EnemyTeamScriptableObject EnemyTeam { get; private set; }
+	public EnemyTeamSO EnemyTeam { get; private set; }
 
 	// Events
 	public delegate void ShipSelectionChangedDelegate(int count);
@@ -52,13 +52,13 @@ public class MasterManager : MonoBehaviour
 			Level = data.level;
 			PickEnemy();
 
-			Ships.Value = new List<ShipScriptableObject>();
+			Ships.Value = new List<ShipSO>();
 			foreach(string shipKey in data.ships) {
-				Ships.Value.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
+				Ships.Value.Add(Resources.Load<ShipSO>("Ships/" + shipKey));
 			}
-			Pilots.Value = new List<PilotScriptableObject>();
+			Pilots.Value = new List<PilotSO>();
 			foreach(string pilotKey in data.pilots) {
-				Pilots.Value.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
+				Pilots.Value.Add(Resources.Load<PilotSO>("Pilots/" + pilotKey));
 			}
 			// TEST_SetReasonableDefault();
 //			SceneManager.LoadSceneAsync("MainMenuScene", LoadSceneMode.Additive);
@@ -67,7 +67,7 @@ public class MasterManager : MonoBehaviour
 
 	void PickEnemy()
 	{
-		LevelScriptableObject levelSO = Resources.Load<LevelScriptableObject>("Levels/" + Level);
+		LevelSO levelSO = Resources.Load<LevelSO>("Levels/" + Level);
 		int randIndex = (int)Mathf.Round(Random.value * (float)(levelSO.enemyOptions.Length - 1));
 		EnemyTeam = levelSO.enemyOptions[randIndex];
 	}
@@ -98,13 +98,13 @@ public class MasterManager : MonoBehaviour
 		TeamData data = GetFreshTeamData();
 		SaveSystem.SaveTeam(data);
 		Level = data.level;
-		Ships.Value = new List<ShipScriptableObject>();
+		Ships.Value = new List<ShipSO>();
 		foreach(string shipKey in data.ships) {
-			Ships.Value.Add(Resources.Load<ShipScriptableObject>("Ships/" + shipKey));
+			Ships.Value.Add(Resources.Load<ShipSO>("Ships/" + shipKey));
 		}
-		Pilots.Value = new List<PilotScriptableObject>();
+		Pilots.Value = new List<PilotSO>();
 		foreach(string pilotKey in data.pilots) {
-			Pilots.Value.Add(Resources.Load<PilotScriptableObject>("Pilots/" + pilotKey));
+			Pilots.Value.Add(Resources.Load<PilotSO>("Pilots/" + pilotKey));
 		}
 	}
 

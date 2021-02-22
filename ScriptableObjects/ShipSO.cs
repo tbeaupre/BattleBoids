@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Ship", menuName = "ScriptableObjects/ShipScriptableObject", order = 1)]
-public class ShipScriptableObject : ScriptableObject
+[CreateAssetMenu(fileName = "Ship", menuName = "ScriptableObjects/Ship", order = 1)]
+public class ShipSO : ScriptableObject
 {
 	public GameObject prefab;
     public string shipName;

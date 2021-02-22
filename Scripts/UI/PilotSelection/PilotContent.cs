@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PilotContent : MonoBehaviour
 {
-	public PilotSet Pilots;
+	public PilotSetSO Pilots;
 	public GameObject pilotScrollPreviewPrefab;
 
     // Start is called before the first frame update

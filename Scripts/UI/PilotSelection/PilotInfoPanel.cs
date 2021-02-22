@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class PilotInfoPanel : MonoBehaviour
 {
-	public SelectionScriptableObject Selection;
-	public PilotSet Pilots;
+	public SelectionSO Selection;
+	public PilotSetSO Pilots;
 	public IntVariableSO MatchSelectionIndex;
 	public PilotVariableSO PilotPreview;
 
-	public PilotScriptableObject pilot;
+	public PilotSO pilot;
 	public Image pilotPortrait;
 	public GameObject noPilotPanel;
 	public Text pilotName;
@@ -26,7 +26,7 @@ public class PilotInfoPanel : MonoBehaviour
 		NoPilot();
 	}
 
-	public void SetPilot(PilotScriptableObject newPilot)
+	public void SetPilot(PilotSO newPilot)
 	{
 		pilot = newPilot;
 
@@ -66,7 +66,7 @@ public class PilotInfoPanel : MonoBehaviour
 
 	public void HandleMatchSelectionChanged()
 	{
-		PilotScriptableObject newPilot = Selection.Value[MatchSelectionIndex.Value].Pilot;
+		PilotSO newPilot = Selection.Value[MatchSelectionIndex.Value].Pilot;
 		SetPilot(newPilot);
 	}
 

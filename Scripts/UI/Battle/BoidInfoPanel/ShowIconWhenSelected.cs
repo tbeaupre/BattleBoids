@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShowIconWhenSelected : MonoBehaviour
 {
-    public SelectedBoidScriptableObject TargetBoid;
+    public SelectedBoidSO TargetBoid;
     public Image IconImage;
     public BoidInfoPanel AssociatedBoidInfoPanel;
 

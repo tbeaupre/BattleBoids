@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ShipSet", menuName = "ScriptableObjects/ShipSet", order = 1)]
-public class ShipSet : ScriptableObject
+public class ShipSetSO : ScriptableObject
 {
-    public List<ShipScriptableObject> Value;
+    public List<ShipSO> Value;
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SelectTargetOnClick : MonoBehaviour
 {
-    public SelectedBoidScriptableObject HoveredBoid;
-    public SelectedBoidScriptableObject TargetBoid;
+    public SelectedBoidSO HoveredBoid;
+    public SelectedBoidSO TargetBoid;
 
     public void OnMouseDown()
     {

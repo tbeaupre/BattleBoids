@@ -9,9 +9,9 @@ public class BattleManager : MonoBehaviour
 {
 	public static BattleManager Instance { get; private set; }
 
-	public ShipSet Ships;
-	public PilotSet Pilots;
-	public SelectionScriptableObject Selection;
+	public ShipSetSO Ships;
+	public PilotSetSO Pilots;
+	public SelectionSO Selection;
 
 	public List<Boid> Boids { get; private set; }
 	public Text winText;

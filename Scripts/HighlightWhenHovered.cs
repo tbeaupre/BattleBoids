@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HighlightWhenHovered : MonoBehaviour
 {
-	public SelectedBoidScriptableObject HoveredBoid;
+	public SelectedBoidSO HoveredBoid;
     public Material HoveredMaterial;
     public Boid Boid;
     

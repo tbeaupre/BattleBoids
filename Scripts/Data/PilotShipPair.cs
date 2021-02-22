@@ -5,10 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class PilotShipPair
 {
-    public PilotScriptableObject Pilot;
-    public ShipScriptableObject Ship;
+    public PilotSO Pilot;
+    public ShipSO Ship;
 
-    public PilotShipPair(PilotScriptableObject pilot, ShipScriptableObject ship)
+    public PilotShipPair(PilotSO pilot, ShipSO ship)
     {
         Pilot = pilot;
         Ship = ship;

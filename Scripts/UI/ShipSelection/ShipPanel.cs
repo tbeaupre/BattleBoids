@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ShipPanel : MonoBehaviour
 {
-	public ShipScriptableObject ship;
+	public ShipSO ship;
 	// public ShipData ship;
 	int index;
 
@@ -13,7 +13,7 @@ public class ShipPanel : MonoBehaviour
 	public Image image;
 	bool isActive = false;
 
-	public void SetShip(ShipScriptableObject newShip, int index)
+	public void SetShip(ShipSO newShip, int index)
 	{
 		ship = newShip;
 

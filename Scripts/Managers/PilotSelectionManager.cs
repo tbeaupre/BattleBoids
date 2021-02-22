@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PilotSelectionManager : MonoBehaviour
 {
-	public SelectionScriptableObject Selection;
+	public SelectionSO Selection;
 	public IntVariableSO MatchSelectionIndex;
 	public PilotVariableSO PilotPreview;
-	public GameEvent MatchSelectionChanged;
-	public GameEvent PilotSelectionChanged;
+	public GameEventSO MatchSelectionChanged;
+	public GameEventSO PilotSelectionChanged;
 
 	public static PilotSelectionManager Instance { get; private set; }
 

@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Boid : MonoBehaviour
 {
-	public SelectedBoidScriptableObject TargetBoid;
+	public SelectedBoidSO TargetBoid;
 
 	private Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
 	public BoidInfoPanel boidInfoPanel;
 	private Goal goal;
-	public PilotScriptableObject pilot;
-	public ShipScriptableObject ship;
+	public PilotSO pilot;
+	public ShipSO ship;
 
 	private float neighborhoodRadius = 10.0f;
 	private float accelerationMax = 0.1f;
@@ -90,7 +90,7 @@ public class Boid : MonoBehaviour
 		burstCooldownTimer--;
 	}
 
-	public void Initialize(PilotScriptableObject pilot, ShipScriptableObject ship)
+	public void Initialize(PilotSO pilot, ShipSO ship)
 	{
 		this.neighborhoodRadius = CalcRandProp(10, 5, ship.sensors, false);
 		this.accelerationMax = CalcRandProp(0.05f, 0.05f, ship.acceleration - (ship.armor / 2), false);

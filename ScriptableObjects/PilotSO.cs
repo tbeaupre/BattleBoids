@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Pilot", menuName = "ScriptableObjects/PilotScriptableObject", order = 1)]
-public class PilotScriptableObject : ScriptableObject
+[CreateAssetMenu(fileName = "Pilot", menuName = "ScriptableObjects/Pilot", order = 1)]
+public class PilotSO : ScriptableObject
 {
     public string pilotName;
     public Sprite portrait;

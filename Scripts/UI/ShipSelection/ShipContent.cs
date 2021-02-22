@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipContent : MonoBehaviour
 {
-	public ShipSet Ships;
+	public ShipSetSO Ships;
 	public GameObject shipPanelPrefab;
 
     // Start is called before the first frame update

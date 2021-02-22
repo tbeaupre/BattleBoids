@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class MatchPanel : MonoBehaviour
 {
-	public SelectionScriptableObject Selection;
-	public ShipSet Ships;
-	public PilotSet Pilots;
+	public SelectionSO Selection;
+	public ShipSetSO Ships;
+	public PilotSetSO Pilots;
 	public IntVariableSO MatchSelectionIndex;
 
-	public GameEvent MatchSelectionChanged;
+	public GameEventSO MatchSelectionChanged;
 
 	public int index;
 	public Image shipPortrait;

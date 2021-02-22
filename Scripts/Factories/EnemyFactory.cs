@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class EnemyFactory
 {
-    public static void InstantiateTeam(EnemyTeamScriptableObject enemyTeam) 
+    public static void InstantiateTeam(EnemyTeamSO enemyTeam) 
     {
         for (int i = 0; i < enemyTeam.ships.Length; i++) {
             GameObject enemy = Object.Instantiate(
