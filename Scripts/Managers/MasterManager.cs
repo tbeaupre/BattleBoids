@@ -11,6 +11,7 @@ public class MasterManager : MonoBehaviour
 	public PilotSetSO Pilots;
 	public SelectionSO Selection;
 	public ShipSetSO ShipSelection;
+	public BoidListSO Boids;
 
 	public int Level { get; private set; }
 	public EnemyTeamSO EnemyTeam { get; private set; }
@@ -89,7 +90,16 @@ public class MasterManager : MonoBehaviour
 		return new TeamData(1, pilots, ships);
 	}
 
-	public void ResetGame()
+	public void HandleBattleEnded()
+	{
+		if (Boids.EnemyCount == 0) {
+			CompleteLevel();
+		} else {
+			ResetGame();
+		}
+	}
+
+	void ResetGame()
 	{
 		TeamData data = GetFreshTeamData();
 		SaveSystem.SaveTeam(data);
@@ -104,7 +114,7 @@ public class MasterManager : MonoBehaviour
 		}
 	}
 
-	public void CompleteLevel()
+	void CompleteLevel()
 	{
 		Debug.Log(JsonUtility.ToJson(EnemyTeam.shipReward));
 		Pilots.Value.Add(EnemyTeam.pilotReward);

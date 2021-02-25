@@ -243,13 +243,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0250402f5a2464fb5125cd9f85bf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BoidKilled: {fileID: 11400000, guid: 9095164a784c9e14b8cfe8d4150e0bb8, type: 2}
   TargetBoid: {fileID: 11400000, guid: 4cf7ff0501eba8246be5b36cdea5a456, type: 2}
+  Boids: {fileID: 11400000, guid: 514b1dea30219f44299cb075b8a2f455, type: 2}
   laserPrefab: {fileID: 8627302759309090070, guid: d5b847d0d5c717545aa58a1cf0d3df01,
     type: 3}
   boidInfoPanel: {fileID: 0}
   pilot: {fileID: 0}
   ship: {fileID: 0}
   isEnemy: 0
+  state: 2
+  target: {fileID: 0}
   maxHealth: 100
   currentHealth: 100
 --- !u!114 &7737780624602830404

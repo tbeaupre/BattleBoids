@@ -5,12 +5,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PilotSelectionManager", menuName = "ScriptableObjects/Managers/PilotSelectionManager")]
 public class PilotSelectionManagerSO : ScriptableObject
 {
+	public GameEventSO MatchSelectionChanged;
+	public GameEventSO PilotSelectionChanged;
+
     public SelectionSO Selection;
 	public IntVariableSO MatchSelectionIndex;
 	public PilotVariableSO PilotPreview;
-
-	public GameEventSO MatchSelectionChanged;
-	public GameEventSO PilotSelectionChanged;
 
     void OnEnable()
     {
