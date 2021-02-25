@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3621981403789849747}
   - component: {fileID: 5801258081756859739}
   - component: {fileID: 8764269982922466375}
+  - component: {fileID: 4306095004251405189}
   m_Layer: 5
   m_Name: PilotScrollPreview
   m_TagString: Untagged
@@ -272,6 +273,33 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3834815737313922248}
         m_MethodName: HandlePilotPreviewChanged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4306095004251405189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834815737313922292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3d74e33dba7c794bbcdf27adffb5b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 0009b9e463e74c347ae771720e7c7ff4, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3834815737313922248}
+        m_MethodName: HandlePilotSelectionChanged
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
