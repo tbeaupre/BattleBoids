@@ -10,7 +10,9 @@ public class ShipPanel : MonoBehaviour
 	public ShipSetSO ShipSelection;
 
 	public Text buttonText;
-	public Image image;
+	public Image shipPortraitImage;
+	public Image panelImage;
+	public Color defaultColor;
 
 	private ShipSO ship;
 	private bool isActive = false;
@@ -30,6 +32,7 @@ public class ShipPanel : MonoBehaviour
 		// Check if the ship is selected or not.
 		isActive = ShipSelection.Value.Contains(ship);
 		if (isActive) {
+			panelImage.color = Color.yellow;
 			buttonText.text = "Deselect";
 		} else {
 			buttonText.text = "Select";
@@ -39,16 +42,18 @@ public class ShipPanel : MonoBehaviour
 		if (sprite == null) {
 			sprite = Resources.Load<Sprite>("Images/BlueFalcon");
 		}
-		image.sprite = sprite;
+		shipPortraitImage.sprite = sprite;
 	}
 
 	public void ToggleIsActive()
 	{
 		isActive = !isActive;
 		if (isActive) {
+			panelImage.color = Color.yellow;
 			buttonText.text = "Deselect";
 			ShipSelection.Value.Add(ship);
 		} else {
+			panelImage.color = defaultColor;
 			buttonText.text = "Select";
 			ShipSelection.Value.Remove(ship);
 		}

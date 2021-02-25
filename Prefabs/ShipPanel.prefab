@@ -124,7 +124,9 @@ MonoBehaviour:
     type: 2}
   ShipSelection: {fileID: 11400000, guid: 10cb147471605164c899d46298014792, type: 2}
   buttonText: {fileID: 4428594793604407810}
-  image: {fileID: 4428594792618604064}
+  shipPortraitImage: {fileID: 4428594792618604064}
+  panelImage: {fileID: 4428594792490629978}
+  defaultColor: {r: 1, g: 1, b: 1, a: 0.39215687}
 --- !u!1 &4428594792618604066
 GameObject:
   m_ObjectHideFlags: 0

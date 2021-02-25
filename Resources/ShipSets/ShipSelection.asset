@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1153fc25d741cc8479f6d0864b25a8a6, type: 3}
   m_Name: ShipSelection
   m_EditorClassIdentifier: 
-  Value: []
+  Value:
+  - {fileID: 11400000, guid: b55a6d3a4dfb0fd4da9f255654cd53ee, type: 2}
+  - {fileID: 11400000, guid: 668cfe6e02fcb5a4d952117ced369fea, type: 2}
+  - {fileID: 11400000, guid: 87f12b891cce52f44a99151586a847b1, type: 2}
+  - {fileID: 11400000, guid: 44bdd9a9db5d1a0468f2751084e84d96, type: 2}
+  - {fileID: 11400000, guid: 1388c116e683b6a47b6935119975f99b, type: 2}
