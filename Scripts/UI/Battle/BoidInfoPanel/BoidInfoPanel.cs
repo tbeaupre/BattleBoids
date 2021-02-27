@@ -25,7 +25,7 @@ public class BoidInfoPanel : MonoBehaviour
             if (boid.pilot != null) {
                 pilotPortrait.portraitSprite = boid.pilot.portrait;
             }
-            boidHealthBar.maxHealth = boid.maxHealth;
+            boidHealthBar.maxHealth = boid.MaxHealth();
             boidHealthBar.currentHealth = boid.currentHealth;
         } else {
             boidHealthBar.currentHealth = 0;

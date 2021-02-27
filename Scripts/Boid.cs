@@ -7,44 +7,38 @@ public class Boid : MonoBehaviour
 	public SelectedBoidSO TargetBoid;
 	public BoidListSO Boids;
 
+	public BoidConstantSO AccelerationMaxSO;
+	public BoidConstantSO AccuracySO;
+	public BoidConstantSO AlignmentConstantSO;
+	public BoidConstantSO BloodthirstConstantSO;
+	public BoidConstantSO CohesionConstantSO;
+	public BoidConstantSO CooldownSO;
+	public BoidConstantSO DamageSO;
+	public BoidConstantSO FearSO;
+	public BoidConstantSO MaxChaseDistanceSO;
+	public BoidConstantSO MaxFireDistanceSO;
+	public BoidConstantSO MaxHealthSO;
+	public BoidConstantSO NeighborhoodRadiusSO;
+	public BoidConstantSO TargetAcqMaxAngleSO;
+	public BoidConstantSO TargetAcqMinFitnessSO;
+	public BoidConstantSO TargetAcqRadiusSO;
+	public BoidConstantSO VelocityMaxSO;
+
+	public FloatVariableSO BoundaryConstant;
+	public FloatVariableSO BoundaryRadius;
+	public FloatVariableSO ChaseConstant;
+	public FloatVariableSO EnemyAlignmentConstant;
+	public FloatVariableSO EvadeConstant;
+	public FloatVariableSO MaxFireAngle;
+	public FloatVariableSO SeparationConstant;
+	public FloatVariableSO TargetAcqAngleMod;
+
 	private Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
 	public BoidInfoPanel boidInfoPanel;
 	private Goal goal;
 	public PilotSO pilot;
 	public ShipSO ship;
-
-	private float neighborhoodRadius = 10.0f;
-	private float accelerationMax = 0.1f;
-	private float velocityMax = 1.0f;
-	private float cohesionConstant = 100;
-	private float alignmentConstant = 20;
-	private float separationConstant = 3;
-	private float goalConstant = 100;
-	private float chaseConstant = 100;
-	private float evadeConstant = 100;
-	private float bloodthirstConstant = 100;
-
-	// Target Acquisition
-	private float targetAcqRadius = 20.0f;
-	private float targetAcqAngleMod = 0.7f;
-	private float targetAcqMaxAngle = 75.0f;
-	private float targetAcqMinFitness = 0.3f;
-
-	// Chase
-	private float maxChaseDistance = 25.0f;
-	private float maxFireDistance = 20.0f;
-	private float maxFireAngle = 3.0f;
-	private float accuracy = 0.3f;
-	private int cooldown = 20; // In frames
-	private float damage = 70;
-
-	// Evade
-	private float fear = 0.5f;
-	private float maxEvadeDistance = 25.0f;
-
-	// Boundaries
-	private float boundaryRadius = 50.0f;
 
 	// Burst
 	private int burstTimer = 0;
@@ -59,8 +53,26 @@ public class Boid : MonoBehaviour
 
 	// Internal
 	private int cooldownTimer = 0;
-	public float maxHealth = 100;
 	public float currentHealth = 100;
+
+	#region Attribute-Based Constants
+	public float AccelerationMax() { return AccelerationMaxSO.GetValue(ship.acceleration - (ship.armor / 2)); }
+	public float Accuracy() { return AccuracySO.GetValue(pilot.skill); }
+	public float AlignmentConstant() { return AlignmentConstantSO.GetValue(pilot.ego); }
+	public float BloodthirstConstant() { return BloodthirstConstantSO.GetValue(pilot.ego); }
+	public float CohesionConstant() { return CohesionConstantSO.GetValue(pilot.sociability); }
+	public int 	 Cooldown() { return (int)CooldownSO.GetValue(ship.damage); }
+	public float Damage() { return DamageSO.GetValue(ship.damage); }
+	public float Fear() { return FearSO.GetValue(pilot.ego); }
+	public float MaxChaseDistance() { return MaxChaseDistanceSO.GetValue(pilot.persistence); }
+	public float MaxFireDistance() { return MaxFireDistanceSO.GetValue(ship.range); }
+	public float MaxHealth() { return ship == null ? 0 : MaxHealthSO.GetValue(ship.armor); }
+	public float NeighborhoodRadius() { return NeighborhoodRadiusSO.GetValue(ship.sensors); }
+	public float TargetAcqMaxAngle() { return TargetAcqMaxAngleSO.GetValue(pilot.vision); }
+	public float TargetAcqMinFitness() { return TargetAcqMinFitnessSO.GetValue(pilot.persistence); }
+	public float TargetAcqRadius() { return TargetAcqRadiusSO.GetValue(ship.sensors); }
+	public float VelocityMax() { return VelocityMaxSO.GetValue(ship.topSpeed); }
+	#endregion
 
     void Awake()
     {
@@ -70,6 +82,8 @@ public class Boid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		if (ship == null || pilot == null) return;
+
 		UpdateTimers();
 		UpdateState();
 		UpdateVelocity();
@@ -93,38 +107,20 @@ public class Boid : MonoBehaviour
 
 	public void Initialize(PilotSO pilot, ShipSO ship)
 	{
-		this.neighborhoodRadius = CalcRandProp(10, 5, ship.sensors, false);
-		this.accelerationMax = CalcRandProp(0.05f, 0.05f, ship.acceleration - (ship.armor / 2), false);
-		this.velocityMax = CalcRandProp(0.7f, 1, ship.topSpeed, false);
-		this.maxHealth = CalcRandProp(50, 300, ship.armor, false);
-		this.targetAcqRadius = CalcRandProp(15, 10, ship.sensors, false);
-		this.maxFireDistance = CalcRandProp(15, 10, ship.range, false);
-		this.cooldown = (int)CalcRandProp(20, 70, ship.damage, false);
-		this.damage = CalcRandProp(10, 200, ship.damage, false);
-
-		this.bloodthirstConstant = CalcRandProp(150, 60, pilot.ego, true);
-		this.cohesionConstant = CalcRandProp(70, 60, pilot.sociability, true);
-		this.alignmentConstant = CalcRandProp(10, 20, pilot.ego, false);
-		this.targetAcqMaxAngle = CalcRandProp(60, 40, pilot.vision, false);
-		this.targetAcqMinFitness = CalcRandProp(0.2f, 0.2f, pilot.persistence, true);
-		this.maxChaseDistance = CalcRandProp(targetAcqRadius, 10, pilot.persistence, false);
-		this.accuracy = CalcRandProp(0.5f, 0.6f, pilot.skill, false);
-		this.fear = CalcRandProp(0, 1, pilot.ego, true);
-
-		float scale = (maxHealth / 500) + 1;
-		transform.localScale = new Vector3(scale, scale, scale);
-
-		this.currentHealth = this.maxHealth;
-
 		this.pilot = pilot;
 		this.ship = ship;
+
+		float scale = (MaxHealth() / 500) + 1;
+		transform.localScale = new Vector3(scale, scale, scale);
+
+		this.currentHealth = MaxHealth();
 
 		Boids.RegisterBoid(this);
 	}
 
 	void LimitVelocity()
 	{
-		velocity = Vector3.ClampMagnitude(velocity, velocityMax);
+		velocity = Vector3.ClampMagnitude(velocity, VelocityMax());
 	}
 
 	void UpdateState()
@@ -133,18 +129,18 @@ public class Boid : MonoBehaviour
 			case BoidState.Flock:
 			{
 				Boid fittestTarget = null;
-				float fittestValue = targetAcqMinFitness;
+				float fittestValue = TargetAcqMinFitness();
 
 				foreach(Boid boid in Boids.Value) {
 					if (boid != null && boid.isEnemy != isEnemy) {
 						Vector3 displacement = boid.gameObject.transform.position - transform.position;
 
-						if (displacement.sqrMagnitude > targetAcqRadius * targetAcqRadius) {
+						if (displacement.sqrMagnitude > TargetAcqRadius() * TargetAcqRadius()) {
 							continue;
 						}
 
-						float angleValue = ((targetAcqMaxAngle - Vector3.Angle(velocity, displacement)) / targetAcqMaxAngle) * targetAcqAngleMod;
-						float distValue = (displacement.magnitude / targetAcqRadius) * (1 - targetAcqAngleMod);
+						float angleValue = ((TargetAcqMaxAngle() - Vector3.Angle(velocity, displacement)) / TargetAcqMaxAngle()) * TargetAcqAngleMod.Value;
+						float distValue = (displacement.magnitude / TargetAcqRadius()) * (1 - TargetAcqAngleMod.Value);
 
 						float targetValue = 0.0f;
 						if (!isEnemy && TargetBoid.Boid != this) {
@@ -177,15 +173,16 @@ public class Boid : MonoBehaviour
 				}
 
 				Vector3 displacement = Displacement(target);
+				float maxChaseDistance = MaxChaseDistance();
 				if (displacement.sqrMagnitude > maxChaseDistance * maxChaseDistance) {
 					target = null;
 					state = BoidState.Flock;
 					break;
 				}
 
-				if (Vector3.Angle(velocity, displacement) < maxFireAngle && cooldownTimer < 0) {
-					cooldownTimer = cooldown;
-					target.Fire(this, accuracy, damage);
+				if (Vector3.Angle(velocity, displacement) < MaxFireAngle.Value && cooldownTimer < 0) {
+					cooldownTimer = Cooldown();
+					target.Fire(this, Accuracy(), Damage());
 				}
 				break;
 			}
@@ -196,7 +193,8 @@ public class Boid : MonoBehaviour
 					break;
 				}
 
-				if (Displacement(target).sqrMagnitude > maxEvadeDistance * maxEvadeDistance) {
+				float enemyMaxChaseDistance = target.MaxChaseDistance();
+				if (Displacement(target).sqrMagnitude > enemyMaxChaseDistance * enemyMaxChaseDistance) {
 					target = null;
 					state = BoidState.Flock;
 				}
@@ -252,14 +250,14 @@ public class Boid : MonoBehaviour
 		// if (perpendicularRatio > 0.6 && burstCooldownTimer < 0)
 		// {
 		// 	Debug.Log("Bursting");
-		// 	burstVector = Vector3.ClampMagnitude(deltaVelocity, velocityMax * 1.5f);
+		// 	burstVector = Vector3.ClampMagnitude(deltaVelocity, VelocityMax() * 1.5f);
 		// 	burstCooldownTimer = burstCooldown;
 		// 	burstTimer = burstDuration;
 		// 	velocity = Vector3.zero;
 		// }
 
 		deltaVelocity += perpendicularRatio * -velocity; // If the boid wants to move in a perpendicular direction, it has to slow down first.
-		velocity += Vector3.ClampMagnitude(deltaVelocity, accelerationMax);
+		velocity += Vector3.ClampMagnitude(deltaVelocity, AccelerationMax());
 	}
 
 	Vector3 Bloodthirst()
@@ -278,7 +276,7 @@ public class Boid : MonoBehaviour
 		}
 
 		perceivedCenter = perceivedCenter / count;
-		return (perceivedCenter - transform.position) / bloodthirstConstant;
+		return (perceivedCenter - transform.position) / BloodthirstConstant();
 	}
 
 	Vector3 Separation()
@@ -287,12 +285,12 @@ public class Boid : MonoBehaviour
 		foreach(Boid boid in Boids.Value) {
 			if (boid != null && boid != this) {
 				Vector3 displacement = Displacement(boid);
-				if (displacement.magnitude < neighborhoodRadius) {
+				if (displacement.magnitude < NeighborhoodRadius()) {
 					separation -= displacement;
 				}
 			}
 		}
-		return separation / separationConstant;
+		return separation / SeparationConstant.Value;
 	}
 
 	Vector3 Alignment()
@@ -311,7 +309,7 @@ public class Boid : MonoBehaviour
 		}
 
 		perceivedVelocity = perceivedVelocity / count;
-		return (perceivedVelocity - velocity) / alignmentConstant;
+		return (perceivedVelocity - velocity) / AlignmentConstant();
 	}
 
 	Vector3 Cohesion()
@@ -330,7 +328,7 @@ public class Boid : MonoBehaviour
 		}
 
 		perceivedCenter = perceivedCenter / count;
-		return (perceivedCenter - transform.position) / cohesionConstant;
+		return (perceivedCenter - transform.position) / CohesionConstant();
 	}
 
 
@@ -338,9 +336,9 @@ public class Boid : MonoBehaviour
 	Vector3 Chase()
 	{
 		if (target != null) {
-			float trailDistance = maxFireDistance * 0.75f;
+			float trailDistance = MaxFireDistance() * 0.75f;
 			Vector3 behindTarget = target.gameObject.transform.position - (target.velocity.normalized * trailDistance);
-			return (behindTarget - transform.position) / chaseConstant;
+			return (behindTarget - transform.position) / ChaseConstant.Value;
 		}
 		return Vector3.zero;
 	}
@@ -348,7 +346,7 @@ public class Boid : MonoBehaviour
 	Vector3 AlignWithTarget()
 	{
 		if (target != null) {
-			return (target.velocity - velocity) / alignmentConstant;
+			return (target.velocity - velocity) / EnemyAlignmentConstant.Value;
 		}
 		return Vector3.zero;
 	}
@@ -358,7 +356,7 @@ public class Boid : MonoBehaviour
 	Vector3 Evade()
 	{
 		if (target != null) {
-			return -Displacement(target) / evadeConstant;
+			return -Displacement(target) / EvadeConstant.Value;
 		}
 		return Vector3.zero;
 	}
@@ -367,7 +365,7 @@ public class Boid : MonoBehaviour
 	{
 		if (target != null) {
 			Vector3 projection = Vector3.Project(-Displacement(target), target.velocity);
-			return (transform.position - projection) / evadeConstant;
+			return (transform.position - projection) / EvadeConstant.Value;
 		}
 		return Vector3.zero;
 	}
@@ -377,7 +375,7 @@ public class Boid : MonoBehaviour
 	{
 		Vector3 rayDir;
 		Vector3 displacement = Displacement(firedBy);
-		float distanceMod = 1 - (displacement.magnitude / maxFireDistance);
+		float distanceMod = 1 - (displacement.magnitude / MaxFireDistance());
 		float precision = Random.value - (accuracy * distanceMod);
 //		Debug.Log("Precision: " + precision + ";  Accuracy: " + accuracy + "; DistanceMod: " + distanceMod);
 		if (precision < 0) {
@@ -390,7 +388,7 @@ public class Boid : MonoBehaviour
 		} else {
 			rayDir = firedBy.velocity * 1000;
 		}
-		if (state == BoidState.Flock || (currentHealth / maxHealth) + precision < fear) {
+		if (state == BoidState.Flock || (currentHealth / MaxHealth()) + precision < Fear()) {
 			target = firedBy;
 			state = BoidState.Evade;
 		}
@@ -399,15 +397,15 @@ public class Boid : MonoBehaviour
 			firedBy.gameObject.transform.position,
 			rayDir,
 			firedBy.isEnemy ? Color.red : Color.white,
-			firedBy.damage
+			damage
 		);
 	}
 
 	Vector3 Goal()
 	{
 		Vector3 displacement = goal.gameObject.transform.position - transform.position;
-		if (displacement.sqrMagnitude > boundaryRadius * boundaryRadius) {
-			return displacement / goalConstant;
+		if (displacement.sqrMagnitude > BoundaryRadius.Value * BoundaryRadius.Value) {
+			return displacement / BoundaryConstant.Value;
 		}
 		return Vector3.zero;
 	}

@@ -243,9 +243,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a0250402f5a2464fb5125cd9f85bf8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoidKilled: {fileID: 11400000, guid: 9095164a784c9e14b8cfe8d4150e0bb8, type: 2}
   TargetBoid: {fileID: 11400000, guid: 4cf7ff0501eba8246be5b36cdea5a456, type: 2}
   Boids: {fileID: 11400000, guid: 514b1dea30219f44299cb075b8a2f455, type: 2}
+  AccelerationMaxSO: {fileID: 11400000, guid: 9df0cf3163884f74391316b1557915c6, type: 2}
+  AccuracySO: {fileID: 11400000, guid: e2ccd49f78707124f95938c89bdf6f32, type: 2}
+  AlignmentConstantSO: {fileID: 11400000, guid: dcf009bf19b46a842a014f317b37fdd2,
+    type: 2}
+  BloodthirstConstantSO: {fileID: 11400000, guid: 04125d6060601d8439f556bc0ef731d5,
+    type: 2}
+  CohesionConstantSO: {fileID: 11400000, guid: ff91d93af1871e74c9356ce3bc952972, type: 2}
+  CooldownSO: {fileID: 11400000, guid: 486c905c78f90db4aa732ee4f728db36, type: 2}
+  DamageSO: {fileID: 11400000, guid: 3a442f3086110e94ca2f965075a5bc29, type: 2}
+  FearSO: {fileID: 11400000, guid: a388e6f24aceda4439c80b3da9ac1733, type: 2}
+  MaxChaseDistanceSO: {fileID: 11400000, guid: 200e558d3c6e1ba439585946a7ce7da1, type: 2}
+  MaxFireDistanceSO: {fileID: 11400000, guid: e1a2a7f9cbe1393439af119cf49e8674, type: 2}
+  MaxHealthSO: {fileID: 11400000, guid: e71fdd734e07066499535bf31b74a896, type: 2}
+  NeighborhoodRadiusSO: {fileID: 11400000, guid: eb6bd1cadc8a72e4a87913e58eb7a8c4,
+    type: 2}
+  TargetAcqMaxAngleSO: {fileID: 11400000, guid: f67aee32528494547bb349d4d29e624c,
+    type: 2}
+  TargetAcqMinFitnessSO: {fileID: 11400000, guid: 81e584cacbf9c944c80759183d28da6b,
+    type: 2}
+  TargetAcqRadiusSO: {fileID: 11400000, guid: f83a1565f269a78498f1cf2deaface79, type: 2}
+  VelocityMaxSO: {fileID: 11400000, guid: 8dc08026a23396946bff0bdcc6ca55f8, type: 2}
+  BoundaryConstant: {fileID: 11400000, guid: 6ee2e46c9a2095b4fbbb30d9e9c19d10, type: 2}
+  BoundaryRadius: {fileID: 11400000, guid: 388bdfc167469d3439afabc70a1581b0, type: 2}
+  ChaseConstant: {fileID: 11400000, guid: 70d5ba5281816c3479593ac05aa5f941, type: 2}
+  EnemyAlignmentConstant: {fileID: 11400000, guid: 0573feaa265181b4495e6d66782da6dd,
+    type: 2}
+  EvadeConstant: {fileID: 11400000, guid: 7f26337ef81451645af14c6e65af89b9, type: 2}
+  MaxFireAngle: {fileID: 11400000, guid: c54a698e151a41f498c25de9f218e3c4, type: 2}
+  SeparationConstant: {fileID: 11400000, guid: 3fbe9f536949560458308fdfd8a08841, type: 2}
+  TargetAcqAngleMod: {fileID: 11400000, guid: 333f60d490fd1c44f85345455227c6e5, type: 2}
   laserPrefab: {fileID: 8627302759309090070, guid: d5b847d0d5c717545aa58a1cf0d3df01,
     type: 3}
   boidInfoPanel: {fileID: 0}
@@ -254,7 +283,6 @@ MonoBehaviour:
   isEnemy: 0
   state: 2
   target: {fileID: 0}
-  maxHealth: 100
   currentHealth: 100
 --- !u!114 &7737780624602830404
 MonoBehaviour:
