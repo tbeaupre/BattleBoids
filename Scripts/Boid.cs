@@ -32,6 +32,7 @@ public class Boid : MonoBehaviour
 	public FloatVariableSO MaxFireAngle;
 	public FloatVariableSO SeparationConstant;
 	public FloatVariableSO TargetAcqAngleMod;
+	public FloatVariableSO TargetFitnessBonus;
 
 	private Vector3 velocity = Vector3.zero;
 	public GameObject laserPrefab;
@@ -48,12 +49,13 @@ public class Boid : MonoBehaviour
 	private Vector3 burstVector;
 
 	public bool isEnemy = false;
-	public BoidState state = BoidState.Flock;
 	public Boid target;
+	public Boid pursuer;
 
 	// Internal
 	private int cooldownTimer = 0;
 	public float currentHealth = 100;
+	private BoidState state = BoidState.Flock;
 
 	#region Attribute-Based Constants
 	public float AccelerationMax() { return AccelerationMaxSO.GetValue(ship.acceleration - (ship.armor / 2)); }
@@ -144,9 +146,8 @@ public class Boid : MonoBehaviour
 
 						float targetValue = 0.0f;
 						if (!isEnemy && TargetBoid.Boid != this) {
-							bool isChasingTarget = boid.state == BoidState.Chase && boid.target == TargetBoid.Boid;
-							if (boid == TargetBoid.Boid || isChasingTarget) {
-								targetValue += 0.3f;
+							if (boid == TargetBoid.Boid || boid.target == TargetBoid.Boid) {
+								targetValue += TargetFitnessBonus.Value;
 							}
 						}
 
@@ -188,14 +189,14 @@ public class Boid : MonoBehaviour
 			}
 			case BoidState.Evade:
 			{
-				if (target == null) {
+				if (pursuer == null) {
 					state = BoidState.Flock;
 					break;
 				}
 
-				float enemyMaxChaseDistance = target.MaxChaseDistance();
-				if (Displacement(target).sqrMagnitude > enemyMaxChaseDistance * enemyMaxChaseDistance) {
-					target = null;
+				float enemyMaxChaseDistance = pursuer.MaxChaseDistance();
+				if (Displacement(pursuer).sqrMagnitude > enemyMaxChaseDistance * enemyMaxChaseDistance) {
+					pursuer = null;
 					state = BoidState.Flock;
 				}
 				break;
@@ -355,16 +356,16 @@ public class Boid : MonoBehaviour
 	// Evade
 	Vector3 Evade()
 	{
-		if (target != null) {
-			return -Displacement(target) / EvadeConstant.Value;
+		if (pursuer != null) {
+			return -Displacement(pursuer) / EvadeConstant.Value;
 		}
 		return Vector3.zero;
 	}
 
 	Vector3 EvadeLineOfSight()
 	{
-		if (target != null) {
-			Vector3 projection = Vector3.Project(-Displacement(target), target.velocity);
+		if (pursuer != null) {
+			Vector3 projection = Vector3.Project(-Displacement(pursuer), pursuer.velocity);
 			return (transform.position - projection) / EvadeConstant.Value;
 		}
 		return Vector3.zero;
@@ -389,7 +390,7 @@ public class Boid : MonoBehaviour
 			rayDir = firedBy.velocity * 1000;
 		}
 		if (state == BoidState.Flock || (currentHealth / MaxHealth()) + precision < Fear()) {
-			target = firedBy;
+			pursuer = firedBy;
 			state = BoidState.Evade;
 		}
 

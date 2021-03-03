@@ -275,6 +275,7 @@ MonoBehaviour:
   MaxFireAngle: {fileID: 11400000, guid: c54a698e151a41f498c25de9f218e3c4, type: 2}
   SeparationConstant: {fileID: 11400000, guid: 3fbe9f536949560458308fdfd8a08841, type: 2}
   TargetAcqAngleMod: {fileID: 11400000, guid: 333f60d490fd1c44f85345455227c6e5, type: 2}
+  TargetFitnessBonus: {fileID: 11400000, guid: 6273f5e43b7e23f449c65786fc2c9dbb, type: 2}
   laserPrefab: {fileID: 8627302759309090070, guid: d5b847d0d5c717545aa58a1cf0d3df01,
     type: 3}
   boidInfoPanel: {fileID: 0}
@@ -283,6 +284,7 @@ MonoBehaviour:
   isEnemy: 0
   state: 2
   target: {fileID: 0}
+  pursuer: {fileID: 0}
   currentHealth: 100
 --- !u!114 &7737780624602830404
 MonoBehaviour:
