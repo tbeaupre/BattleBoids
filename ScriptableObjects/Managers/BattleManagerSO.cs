@@ -9,24 +9,7 @@ public class BattleManagerSO : ScriptableObject
     public BoidListSO Boids;
 	public SelectionSO Selection;
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += HandleSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= HandleSceneLoaded;
-    }
-
-    void HandleSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "BattleScene") {
-            Initialize();
-        }
-    }
-
-    private void Initialize()
+    public void Initialize()
     {
         Boids.ResetBoidList();
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("BattleScene"));
