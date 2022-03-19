@@ -276,13 +276,13 @@ MonoBehaviour:
   SeparationConstant: {fileID: 11400000, guid: 3fbe9f536949560458308fdfd8a08841, type: 2}
   TargetAcqAngleMod: {fileID: 11400000, guid: 333f60d490fd1c44f85345455227c6e5, type: 2}
   TargetFitnessBonus: {fileID: 11400000, guid: 6273f5e43b7e23f449c65786fc2c9dbb, type: 2}
+  explosionPrefab: {fileID: 100010, guid: 031d08f52af1daa4f929b85221519426, type: 3}
   laserPrefab: {fileID: 8627302759309090070, guid: d5b847d0d5c717545aa58a1cf0d3df01,
     type: 3}
   boidInfoPanel: {fileID: 0}
   pilot: {fileID: 0}
   ship: {fileID: 0}
   isEnemy: 0
-  state: 2
   target: {fileID: 0}
   pursuer: {fileID: 0}
   currentHealth: 100

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +35,7 @@ public class Boid : MonoBehaviour
 	public FloatVariableSO TargetFitnessBonus;
 
 	private Vector3 velocity = Vector3.zero;
+	public GameObject explosionPrefab;
 	public GameObject laserPrefab;
 	public BoidInfoPanel boidInfoPanel;
 	private Goal goal;
@@ -383,8 +384,7 @@ public class Boid : MonoBehaviour
 			rayDir = -displacement;
 			currentHealth -= damage;
 			if (currentHealth <= 0) {
-				Boids.UnregisterBoid(this);
-				Destroy(this);
+				Die();
 			}
 		} else {
 			rayDir = firedBy.velocity * 1000;
@@ -400,6 +400,18 @@ public class Boid : MonoBehaviour
 			firedBy.isEnemy ? Color.red : Color.white,
 			damage
 		);
+	}
+
+	void Die()
+	{
+		gameObject.AddComponent<BoidDeath>();
+		BoidDeath bd = GetComponent<BoidDeath>();
+		LimitVelocity();
+		bd.Velocity = velocity;
+		bd.ExplosionPrefab = explosionPrefab;
+
+		Boids.UnregisterBoid(this);
+		Destroy(this);
 	}
 
 	Vector3 Goal()
