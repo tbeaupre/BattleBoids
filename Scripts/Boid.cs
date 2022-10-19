@@ -59,32 +59,69 @@ public class Boid : MonoBehaviour
 	private BoidState state = BoidState.Flock;
 
 	#region Attribute-Based Constants
-	public float AccelerationMax() { return AccelerationMaxSO.GetValue(ship.acceleration - (ship.armor / 2)); }
-	public float Accuracy() { return AccuracySO.GetValue(pilot.skill); }
-	public float AlignmentConstant() { return AlignmentConstantSO.GetValue(pilot.ego); }
-	public float BloodthirstConstant() { return BloodthirstConstantSO.GetValue(pilot.ego); }
-	public float CohesionConstant() { return CohesionConstantSO.GetValue(pilot.sociability); }
-	public int 	 Cooldown() { return (int)CooldownSO.GetValue(ship.damage); }
-	public float Damage() { return DamageSO.GetValue(ship.damage); }
-	public float Fear() { return FearSO.GetValue(pilot.ego); }
-	public float MaxChaseDistance() { return MaxChaseDistanceSO.GetValue(pilot.persistence); }
-	public float MaxFireDistance() { return MaxFireDistanceSO.GetValue(ship.range); }
-	public float MaxHealth() { return ship == null ? 0 : MaxHealthSO.GetValue(ship.armor); }
-	public float NeighborhoodRadius() { return NeighborhoodRadiusSO.GetValue(ship.sensors); }
-	public float TargetAcqMaxAngle() { return TargetAcqMaxAngleSO.GetValue(pilot.vision); }
-	public float TargetAcqMinFitness() { return TargetAcqMinFitnessSO.GetValue(pilot.persistence); }
-	public float TargetAcqRadius() { return TargetAcqRadiusSO.GetValue(ship.sensors); }
-	public float VelocityMax() { return VelocityMaxSO.GetValue(ship.topSpeed); }
+	private float accelerationMax;
+	private float accuracy;
+	private float alignmentConstant;
+	private float bloodthirstConstant;
+	private float cohesionConstant;
+	private int   cooldown;
+	private float damage;
+	private float fear;
+	private float maxChaseDistance;
+	private float maxFireDistance;
+	private float maxHealth;
+	private float neighborhoodRadius;
+	private float targetAcqMaxAngle;
+	private float targetAcqMinFitness;
+	private float targetAcqRadius;
+	private float velocityMax;
+
+	private void SetConstants()
+	{
+		accelerationMax = AccelerationMaxSO.GetValue(ship.acceleration - (ship.armor / 2));
+		accuracy = AccuracySO.GetValue(pilot.skill);
+		alignmentConstant = AlignmentConstantSO.GetValue(pilot.ego);
+		bloodthirstConstant = BloodthirstConstantSO.GetValue(pilot.ego);
+		cohesionConstant = CohesionConstantSO.GetValue(pilot.sociability);
+		cooldown = (int)CooldownSO.GetValue(ship.damage);
+		damage = DamageSO.GetValue(ship.damage);
+		fear = FearSO.GetValue(pilot.ego);
+		maxChaseDistance = MaxChaseDistanceSO.GetValue(pilot.persistence);
+		maxFireDistance = MaxFireDistanceSO.GetValue(ship.range);
+		maxHealth = ship == null ? 0 : MaxHealthSO.GetValue(ship.armor);
+		neighborhoodRadius = NeighborhoodRadiusSO.GetValue(ship.sensors);
+		targetAcqMaxAngle = TargetAcqMaxAngleSO.GetValue(pilot.vision);
+		targetAcqMinFitness = TargetAcqMinFitnessSO.GetValue(pilot.persistence);
+		targetAcqRadius = TargetAcqRadiusSO.GetValue(ship.sensors);
+		velocityMax = VelocityMaxSO.GetValue(ship.topSpeed);
+	}
+
+	private float AccelerationMax()     { return accelerationMax; }
+	private float Accuracy()            { return accuracy; }
+	private float AlignmentConstant()   { return alignmentConstant; }
+	private float BloodthirstConstant() { return bloodthirstConstant; }
+	private float CohesionConstant()    { return cohesionConstant; }
+	private int   Cooldown()            { return cooldown; }
+	private float Damage()              { return damage; }
+	private float Fear()                { return fear; }
+	private float MaxChaseDistance()    { return maxChaseDistance; }
+	private float MaxFireDistance()     { return maxFireDistance; }
+	public  float MaxHealth()           { return maxHealth; }
+	private float NeighborhoodRadius()  { return neighborhoodRadius; }
+	private float TargetAcqMaxAngle()   { return targetAcqMaxAngle; }
+	private float TargetAcqMinFitness() { return targetAcqMinFitness; }
+	private float TargetAcqRadius()     { return targetAcqRadius; }
+	private float VelocityMax()         { return velocityMax; }
 	#endregion
 
-    void Awake()
-    {
+  void Awake()
+  {
 		goal = FindObjectOfType<Goal>();
-    }
+  }
 
     // Update is called once per frame
-    void Update()
-    {
+  void Update()
+  {
 		if (ship == null || pilot == null) return;
 
 		UpdateTimers();
@@ -99,7 +136,7 @@ public class Boid : MonoBehaviour
 		} else {
 			transform.position += velocity;
 		}
-    }
+  }
 
 	void UpdateTimers()
 	{
@@ -112,6 +149,8 @@ public class Boid : MonoBehaviour
 	{
 		this.pilot = pilot;
 		this.ship = ship;
+
+		SetConstants();
 
 		float scale = (MaxHealth() / 500) + 1;
 		transform.localScale = new Vector3(scale, scale, scale);
