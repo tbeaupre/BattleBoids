@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -521,7 +521,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShipSelectionChanged: {fileID: 11400000, guid: d9bd3f1f6cd510545bc44ff56fd90a3b,
     type: 2}
-  ShipSelection: {fileID: 11400000, guid: 10cb147471605164c899d46298014792, type: 2}
 --- !u!1 &909166211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,7 +1003,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 320, y: 60}
+  m_SizeDelta: {x: 340, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781792904
 MonoBehaviour:
